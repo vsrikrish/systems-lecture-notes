@@ -20,7 +20,7 @@ for (index, folder) in enumerate(lecture_folders)
 
     d = Dict("title" => title, "content" => content)
 
-    outfile = open(joinpath(folder, string(folder, "-jl.html")), "w")
+    outfile = open(joinpath(folder, string(folder, ".html")), "w")
     write(outfile, Mustache.render(tpl, d))
     close(outfile)
 end
