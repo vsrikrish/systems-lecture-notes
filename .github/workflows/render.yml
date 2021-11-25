@@ -17,10 +17,14 @@ jobs:
       with:
         version: 1.6
     - run: julia src/render.jl
+    - name: Commit
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "render notes"
     - name: Repository Dispatch
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.UPDATE_SUBMODULE }}
         repository: 'vsrikrish/environmental-systems-analysis'
         event-type: update-notes
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
