@@ -472,6 +472,12 @@ uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 [[MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 
+[[Mustache]]
+deps = ["Printf", "Tables"]
+git-tree-sha1 = "21d7a05c3b94bcf45af67beccab4f2a1f4a3c30a"
+uuid = "ffc61752-8dc7-55ee-8c37-f3e9cdd09e70"
+version = "1.0.12"
+
 [[NaNMath]]
 git-tree-sha1 = "bfe47e760d60b82b66b61d2d44128b62e3a369fb"
 uuid = "77ba4419-2d1f-58cd-9bb1-8ffee604a2e3"
@@ -607,7 +613,7 @@ version = "1.2.2"
 
 [[Remark]]
 deps = ["BinaryProvider", "DefaultApplication", "Documenter", "DocumenterMarkdown", "Glob", "JSON", "Literate", "Random"]
-git-tree-sha1 = "3f60840457bd774ff0273712b03129e27297bf9d"
+path = "/Users/vs498/.julia/dev/Remark"
 uuid = "79b45036-8e38-5d04-8f49-b9fb23ff5a0d"
 version = "0.3.2"
 
