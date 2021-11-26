@@ -5,7 +5,7 @@ on:
       - main
       - Fall22
 jobs:
-  setup-matrix:
+  matrix:
     runs-on: ubuntu-latest
     steps:
       - name: Find Folders
