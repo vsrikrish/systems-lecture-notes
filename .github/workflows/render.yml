@@ -13,7 +13,8 @@ jobs:
         run: |
           matrix = $((
             echo '{ "lectures" : ['
-            find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/",/'echo "]}"
+            find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"
+            'echo "]}"
           ) | jq -c .)
           echo $matrix
           echo $matrix | jq .
