@@ -11,11 +11,11 @@ jobs:
       - name: Find Folders
         id: set-matrix
         run: |
-          matrix = $((
+          echo "matrix = $(
             echo '{ "lectures" : ['
             find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/' | sed '$ s/,$//g'
             echo "]}"
-          ) )
+          )"
           echo $matrix
           echo "::set-output name=matrix::$matrix"
   check-matrix:
