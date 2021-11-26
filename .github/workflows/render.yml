@@ -13,11 +13,10 @@ jobs:
         run: |
           matrix = $((
             echo '{ "lectures" : ['
-            find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/'
+            find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/' | sed '$ s/,$//g'
             echo "]}"
-          ) | jq -c .)
+          ) )
           echo $matrix
-          echo $matrix | jq .
           echo "::set-output name=matrix::$matrix"
   check-matrix:
     runs-on: ubuntu-latest
