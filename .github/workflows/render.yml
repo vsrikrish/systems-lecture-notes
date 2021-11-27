@@ -11,6 +11,7 @@ jobs:
       - name: Find Folders
         id: set-matrix
         run: |
+          find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/' | sed '$ s/,$//g'
           echo "matrix = $(
             echo '{ "lectures" : ['
             find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/' | sed '$ s/,$//g'
