@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        lectures = [lecture01]
+        lectures: [lecture01]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
