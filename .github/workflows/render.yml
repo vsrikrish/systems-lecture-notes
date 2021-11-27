@@ -7,9 +7,6 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lectures: [lecture01]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -19,19 +16,15 @@ jobs:
       uses: julia-actions/setup-julia@v1
       with:
         version: 1.6
-    - name: Create HTML Slides
-      run: |
-        julia src/render.jl ${{ matrix.lectures }}
-    - name: Build PDF
-      run: docker run --rm -t -v `pwd`:/slides -v ~:/home/user astefanutti/decktape ${{ matrix.lectures }}/${{ matrix.lectures }}.html slides/${{ matrix.lectures }}/${{ matrix.lectures }}.pdf
+    - run: julia src/render.jl
     - name: Commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "render notes"
-    - name: Copy notes
-      uses: andstor/copycat-action@v3
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v1
       with:
-        personal_token: ${{ secrets.UPDATE_SUBMODULE }}
+        token: ${{ secrets.UPDATE_SUBMODULE }}
         repository: 'vsrikrish/environmental-systems-analysis'
         event-type: update-notes
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
