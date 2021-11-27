@@ -11,14 +11,10 @@ jobs:
       - name: Find Folders
         id: set-matrix
         run: |
-          find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/' | sed '$ s/,$//g'
-          echo "matrix = $(
-            echo '{ "lectures" : ['
-            find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/"/' | sed '$ s/,$//g'
-            echo "]}"
-          )" >> GITHUB_ENV
-          echo ${{ env.matrix }}
-          echo "::set-output name=matrix::${{ env.matrix }} "
+          echo $(find . -name "lecture*" -type d -ls | grep -o "lecture\d*" | sed -r 's/^/"/;s/$/",/' | sed '$ s/,$//g') > folders.out
+          matrix = '{ "lectures" : [$(cat folders.out)]}'
+          echo $matrix
+          echo "::set-output name=matrix::$matrix"
   check-matrix:
     runs-on: ubuntu-latest
     needs: matrix
