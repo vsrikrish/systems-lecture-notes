@@ -2,25 +2,11 @@ using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
 
-using Mustache
-using Glob
+using Remark
 
-tokens = Dict()
+paths_ignore = [".git", ".github", "javascript", "src", "stylesheets"]
+note_paths = setdiff(filter(x -> isdir(x), readdir(".")), paths_ignore)
 
-# load template
-tpl = Mustache.load("template.html")
-
-lecture_folders = filter(isdir, readdir(glob"lecture*"))
-for (index, folder) in enumerate(lecture_folders)
-    # load content
-    contentfile = open(joinpath(folder, string(folder, ".md")), "r")
-    content = read(contentfile, String)
-
-    title = string("Lecture", " ", index) 
-
-    d = Dict("title" => title, "content" => content)
-
-    outfile = open(joinpath(folder, string(folder, ".html")), "w")
-    write(outfile, Mustache.render(tpl, d))
-    close(outfile)
+for path in note_paths
+    Remark.slideshow("overview", options = Dict("ratio" => "16:9", "highlightStyle" => "github", "highlightLanguage" => "julia"))
 end
