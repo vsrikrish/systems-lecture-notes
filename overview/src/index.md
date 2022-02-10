@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Lecture 1</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="../stylesheets/katex.min.css">
-    <link rel="stylesheet" href="../stylesheets/custom.css">
-
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Roboto);
-      @import url(https://fonts.googleapis.com/css?family=Nunito);
-      @import url('https://fonts.googleapis.com/css2?family=Mulish');
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
 class: center, middle
 
-.title[Course Overview]
+.title[Introduction to Systems]
 <br>
-.subtitle[BEE 4750/5750: Environmental Systems Analysis, Fall 2022]
-***
+.subtitle[BEE 4750/5750]
+<br>
+.subtitle[Environmental Systems Analysis, Fall 2022]
+<hr>
 .author[Vivek Srikrishnan]
 <br>
-.date[August 25, 2022]
+.date[August 27, 2022]
 
 ---
 name: toc
+
 class: left
 
 # Outline
-***
+<hr>
 
 1. Welcome!
 2. Topics
@@ -41,29 +27,32 @@ class: left
 
 ---
 name: welcome
+
 class: left
 
 # Welcome to BEE 4750/5750!
-***
+<hr>
 
 .left-column[Let's start with a quick poll!]
-.right-column[<img style="width: 100%;" src="figures/mentimeter_qr_code.png">]
+.right-column[<img style="width: 100%;" src="assets/figures/mentimeterqrcode.png">]
 
 ---
 name: poll results
+
 class: left
 
 # Poll results
-***
+<hr>
 
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/embed/6303ba2d8e533f56abac388386c31d71/d52e8876481e' style='position: absolute; top: 0; left: 0; width: 100%; height: 80%;' width='420'></iframe></div>
 
 ---
 name: topics
+
 class: left
 
 # Topics
-***
+<hr>
 
 In this course, we will learn how to:
 
@@ -76,14 +65,17 @@ In this course, we will learn how to:
 
 ---
 name: policies
+
 class: left
+
 layout: true
 
 # Course Policies
-***
+<hr>
 
 ---
 name: grades
+
 template: policies
 
 ## Grades
@@ -95,6 +87,7 @@ template: policies
 
 ---
 name: assessments
+
 template: policies
 
 ## Homework Assignments
@@ -107,6 +100,7 @@ template: policies
 
 ---
 name: reg-project
+
 template: policies
 
 ## Regulatory Review Project
@@ -117,6 +111,7 @@ template: policies
 
 ---
 name: final-project
+
 template: policies
 
 ## Final Project
@@ -128,6 +123,7 @@ template: policies
 
 ---
 name: office-hours
+
 template: policies
 
 ## Office Hours
@@ -139,6 +135,7 @@ template: policies
 
 ---
 name: website
+
 template: policies
 
 ## Course Website
@@ -149,6 +146,7 @@ template: policies
  
 ---
 name: announcements
+
 template: policies
 
 ## Announcements
@@ -158,14 +156,17 @@ template: policies
 
 ---
 name: software
+
 class: left
+
 layout: true
 
 # Software Tools
-***
+<hr>
 
 ---
 name: julia
+
 template: software
 
 ## Julia
@@ -179,6 +180,7 @@ This course will use the [Julia programming language](https://julialang.org/).
 
 ---
 name: weave
+
 template: software
 
 ## Weave.jl
@@ -191,6 +193,7 @@ Homework assignments will be written and compiled using `Weave.jl`.
 
 ---
 name: github
+
 template: software
 
 ## Github Classroom
@@ -204,35 +207,52 @@ Access to assignments will be through Github Classroom.
 
 ---
 name: communication
+
 class: left
+
 layout: false
 
 # Course Communication
-***
+<hr>
 
 * Most communication will be done using Slack.
 * Please refrain from DMing me and the TA &mdash; unless private topic, **ask questions in the public channels so your classmates can help!**
 
 ---
 name: tips
+
 class: left
 
 # Tips for Success
-***
+<hr>
 
 * Start assignments early!
-* Ask questions in class and on Slack and try to help your classmates`
+* Ask questions in class and on Slack and try to help your classmates
 * **Collaborate** &mdash; this is life as an engineer once you leave college!
 * But don't just copy, your work should reflect your own understanding.
 
+---
+name: goals
 
+class: left
 
-</textarea>
-    <script src="../javascript/remark-latest.min.js" type="text/javascript"></script>
-    <script defer src="../javascript/katex.min.js"></script>
-    <script defer src="../javascript/auto-render.min.js"></script>
-    <!-- Call remark.js and KaTeX with liminal default settings -->
-    <script type="text/javascript" src="../javascript/call-javascript.js">
-    </script>
-  </body>
-</html>
+# Goals For This Course
+<hr>
+
+We want to build on your environmental engineering fundamentals with systems modeling and decision-making skills to:
+* Understand and identify modeling choices;
+* Use models to understand systems dynamics;
+* Use simulation and optimization to make management decisions;
+* Assess and analyze risk;
+* Make decisions in uncertain settings.
+
+---
+name: test-code
+
+class: left
+
+# Some Test Code
+ 
+```julia
+1+2
+```
