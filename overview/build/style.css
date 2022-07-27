@@ -82,8 +82,15 @@
     width: 100%;
 }
 
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .left-column img {
     width: 100%;
+    vertical-align: center;
 }
 
 .remark-slide.content img {
