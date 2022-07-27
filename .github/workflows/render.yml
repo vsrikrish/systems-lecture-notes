@@ -26,5 +26,5 @@ jobs:
       with:
         token: ${{ secrets.UPDATE_SUBMODULE }}
         repository: 'vsrikrish/environmental-systems-analysis'
-        event-type: update-notes
+        event-type: deploy
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
