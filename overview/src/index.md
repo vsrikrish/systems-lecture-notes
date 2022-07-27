@@ -429,6 +429,7 @@ For example:
 ---
 class: middle, center
 
+<hr>
 # Next Time
 <hr>
 
