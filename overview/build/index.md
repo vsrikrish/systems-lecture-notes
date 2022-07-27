@@ -770,6 +770,9 @@ For example:
 class: middle, center
 
 
+<hr>
+
+
 
 
 
