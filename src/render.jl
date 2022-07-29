@@ -19,5 +19,5 @@ for path in note_paths
     for f in filter(x -> occursin("css", x), readdir("build"))
         mv(string("build/", f), f)
     end
-    cd("..)
+    cd("..")
 end
