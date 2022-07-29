@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         persist-credentials: true
     - name: Install Julia
@@ -21,10 +21,22 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "render notes"
-    - name: Repository Dispatch
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.UPDATE_SUBMODULE }}
-        repository: 'vsrikrish/environmental-systems-analysis'
-        event-type: deploy
-        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+    
+  deploy:
+    needs: render
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Parent Repository
+        uses: actions/checkout@v3
+        with: 
+          repository: 'vsrikrish/environmental-systems-analysis'
+          token: ${{ secrets.UPDATE_SUBMODULE }}
+      - name: Pull & Update Submodules
+        run: git pull --recurse-submodules
+      - name: Commit 
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions - update submodules"
+          git add --all
+          git commit -m "Update submodules" || echo "No changes to commit"
+          git push
