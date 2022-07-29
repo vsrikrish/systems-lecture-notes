@@ -32,6 +32,7 @@ jobs:
           repository: 'vsrikrish/environmental-systems-analysis'
           token: ${{ secrets.UPDATE_SUBMODULE }}
           ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       - name: Pull & Update Submodules
         run: |
           git submodule update --init --recursive
