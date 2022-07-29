@@ -13,7 +13,7 @@ for path in note_paths
     cd(path)
     mv("build/index.html", "index.html")
     for f in readdir("fonts")
-        mv(string("build/fonts", f), string("fonts", f))
+        mv(string("build/fonts/", f), string("fonts/", f))
     end
     for f in filter(x -> occursin("js", x), readdir("build"))
         mv(string("build/", f), f)
