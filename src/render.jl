@@ -14,6 +14,7 @@ for path in note_paths
     mv("build/index.html", "index.html")
     for f in readdir("fonts")
         mv(string("build/fonts", f), string("fonts", f))
+    end
     for f in filter(x -> occursin("js", x), readdir("build"))
         mv(string("build/", f), f)
     end
