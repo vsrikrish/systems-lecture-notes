@@ -59,7 +59,7 @@ URL: <https://pollev.com/vsrikrish>
 
 Text: **VSRIKRISH** to 22333, then message]
 
-.right-column[.centered[![Poll Everywhere QR Code](../figures/vsrikrish-polleverywhere.png)]]
+.right-column[.centered[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
 
 ---
 name: welcome-poll
@@ -354,7 +354,7 @@ Relevant "pieces" for the system
 
 --
 
-.right-column[![Lake Eutrophication System Components](../figures/eutrophication-system-comps-01.png)]
+.right-column[![Lake Eutrophication System Components](figures/eutrophication-system-comps-01.png)]
 
 ---
 
@@ -365,7 +365,7 @@ Relationships between components
 
 --
 
-.right-column[![Lake Eutrophication System Interconnections](../figures/eutrophication-system-arrows-01.png)]
+.right-column[![Lake Eutrophication System Interconnections](figures/eutrophication-system-arrows-01.png)]
 
 ---
 
@@ -376,7 +376,7 @@ Relationships between components
 
 --
 
-.right-column[![Lake Eutrophication Control Volume](../figures/eutrophication-system-cv-01.png)]
+.right-column[![Lake Eutrophication Control Volume](figures/eutrophication-system-cv-01.png)]
 
 ---
 
@@ -387,7 +387,7 @@ Additional external inputs: these may be control policies or forcings
 
 --
 
-.right-column[![Lake Eutrophication System Control Volume](../figures/eutrophication-system-cv-01.png)]
+.right-column[![Lake Eutrophication System Control Volume](figures/eutrophication-system-cv-01.png)]
 
 ---
 
@@ -398,7 +398,7 @@ System outputs for monitoring or inputs into other systems
 
 --
 
-.right-column[![Lake Eutrophication System Outputs](../figures/eutrophication-system-all-01.png)]
+.right-column[![Lake Eutrophication System Outputs](figures/eutrophication-system-all-01.png)]
 
 ---
 layout: false
