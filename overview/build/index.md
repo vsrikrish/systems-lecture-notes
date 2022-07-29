@@ -777,11 +777,12 @@ class: middle, center
 
 
 
-# Next Time
+# Next Class
 
 
 <hr>
 
 
-We will discuss mathematical models of systems, and work through an example.
+  * Mathematical Modeling of Systems
+  * Work Through An Example
 
