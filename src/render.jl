@@ -12,7 +12,8 @@ for path in note_paths
     Remark.slideshow(path, title = titlecase(replace(path, "-" => " ")), options = Dict("ratio" => "16:9", "highlightStyle" => "github", "highlightLanguage" => "julia"))
     cd(path)
     mv("build/index.html", "index.html")
-    mv("build/fonts", "fonts")
+    for f in readdir("fonts")
+        mv(string("build/fonts", f), string("fonts", f))
     for f in filter(x -> occursin("js", x), readdir("build"))
         mv(string("build/", f), f)
     end
