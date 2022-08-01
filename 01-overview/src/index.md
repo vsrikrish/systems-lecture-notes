@@ -8,7 +8,7 @@ class: center, middle
 <hr>
 .author[Vivek Srikrishnan]
 <br>
-.date[August 27, 2022]
+.date[August 22, 2022]
 
 ---
 name: toc
