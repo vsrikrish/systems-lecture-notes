@@ -15,4 +15,5 @@ for path in note_paths
     for f in filter(x -> occursin(".svg", x), readdir(string(path, "/build")))
         mv(string(path, "/build/", f), string(path, "/figures/", f); force=true)
     end
+    cp("style.css", string(path, "/src/style.css"))
 end
