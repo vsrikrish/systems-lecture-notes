@@ -11,4 +11,8 @@ for path in note_paths
     path
     Remark.slideshow(path, title = titlecase(replace(path, "-" => " ")), options = Dict("ratio" => "16:9", "highlightStyle" => "github", "highlightLanguage" => "julia"))
     mv(string(path, "/build/index.html"), string(path, "/index.html"); force=true)
+    mv(string(path, "/build/style.css"), string(path, "/style.css"); force=true)
+    for f in filter(x -> occursin(".svg", x), readdir(string(path, "/build")))
+        mv(string(path, "/build/", f), string(path, "/figures/", f); force=true)
+    end
 end
