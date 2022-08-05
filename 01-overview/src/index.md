@@ -274,7 +274,7 @@ class: left
 
 > A system is "an interconnected set of elements that is coherently organized in a way that achieves something...A system must consist of three kinds of things: *elements*, *interconnections* and *a function or purpose*."
 >
->> -- Donella Meadows, *Thinking in Systems: A Primer*, 2008
+> .footer[-- Donella Meadows, *Thinking in Systems: A Primer*, 2008
 
 ---
 
