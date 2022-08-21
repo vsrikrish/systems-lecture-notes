@@ -39,7 +39,7 @@ URL: <https://pollev.com/vsrikrish>
 
 Text: **VSRIKRISH** to 22333, then message]
 
-.right-column[.centered[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
 
 ---
 name: questions
