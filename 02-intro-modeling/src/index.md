@@ -225,7 +225,7 @@ Two factories are discharging a chemical, *chlororadiated ureadicarboxyl* (CRUD)
 
 ---
 
-Environmental authorities have sampled water from the river and determined that CRUD concentrations exceed the legal standard (1 mg/L). 
+Environmental authorities have sampled water from the river and determined that concentrations exceed the legal standard (1 mg/L). 
 
 ---
 
@@ -249,7 +249,7 @@ layout: false
 - Treating CRUD costs $ \\$50 E^2 \text{ per } 1000 \  m^3,$ where $E$ is the treatment efficiency.
 
 - If $E_i$ is the treatment efficiency at factory $i$, the total treatment cost is
-$$C(E_1, E_2) = 50(100)E_1^2 + 50(60)E_2^2,$$
+$$C(E_1, E_2) = 50(100)E_1^2 + 50(60)E_2^2.$$
 
 ---
 class: left
@@ -394,7 +394,7 @@ class: left
 
 .center[![](figures/crud-release-2-treated.svg)]
 
-We can use this as an initial condition for $M(x), x > 10$ (we don't have to do this in detail):
+We can use this as an initial condition for $M(x), x > 10$:
 
 $$M(x) = M_1 \exp\left(-0.45 (x/25)\right), \quad x > 10,$$
 where $M_1 = (1100 - 1000E_1) \exp(-0.18) + 1200(1 - E_2)$.
@@ -409,14 +409,14 @@ Our next steps depend on what we're trying to do: is our model descriptive or pr
 
 --
 
-- *Descriptive*: Use the dynamical equations to simulate the CRUD concentrations for varying levels of $0 \leq E_1, E_2 \leq 1$ and compare those to the costs and the legal limit.
+- *Descriptive*: Use the dynamical equations to simulate concentrations for varying levels of $E_1, E_2$ and compare those to the costs and the legal limit.
 
 --
 
-- *Prescriptive*: Turn these equations and limits into constraints and find the values of $E_1$ and $E_2$ which minimize costs while staying in compliance (we'll return to this later!).
+- *Prescriptive*: Turn these equations and limits into constraints and find the values of $E_1, E_2$ which minimize costs while staying in compliance (we'll return to this later!).
 
 ---
-class: middle, center
+class: middle, left
 
 <hr>
 # Next Class
