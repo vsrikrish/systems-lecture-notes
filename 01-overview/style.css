@@ -79,7 +79,10 @@
 }
 
 .right-column img {
-    width: 100%;
+    max-width:100%;
+    max-height:100%;
+    height: auto;
+    width:auto;
 }
 
 .centered {
@@ -89,12 +92,16 @@
 }
 
 .left-column img {
-    width: 100%;
-    vertical-align: center;
+    max-width:100%;
+    max-height:100%;
+    height: auto;
+    width:auto;
 }
 
-.remark-slide.content img {
-    width: 60%;
+img {
+    max-width: 75%;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 /* Styling for links */
@@ -155,7 +162,7 @@ a:active,a#active {color: #FF9700;}
 /* Other special classes */
 .cite {
     font-size: 0.8em;
-    color: #ffffff;
+    color: #222222;
     font-style: italic;
     font-family: 'Mulish', sans-serif;
 }
