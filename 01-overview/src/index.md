@@ -59,7 +59,7 @@ URL: <https://pollev.com/vsrikrish>
 
 Text: **VSRIKRISH** to 22333, then message]
 
-.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+.right-column[.centered[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
 
 ---
 name: welcome-poll
@@ -115,7 +115,7 @@ template: policies
 
 - Approximately 6 in total
 - Managed with GitHub Classroom (more on this shortly)
-- Submit on Gradescope by 9:00 PM on due date
+- Submit on Gradescope by 9:00 PM on due date (probably a Thursday)
 - Collaboration encouraged, but **everyone must submit their own original work unless otherwise specified**
 - Late submissions penalized by 10% per day
 
@@ -149,8 +149,8 @@ template: policies
 
 ## Office Hours
 
-- Time TBD (watch for poll)
-- 1x/week by Zoom (maybe?)
+- Time TBD (watch for poll today)
+- 1x/week by Zoom (to start)
 
 ---
 name: website
@@ -174,6 +174,19 @@ template: policies
 - Try to use public Ed posts instead of email and private posts so others can benefit from questions.
 - But when privacy or urgency is essential, use whatever channel is appropriate.
 - *Announcements primarily through the course website and Ed Discussion*
+
+---
+template: policies
+
+## COVID-19 (and other illnesses)
+
+- Please do not come to class if you're sick or contagious. Your recovery, and everyone else's health, are paramount.
+- We will make materials available on the website and GitHub, and will provide a Zoom link or recording if you need one.
+
+--
+
+- **Masks**: Masks are not required, per university policy. However, please be respectful of the distancing requests from others if you are unmasked.
+- I will wear a mask unless everyone else in the classroom is masked. *This policy may change later in the semester based on how case counts are progressing, my travel schedule, etc.*
 
 ---
 name: software
@@ -230,7 +243,7 @@ template: software
 Access to assignments will be through Github Classroom.
 
 - You will be given a link to create a repository when an assignment is released.
-- PDFs of assignments will be auto-compiled when you `git push`.
+- PDFs of assignments *should* be auto-compiled when you `git push`.
 - Makes it easy to share code for feedback and debugging.
 - Let's look at [an example repository](https://github.com/BEE4750/hw0)!
 
@@ -273,8 +286,8 @@ class: left
 ---
 
 > A system is "an interconnected set of elements that is coherently organized in a way that achieves something...A system must consist of three kinds of things: *elements*, *interconnections* and *a function or purpose*."
->
-> .footer[-- Donella Meadows, *Thinking in Systems: A Primer*, 2008
+
+.footer[-- Donella Meadows, *Thinking in Systems: A Primer*, 2008]
 
 ---
 
@@ -437,7 +450,7 @@ For example:
 * Fate and transport modeling involves quantifying how stocks change as they move through the system.
 
 ---
-class: middle, center
+class: middle, left
 
 <hr>
 # Next Class
