@@ -143,6 +143,7 @@ class: left
 .left-column[## Deterministic Models
 
 ```@eval
+ENV["GKSwstype"] = "100"
 using Plots # hide
 using Measures # hide
 
@@ -162,6 +163,7 @@ nothing # hide
 .right-column[## Stochastic Models
 
 ```@eval
+ENV["GKSwstype"] = "100"
 using Plots # hide
 using Measures # hide
 using Random # hide
