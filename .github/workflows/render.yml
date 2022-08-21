@@ -16,6 +16,8 @@ jobs:
       uses: julia-actions/setup-julia@v1
       with:
         version: 1.6
+    - name: Pull
+      run: git pull
     - run: julia src/render.jl
     - name: Commit
       uses: stefanzweifel/git-auto-commit-action@v4
