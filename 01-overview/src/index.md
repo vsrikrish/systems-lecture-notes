@@ -401,14 +401,24 @@ System outputs for monitoring or inputs into other systems
 .right-column[![Lake Eutrophication System Outputs](figures/eutrophication-system-all-01.png)]
 
 ---
+class: left
+
 layout: false
 
+# System States
+<hr>
+
+We will repeatedly refer to the **state** of a system.
+
+This is vague, but the state includes quantities or variables which evolve over time based on external inputs and system dynamics.
+
+---
 class: left
 
 # Stocks and Flows
 <hr>
 
-Two important concepts in systems analysis are **stocks** and **flows**.
+Two additional important concepts in systems analysis are **stocks** and **flows**.
 
 * A **stock** is the amount of a system property: concentrations of a pollutant, numbers of currency units, etc.
 * A **flow** is the way in which a stock changes: decay, diffusion, production, consumption, etc.
@@ -433,5 +443,5 @@ class: middle, center
 # Next Class
 <hr>
 
-* Mathematical Modeling of Systems
-* Work Through An Example
+- Mathematical Modeling of Systems
+- Work Through An Example
