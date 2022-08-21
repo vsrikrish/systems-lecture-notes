@@ -26,4 +26,4 @@ Manifest.toml
 .DS_Store
 
 build/
-*/style.css
+*/src/style.css
