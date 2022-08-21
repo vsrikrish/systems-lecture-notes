@@ -5,7 +5,12 @@ Pkg.instantiate()
 using Remark
 
 paths_ignore = [".git", ".github", "javascript", "src", "stylesheets"]
-note_paths = setdiff(filter(x -> isdir(x), readdir(".")), paths_ignore)
+# if nothing is passed at the command line, build everything, but otherwise only build the notes with the passed index
+if isempty(ARGS)
+    note_paths = setdiff(filter(x -> isdir(x), readdir(".")), paths_ignore)
+else
+    note_paths = setdiff(filter(x -> occursin(ARGS[1], x), readdir(".")), paths_ignore)
+end
 
 for path in note_paths
     println(path)
