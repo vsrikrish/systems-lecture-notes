@@ -278,24 +278,20 @@ class: center, middle
 ---
 name: system-intro  
 
-layout: true
-
 class: left
 
 # What Is A System?
 <hr>
 
-{{content}}
-
----
-
 > A system is "an interconnected set of elements that is coherently organized in a way that achieves something...A system must consist of three kinds of things: *elements*, *interconnections* and *a function or purpose*."
-
-.footer[-- Donella Meadows, *Thinking in Systems: A Primer*, 2008]
+>
+> .cite[-- Donella Meadows, *Thinking in Systems: A Primer*, 2008]
 
 ---
-
 class: left
+
+# What Is A System?
+<hr>
 
 In other words, **a system involves an interconnected set of components**, and analyzing a system involves **understanding the dynamics caused by those interconnections**.
 
@@ -306,8 +302,6 @@ For examples, systems might have:
 
 ---
 name: systems-analysis
-
-layout: false
 
 class: left
 
