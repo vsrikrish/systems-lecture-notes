@@ -416,6 +416,42 @@ Our next steps depend on what we're trying to do: is our model descriptive or pr
 - *Prescriptive*: Turn these equations and limits into constraints and find the values of $E_1, E_2$ which minimize costs while staying in compliance (we'll return to this later!).
 
 ---
+class: left
+
+# Discussion of Oreskes et al (1994)
+<hr>
+
+> Models can corroborate a hypothesis by offering evidence to strengthen what may be already partly established through othermeans. Models can elucidate discrepancies in other models. Models can be also be used for sensitivity analysis --- for exploring "what if" questions --- thereby illuminating which aspects of the system are most in need of further study, and where more empirical data are most needed. **Thus, the primary value of models is heuristic: Models are representations, useful for guiding further study but not susceptible to proof.**
+>
+> .cite[Oreskes et al, 1994]
+
+---
+class: left
+
+# "All Models Are Wrong, But Some Are Useful"
+<hr>
+
+> ...all models are approximations. Essentially, all models are wrong, but some are useful. However, the approximate nature of the model must always be borne in mind....
+>
+> .cite[Box & Draper, 1987]
+
+--
+
+A key consideration: how do we check/ensure that models we use are useful? How do we know when they're not?
+
+---
+class: left
+
+# A Leading Question
+<hr>
+
+Someone has developed a model of a complex process (say...number of cases of a particular infectious disease). They claim that their model has precisely predicted case counts for a few months, and use this to argue for the model's validity (and their skill as a modeler, presumably).
+
+--
+
+**Should we trust their claim? What might this imply about the model? Is it useful?**
+
+---
 class: middle, left
 
 <hr>
