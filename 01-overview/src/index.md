@@ -151,6 +151,7 @@ template: policies
 
 - Time TBD (watch for poll today)
 - 1x/week by Zoom (to start)
+- I *will* require mask wearing in my office --- it's not a big space!
 
 ---
 name: website
@@ -178,14 +179,17 @@ template: policies
 ---
 template: policies
 
-## COVID-19 (and other illnesses)
+## If You're Sick...
 
 - Please do not come to class if you're sick or contagious. Your recovery, and everyone else's health, are paramount.
 - We will make materials available on the website and GitHub, and will provide a Zoom link or recording if you need one.
 
---
+---
+template: policies
 
-- **Masks**: Masks are not required, per university policy. However, please be respectful of the distancing requests from others if you are unmasked.
+## Masks
+
+- Masks are not required, per university policy. However, please be respectful of the distancing requests from others if you are unmasked.
 - I will wear a mask unless everyone else in the classroom is masked. *This policy may change later in the semester based on how case counts are progressing, my travel schedule, etc.*
 
 ---
@@ -238,9 +242,9 @@ name: github
 
 template: software
 
-## Github Classroom
+## GitHub Classroom
 
-Access to assignments will be through Github Classroom.
+Access to assignments will be through GitHub Classroom.
 
 - You will be given a link to create a repository when an assignment is released.
 - PDFs of assignments *should* be auto-compiled when you `git push`.
