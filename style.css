@@ -199,3 +199,10 @@ hr {
         left: 0 !important;
 }
 }
+
+blockquote {
+    background: #f7f7f7;
+    border-left: 10px solid #222;
+    margin: 0.25em;
+    padding: 2px 10px;
+}
