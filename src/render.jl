@@ -25,5 +25,7 @@ for path in note_paths
         mv(string(path, "/build/", f), string(path, "/figures/", f); force=true)
     end
     cp("fonts", string(path, "/fonts"); force=true)
+    cp("katex.min.css", string(path, "/katex.min.css"); force=true)
+    cp("katex.min.js", string(path, "/katex.min.js"); force=true)
     rm(string(path, "/src/style.css"))
 end
