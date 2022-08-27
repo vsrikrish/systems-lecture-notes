@@ -4,7 +4,7 @@ Pkg.instantiate()
 
 using Remark
 
-paths_ignore = [".git", ".github", "javascript", "src", "stylesheets"]
+paths_ignore = [".git", ".github", "javascript", "src", "stylesheets", "fonts"]
 # if nothing is passed at the command line, build everything, but otherwise only build the notes with the passed index
 if isempty(ARGS)
     note_paths = setdiff(filter(x -> isdir(x), readdir(".")), paths_ignore)
