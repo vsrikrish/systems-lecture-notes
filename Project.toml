@@ -1,4 +1,5 @@
 [deps]
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 Glob = "c27321d9-0574-5035-807b-f59d2c89b15c"
 Measures = "442fdcdd-2543-5da2-b0f3-8c86c306513e"
 Mustache = "ffc61752-8dc7-55ee-8c37-f3e9cdd09e70"
