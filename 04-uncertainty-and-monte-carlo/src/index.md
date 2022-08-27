@@ -114,7 +114,7 @@ class: left
 
 Now, let's do some simulations with the CRUD example.
 
-Go to <https://github.com/BEE4750-FA22/class-examples/simulation/> and clone (you may have already done this).
+Go to <https://github.com/BEE4750-FA22/simulation-exercise/> and clone (you may have already done this).
 
 ---
 class: left
