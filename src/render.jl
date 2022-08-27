@@ -24,5 +24,6 @@ for path in note_paths
     for f in filter(x -> occursin(".svg", x), readdir(string(path, "/build")))
         mv(string(path, "/build/", f), string(path, "/figures/", f); force=true)
     end
+    cp("fonts", string(path, "/fonts"); force=true)
     rm(string(path, "/src/style.css"))
 end
