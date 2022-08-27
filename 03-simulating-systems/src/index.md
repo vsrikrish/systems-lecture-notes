@@ -378,5 +378,5 @@ class: middle, left
 <hr>
 
 - Probability distributions in Julia
-- Coding example of systems simulation
+- Coding example of systems simulation (**bring laptop to class if possible!**)
 - How does Monte Carlo work?
