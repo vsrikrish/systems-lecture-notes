@@ -19,7 +19,7 @@ class: left
 <hr>
 
 1. Questions?
-2. Simualting Systems
+2. Simulating Systems
 3. Uncertainty and Probability
 
 ---
@@ -140,6 +140,7 @@ function dice_roll_repeated(n_trials, n_dice)
 	end
 	return roll_results
 end
+nothing # hide
 ```
 
 ---
@@ -181,6 +182,7 @@ count = 1
 for i=2:length(rolls)
     avg_freq[i] = (avg_freq[i-1] * (i-1) + (rolls[i] == 19)) / i
 end
+nothing # hide
 ```
 
 ---
@@ -327,6 +329,8 @@ layout: false
 ]
 
 ---
+name: probability-def
+
 class: left
 
 layout: false
@@ -337,6 +341,14 @@ layout: false
 We often represent uncertainty using *probabilities*.
 
 What is probability?
+
+---
+template: poll-answer
+
+***What is probability?***
+
+---
+template: probability-def
 
 --
 * Long-run frequency of an event (**frequentist**)

@@ -17,7 +17,7 @@ for path in note_paths
     println("Copying CSS file...")
     cp("style.css", string(path, "/src/style.css"); force=true)
     println("Building slideshow...")
-    Remark.slideshow(path, title = titlecase(replace(path, "-" => " ")), options = Dict("ratio" => "16:9", "highlightStyle" => "github", "highlightLanguage" => "julia"))
+    Remark.slideshow(path, title = titlecase(replace(path, "-" => " ")), options = Dict("ratio" => "16:9", "highlightStyle" => "ir-black", "highlightLanguage" => "julia", "highlightLines" => "true"))
     println("Moving Built Files...")
     mv(string(path, "/build/index.html"), string(path, "/index.html"); force=true)
     mv(string(path, "/build/style.css"), string(path, "/style.css"); force=true)
