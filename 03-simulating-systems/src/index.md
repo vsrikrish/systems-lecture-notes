@@ -359,6 +359,8 @@ template: probability-def
 The frequentist definition concerns what would happen with a large enough number of repeated trials. The Bayesian definition concerns the odds that you should bet on an outcome. 
 
 ---
+class: left
+
 name: distributions
 
 # Probability Distributions
@@ -383,12 +385,72 @@ nothing #hide
 .right-column[.center[![Comparison of Cauchy and Normal distributions. Notice the difference in tail area.](figures/dist-tails.svg)]]
 
 ---
+class: left 
+
+name: distributions-julia
+
+# Working with Distributions in Julia
+<hr>
+
+In Julia, we use [`Distributions.jl`](https://juliastats.org/Distributions.jl/stable/) to work with probability distributions.
+
+.left-column[
+```@example
+using Random, Distributions, Plots
+
+Random.seed!(1) # set seed
+# define a distribution
+normal_dist = Normal(0, 1) 
+# draw samples
+normal_samp = rand(normal_dist, 1000)
+# plot histogram
+histogram(normal_samp, grid=false, 
+    legend=false, ylabel="Count",
+    xlabel="Value", size=(500, 400))
+savefig("normal_hist.svg") #hide
+nothing #hide
+```
+]
+
+.right-column[.center[![Histogram of Normal Samples](figures/normal_hist.svg)]]
+
+---
+name: distributions-julia-2
+
+class: left
+
+# Working with Distributions in Julia
+<hr>
+
+We can also plot probability distribution functions (pdfs).
+
+.left-column[
+```@example
+using Distributions, Plots
+
+# set grid of x values to evaluate
+x = range(-10, 10; length = 100)
+# evaluate pdf over x
+norm_pdf = pdf.(Normal(0, 2), x)
+# make plot
+plot(x, norm_pdf, linecolor=:blue, 
+    legend=false, grid=false, 
+    xlabel="Value", yticks=false, 
+    yaxis=false, size=(500, 400))
+savefig("dist-norm.svg") #hide
+nothing # hide
+```
+]
+
+.right-column[.center[![Plot of Normal PDF](figures/dist-norm.svg)]]
+
+
+---
 class: middle, left
 
 <hr>
 # Next Class
 <hr>
 
-- Probability distributions in Julia
 - Coding example of systems simulation (**bring laptop to class if possible!**)
 - How does Monte Carlo work?
