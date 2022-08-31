@@ -51,6 +51,13 @@ template: poll-answer
 ---
 layout: false
 
+# Last Class
+<hr>
+
+- Monte Carlo works due to the *law of large numbers*;
+- Monte Carlo estimate $\mathbb{E}[\tilde{\mu}_n]$ is an *unbiased estimator of the mean*;
+- The variance of the estimate $\tilde{\sigma} \sim \sigma_Y / \sqrt{n}.$
+
 ---
 class: left
 
