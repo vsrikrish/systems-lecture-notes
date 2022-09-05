@@ -8,7 +8,7 @@ class: center, middle
 <hr>
 .author[Vivek Srikrishnan]
 <br>
-.date[August 31, 2022]
+.date[September 7, 2022]
 
 ---
 name: toc
@@ -19,9 +19,8 @@ class: left
 <hr>
 
 1. Questions?
-2. Probability Distributions in Julia
-3. Coding Example
-4. Introduction to Monte Carlo
+2. Coding Example
+3. Introduction to Monte Carlo
 
 ---
 name: poll-answer
