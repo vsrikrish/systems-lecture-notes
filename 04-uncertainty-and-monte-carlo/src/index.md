@@ -67,7 +67,7 @@ class: left
 # Monte Carlo Methods
 <hr>
 
-Last class, we used *Monte Carlo estimation* for frequencies of sums of multiple dice.
+Last week, we used *Monte Carlo estimation* for frequencies of sums of multiple dice.
 
 ---
 class: left
@@ -184,7 +184,7 @@ class: left
 # Monte Carlo Sample Error
 <hr>
 
-In other words, if we want to decrease the Monte Carlo error by 10x, we need 100x additional samples. **This is not an ideal method for high levels of accuracy.** The mathematician Alan Sokal once said
+In other words, if we want to decrease the Monte Carlo error by 10x, we need 100x additional samples. **This is not an ideal method for high levels of accuracy.** 
 
 > Monte Carlo is an extremely bad method. It should only be used when all alternative methods are worse.
 >
@@ -193,6 +193,11 @@ In other words, if we want to decrease the Monte Carlo error by 10x, we need 100
 --
 
 The thing is, though --- for a lot of problems, all alternative methods *are* worse!
+
+---
+template: poll-answer
+
+**When might we want to use Monte Carlo?**
 
 ---
 class: left
