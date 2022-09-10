@@ -54,6 +54,7 @@
 .remark-slide-content p {
     line-height: 1.5;
     font-size: 1.6em;
+    margin-top: 0;
 }
 
 .remark-slide-content li {
@@ -161,7 +162,7 @@ a:active,a#active {color: #FF9700;}
 
 /* Other special classes */
 .cite {
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: #222222;
     font-style: italic;
     font-family: 'Mulish', sans-serif;
@@ -183,6 +184,7 @@ a:active,a#active {color: #FF9700;}
 
 hr {
     border: 1px solid #b31b1b;
+    margin-bottom: 1em;
 }
 
 @page {
