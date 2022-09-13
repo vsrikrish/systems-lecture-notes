@@ -105,6 +105,19 @@ img {
     padding-bottom: 0;
 }
 
+table {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    border: 2px solid;
+    font-size: 1.4em;
+}
+
+tr:nth-child(even){
+    background-color: #f7f7f7;
+}
+
 pre {
     margin-top: 0;
 }
