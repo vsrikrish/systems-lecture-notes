@@ -105,6 +105,10 @@ img {
     padding-bottom: 0;
 }
 
+pre {
+    margin-top: 0;
+}
+
 /* Styling for links */
 a {text-decoration: none;color: #006699;}
 /* Setting link properties is particular, do not change order below*/
