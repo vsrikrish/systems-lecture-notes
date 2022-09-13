@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>08 Intro Optimization</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+.title[Introduction to Optimization] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[September 21, 2022]
+
+
+---
+
+
+name: toc
+
+
+class: left
+
+
+
+
+
+
+# Outline
+
+
+<hr>
+
+
+1. Questions?
+2. Components of Optimization Problems
+3. Approaches to Solutions
+
+
+---
+
+
+name: poll-answer
+
+
+layout: true
+
+
+class: left
+
+
+
+
+
+
+# Poll
+
+
+<hr>
+
+
+.left-column[{{content}}
+
+
+URL: [https://pollev.com/vsrikrish](https://pollev.com/vsrikrish)
+
+
+Text: **VSRIKRISH** to 22333, then message]
+
+
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+
+
+---
+
+
+name: questions
+
+
+template: poll-answer
+
+
+***Any questions?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Last Class
+
+
+<hr>
+
+
+  * Decision Models
+  * Revisited CRUD Wastewater Example
+  * Waste Load Allocation Modeling
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Components of an Optimization Model
+
+
+<hr>
+
+
+  * **Objective Function**: The "target" function to be minimized or maximized.
+  * **Decision Variables**: Variables which can be changed to affect objective.
+  * **Constraints**: Limits on decision variable values.
+  * **Feasible Solution**: Decision variable values satisfying constraints.
+  * **Optimal Solution**: The "best" feasible solution or solutions (with respect to the objective)
+
+
+---
+
+
+template: poll-answer
+
+
+***How do we solve an optimization problem?***
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Solution Approach 1: Trial and Error
+
+
+<hr>
+
+
+**What are some challenges?**
+
+
+---
+
+
+class: left
+
+
+
+
+# Solution Approach 1: Trial and Error
+
+
+<hr>
+
+
+Challenges:
+
+
+  * Many possible solutions (infinitely many when a problem is continuous)
+  * Feasible region may not be intuitive
+  * How do we know when we've found an optimal solution?
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Solution Approach 2: Generalized Search Algorithms
+
+
+<hr>
+
+
+.left-column[![Function with Multiple Minima](figures/multiple-optima.svg)]
+
+
+.right-column[Most search algorithms look for critical points to find candidate optima. Then the "best" of the critical points is the **global optimum**.]
+
+
+---
+
+
+class: left
+
+
+
+
+# Solution Approach 2: Generalized Search Algorithms
+
+
+<hr>
+
+
+.left-column[![Function with Multiple Minima](figures/multiple-optima.svg)]
+
+
+.right-column[Two common approaches:
+
+
+  * **Gradient-based methods**
+  * **Evolutionary algorithms**
+
+
+These methods work pretty well, but can require a lot of evaluations and/or may get stuck at local optima. ]
+
+
+---
+
+
+class: left
+
+
+
+
+# Solution Approach 2: Generalized Search Algorithms
+
+
+<hr>
+
+
+.left-column[![Function with Multiple Minima and a Constraint](figures/multiple-optima-constrained.svg)]
+
+
+.right-column[Now, notice the effect of a constraint!
+
+
+For a constrained problem, we also have to look along the constraint to see if that creates a solution.]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Lagrange Multipliers
+
+
+<hr>
+
+
+We can solve some constrained problems using Lagrange Multipliers!
+
+
+Recall (maybe) that the Lagrange Multipliers method requires *equality* constraints. But we can easily create those with "dummy" variables.
+
+
+--
+
+
+.left-column[ **Original Problem**
+
+
+$$
+\begin{aligned}
+& \min &&f(x_1, x_2) \notag \\\\
+& \text{subject to:} && x_1 \geq A \notag \\\\
+& && x_2 \leq B \notag
+\end{aligned}
+$$
+
+
+]
+
+
+.right-column[ **With Dummy Variables**
+
+
+$$
+\begin{aligned}
+& \min &&f(x_1, x_2) \notag \\\\
+& \text{subject to:} && x_1 - S_1^2 = A \notag \\\\
+& && x_2 + S_2^2 = B \notag
+\end{aligned}
+$$
+
+
+]
+
+
+---
+
+
+class: left
+
+
+
+
+# Lagrange Multipliers
+
+
+<hr>
+
+
+Then the Lagrangian function becomes:
+
+
+$$
+H(\mathbf{x}, S_1, S_2, \lambda_1, \lambda_2) = f(\mathbf{x}) - \lambda_1(x_1 - S_1^2 - A) - \lambda_2(x_2 + S_2^2 - B)
+$$
+
+
+where $\lambda_1$, $\lambda_2$ are penalties for violating the constraints.
+
+
+The $\lambda_i$ are the eponymous *Lagrange multipliers*.
+
+
+---
+
+
+class: left
+
+
+
+
+# Lagrange Multipliers
+
+
+<hr>
+
+
+Next step: locate possible optima where the partial derivatives of the Lagrangian are zero.
+
+
+$$
+\begin{equation}\frac{\partial H(\cdot)}{\partial \cdot} = 0\end{equation}
+$$
+
+
+--
+
+
+Challenges are that Equation (1) is actually many equations, even though our original problem was low-dimensional, and so this can be slow.
+
+
+But many advanced search methods are based on a variant of the Lagrange multiplier method.
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Linear Optimization Models
+
+
+<hr>
+
+
+Linear models are simpler!
+
+
+Recall that a function $f(x_1, \ldots, x_n)$ is *linear* if
+
+
+$$
+f(x_1, \ldots, x_n) = a_1x_1 + a_2x_2 + \ldots + a_nx_n.
+$$
+
+
+--
+
+
+The advantage of working with linear models is their geometry is simple, even if they're high-dimensional.
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Linear Programs
+
+
+<hr>
+
+
+A **linear program (LP)**  has the following characteristics:
+
+
+--
+
+
+  * *Linearity*: The objective function and constraints are all linear.
+
+
+--
+
+
+  * *Divisibility*: The decision variables are continuous (they can be fractional levels, not restricted to integers).
+
+
+--
+
+
+  * *Certainty*: The problem is deterministic.
+
+
+---
+
+
+class: left
+
+
+
+
+# Linear Programs
+
+
+<hr>
+
+
+Notice that our CRUD management example is not linear, as the objective (cost) function was quadratic, 
+
+
+$$
+C(E_1, E_2) = 5000E_1^2 + 3000E_2^2.
+$$
+
+
+.left-column[ We can approximate nonlinear functions by *linearizing* them.
+
+
+This is called the **linear relaxation** of the original problem.]
+
+
+.right-column[
+
+
+.center[![Linear Relaxation of Cost](figures/linear-relax.svg)] ]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Why is Solving LPs Straightforward?
+
+
+<hr>
+
+
+.left-column[All solutions must exist on the boundary of the feasible region (which must be a *polytope*).
+
+
+More specifically, an optimum solution must occur at the intersection of constraints, so all you need to do is to find and analyze the corners. This is the basis of all *simplex* methods for solving LPs.]
+
+
+.right-column[.center[![Linear Programming Feasible Polytope](figures/lp-polytope.svg)]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Example: Solving an LP
+
+
+<hr>
+
+
+.left-column[$\begin{alignedat}{3} & \max_{x_1, x_2} &  230x_1 + 120x_2 &  \\\\
+& \text{subject to:} & &\\\\
+& & 0.9x_1 + 0.5x_2 &\leq 600 \\\\
+& & x_1 + x_2 &\leq 1000 \\\\
+& & x_1, x_2 &\geq 0 \end{alignedat}$]
+
+
+.right-column[.center[![Feasible Region for Example](figures/lp-example-feasible.svg)]] 
+
+
+---
+
+
+class: left
+
+
+
+
+# Example: Solving an LP
+
+
+<hr>
+
+
+.left-column[$\begin{alignedat}{3} & \max_{x_1, x_2} &  230x_1 + 120x_2 &  \\\\
+& \text{subject to:} & &\\\\
+& & 0.9x_1 + 0.5x_2 &\leq 600 \\\\
+& & x_1 + x_2 &\leq 1000 \\\\
+& & x_1, x_2 &\geq 0 \end{alignedat}$]
+
+
+.right-column[![Feasible Region for Example](figures/lp-example-contour.svg)]
+
+
+---
+
+
+class: left
+
+
+
+
+# Example: Solving an LP
+
+
+<hr>
+
+
+.left-column[Now we can explore the corner points to find which optimizes the objective.
+
+
+| Point ($(x_1, x_2)$) | Objective |
+|:--------------------:| ---------:|
+|       $(0,0)$        |       $0$ |
+|     $(0, 1000)$      |   $12000$ |
+|      $(667, 0)$      |  $153410$ |
+|     $(250, 750)$     |  $147500$ |
+
+
+]
+
+
+.right-column[![Feasible Region for Example](figures/lp-example-extrema.svg)]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Recap
+
+
+<hr>
+
+
+  * Trial and error: not a great approach!
+  * Search algorithms: better!
+  * Linear Programs: straightforward to solve!
+  * An optimum must occur at a corner of the feasible polytope.
+
+
+---
+
+
+class: center, middle
+
+
+<hr>
+
+
+
+
+
+
+# Next Class
+
+
+<hr>
+
+
+  * Guest lecture by Mel Jensen, Cornell librarian
+  * Regulatory Review Project
+
+
+--
+
+
+  * **After that**: How to use Julia to solve optimization problems.
+
+    </textarea>
+
+    <script src="remark.min.js" type="text/javascript"></script>
+    <script src="katex.min.js"></script>
+    <script src="auto-render.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script type="text/javascript">
+        var options = {"highlightStyle":"ir-black","ratio":"16:9","highlightLanguage":"julia","highlightLines":"true"};
+        var renderMath = function() {
+        // renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+        }
+
+        var slideshow = remark.create(options, renderMath);
+
+        </script>
+  </body>
+</html>
