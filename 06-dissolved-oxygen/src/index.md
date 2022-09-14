@@ -352,7 +352,7 @@ $$C(x) = C_s(1 - \alpha_1) + C_0 \alpha_1 - B_0 \alpha_2 - N_0 \alpha_3$$
 ```@eval
 using Plots
 using Measures
-Plots.scalefontsizes(1.75)
+Plots.scalefontsizes(1.25)
 
 function do_simulate(x, C0, B0, N0, ka, kn, kc, Cs, U)
     B = B0 .* exp.(-kc .* x ./ U)
