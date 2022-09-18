@@ -174,7 +174,9 @@ class: left
 # Formulating An Objective
 <hr>
 
-Treatment Cost: $C(E_1, E_2) = 50(100)E_1^2 + 50(60)E_2^2 = 5000E_1^2 + 3000E_2^2.$
+Treatment Cost: 
+
+$$$C(E_1, E_2) = 50(100)E_1^2 + 50(60)E_2^2 = 5000E_1^2 + 3000E_2^2.$$
 
 Then the objective is to minimize the cost, or
 
@@ -214,7 +216,7 @@ class: left
 
 .center[![](figures/crud-release-1-treated.svg)]
 
-Total CRUD after factory 1 release: $\color{blue}\text{100} + \color{red} 1000(1-E_1) \color{black} \ \text{kg/d}$\\
+Total CRUD after factory 1 release: $\color{blue}\text{100} + \color{red} 1000(1-E_1) \color{black} \ \text{kg/d}$
 
 
 ---
@@ -315,6 +317,7 @@ $$\begin{alignat}{3}
 class: left
 
 # Ok...so how do we solve this?
+<hr>
 
 More general discussion next time, but this example is relatively straightforward to solve graphically.
 
@@ -329,7 +332,7 @@ class: left
 using Plots
 using LaTeXStrings
 using Measures
-Plots.scalefontsizes(1.75) #hide
+
 # define objective function
 a = range(0, 1, step=0.05)
 b = range(0, 1, step=0.05)
