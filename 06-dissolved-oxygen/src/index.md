@@ -269,7 +269,7 @@ This means:
 
 - For biochemical organics,
 
-$$B(x) = B_0 \exp(-k_b x / U);$$
+$$B(x) = B_0 \exp(-k_c x / U);$$
 
 - For nitrification,
 

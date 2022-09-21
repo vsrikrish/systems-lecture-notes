@@ -102,7 +102,6 @@ class: left
 ```@eval
 using Plots
 using Measures
-Plots.scalefontsizes(1.75)
 
 f(x) = 4 .* x.^4 - 10 .* (x.+2).^3 - 6 .* (x.-15).^2 + 2 .* (x.+4).^2
 x = -4:0.01:5
