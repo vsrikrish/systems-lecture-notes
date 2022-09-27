@@ -229,7 +229,7 @@ layout: false
 
 $$\text{Flow in} - \text{Flow out} = U \frac{dC}{dx},$$
 
-where $C(x)$ is DO (mg/l) $x$ km downstream, $U$ (l/km) is the water velocity.
+where $C(x)$ is DO (mg/l) $x$ km downstream, $U$ (km/d) is the water velocity.
 
 -- 
 
