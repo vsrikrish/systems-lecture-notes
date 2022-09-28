@@ -166,6 +166,20 @@ class: left
 
 First, let's establish some notation.
 
+---
+template: poll-answer
+
+***What are our decision variables?***
+
+---
+class: left
+
+# Pesticide Example: Notation
+<hr>
+
+First, let's establish some notation.
+
+
 **Decision Variables**:
 
 Variable | Meaning
@@ -193,7 +207,20 @@ class: left
 # Pesticide Example: Formulate Objective
 <hr>
 
-Next, let's formulate the objective function with the goall of maximizing profits. 
+Next, let's formulate the objective function with the goal of maximizing profits. 
+
+---
+template: poll-answer
+
+***What information is relevant for the objective?***
+
+---
+class: left
+
+# Pesticide Example: Formulate Objective
+<hr>
+
+Next, let's formulate the objective function with the goal of maximizing profits. 
 
 **Take some time to work on this.**
 
@@ -241,6 +268,20 @@ Another way to write this, using vector arithmetic:
 ```
 
 ---
+class: left
+
+# Pesticide Example: Constraints
+<hr>
+
+What are our constraints?
+
+---
+template: poll-answer
+
+***What information is relevant for constraints?***
+
+---
+
 class: left
 
 # Pesticide Example: Constraints
