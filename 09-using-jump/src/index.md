@@ -185,8 +185,8 @@ First, let's establish some notation.
 Variable | Meaning
 :-------:|:-------
 $S_j$ | ha planted with soybeans with pesticide rate $j=0, 1, 2$
-$C_j$ | ha planted with soybeans with pesticide rate $j=0, 1, 2$
-$W_j$ | ha planted with soybeans with pesticide rate $j=0, 1, 2$.
+$C_j$ | ha planted with corn with pesticide rate $j=0, 1, 2$
+$W_j$ | ha planted with wheat with pesticide rate $j=0, 1, 2$.
 
 ---
 class: left
