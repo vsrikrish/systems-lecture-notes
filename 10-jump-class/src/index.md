@@ -40,7 +40,6 @@ Text: **VSRIKRISH** to 22333, then message]
 .right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
 
 ---
-name: questions
 
 template: poll-answer
 
@@ -48,7 +47,6 @@ template: poll-answer
 
 ---
 layout: false
-class: left
 
 # Last Class
 <hr>
