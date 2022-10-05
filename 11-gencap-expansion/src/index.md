@@ -371,6 +371,19 @@ template: poll-answer
 
 ---
 
+# Emissions
+<hr>
+
+We could add in emissions as a constraint or try to minimize emissions (instead of cost).
+
+**How would we do this?**
+
+--
+
+- Would need information on emissions per generated Wh.
+
+---
+
 # Non-Served Energy
 <hr>
 
@@ -385,16 +398,54 @@ It could be that it's cheaper to not serve energy during some periods than to bu
 
 ---
 
-# Emissions
+# Non-Served Energy
 <hr>
 
-We could add in emissions as a constraint or try to minimize emissions (instead of cost).
+Let's try this!
 
-**How would we do this?**
+```@example gencap
+function nse_gencap(nsecost, G, T)
+    gencap = Model(HiGHS.Optimizer)
+    @variable(gencap, x[G] >= 0)
+    @variable(gencap, y[G, T] >= 0)
+    @variable(gencap, nse[T] >= 0)
+    @objective(gencap, Min, [100000; 150000; 150000]' * x 
+        + sum([188000 0 0; 250000 0 0]' .* y)
+        + nsecost * sum(nse))
+    avail = [0.9 0.2 0.5; 0.9 0.5 0]' # availability factors
+    @constraint(gencap,
+        availability[g in G, t in T], y[g, t] <= avail[g, t] * x[g])
+    demand = [3000; 2000] # load
+    @constraint(gencap,
+        load[t in T], sum(y[:, t]) + nse[t] == demand[t])
+    optimize!(gencap)
+    return x, y, nse
+end
+```
 
---
+---
 
-- Would need information on emissions per generated Wh.
+# Non-Served Energy
+<hr>
+
+How does the non-served energy change with the NSE penalty cost?
+
+```@example gencap
+nse_penalties = [225000, 250000, 275000, 300000]
+f_nse(c) = nse_gencap(c, G, T)
+out = f_nse.(nse_penalties)
+[sum(value.(out[i][3]).data) for i in 1:length(nse_penalties)]
+```
+
+---
+# Non-Served Energy
+<hr>
+
+Is the non-served energy coming from not building gas or wind?
+
+```@example gencap
+[value.(out[i][1]).data for i in 1:length(nse_penalties)]
+```
 
 ---
 class: middle
