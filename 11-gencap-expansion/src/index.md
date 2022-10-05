@@ -215,8 +215,6 @@ Things can get more complex for real decisions, particularly with renewables...
 # Simple Capacity Expansion Example
 <hr>
 
-Putting this into `JuMP`:
-
 ```@example gencap
 using JuMP
 using HiGHS
@@ -427,5 +425,5 @@ class: middle
 
 # Next Class
 <hr>
-- Air Pollution Modeling Example
+- Air Pollution Modeling Example or Economic Dispatch
 <hr>
