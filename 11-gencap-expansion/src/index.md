@@ -103,6 +103,8 @@ In general, we have many possible fuel options:
 - Nuclear
 - Renewables (wind, solar, hydro)
 
+Each of these different types of plants has a different *capacity factor*, which reflects how much of the installed capacity can be relied upon at various times.
+
 ---
 class: left
 
@@ -115,7 +117,7 @@ Assume we can simplify demand to two scenarios:
 
 Generator types (only three):
 
-Tech | Peak Capacity Factor | Off-Peak Capacity Factor | Investment Cost $(\\$\text{/MW-yr})$ | Operating Cost $(\\$\text{/MWh})$ |
+Tech | Peak CF | Off-Peak CF | Investment Cost $(\\$\text{/MW-yr})$ | Operating Cost $(\\$\text{/MWh})$ |
 :--------: | ---------:| -------------: | ------------: | ----------: | 
 Gas | 0.9 | 0.9 | 100,000 | 50 |
 Wind | 0.2 | 0.5 | 150,000 | 0 |
