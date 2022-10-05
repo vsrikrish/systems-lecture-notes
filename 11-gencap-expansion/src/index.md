@@ -397,55 +397,28 @@ It could be that it's cheaper to not serve energy during some periods than to bu
 - Generated electricity plus non-served energy equal demand.
 
 ---
-
 # Non-Served Energy
 <hr>
 
-Let's try this!
+New objective:
 
-```@example gencap
-function nse_gencap(nsecost, G, T)
-    gencap = Model(HiGHS.Optimizer)
-    @variable(gencap, x[G] >= 0)
-    @variable(gencap, y[G, T] >= 0)
-    @variable(gencap, nse[T] >= 0)
-    @objective(gencap, Min, [100000; 150000; 150000]' * x 
-        + sum([188000 0 0; 250000 0 0]' .* y)
-        + nsecost * sum(nse))
-    avail = [0.9 0.2 0.5; 0.9 0.5 0]' # availability factors
-    @constraint(gencap,
-        availability[g in G, t in T], y[g, t] <= avail[g, t] * x[g])
-    demand = [3000; 2000] # load
-    @constraint(gencap,
-        load[t in T], sum(y[:, t]) + nse[t] == demand[t])
-    optimize!(gencap)
-    return x, y, nse
-end
-```
-
----
-
-# Non-Served Energy
-<hr>
-
-How does the non-served energy change with the NSE penalty cost?
-
-```@example gencap
-nse_penalties = [225000, 250000, 275000, 300000]
-f_nse(c) = nse_gencap(c, G, T)
-out = f_nse.(nse_penalties)
-[sum(value.(out[i][3]).data) for i in 1:length(nse_penalties)]
-```
+$$\begin{aligned}
+\min\_{x\_g, y\_{g,t}, nse\_t} Z &= \text{investment cost} + \text{operating cost} + \text{NSE cost}\\\\
+&= 100000 x\_\text{gas} + 150000 x\_\text{wind} + 150000 x\_\text{solar} \\\\
+& \quad + (3760 \times 50) y\_\text{gas,peak} + (5000 \times 50) y\_\text{gas,off} \\\\
+& \quad + NSECost \times nse\_t
+\end{aligned}$$
 
 ---
 # Non-Served Energy
 <hr>
 
-Is the non-served energy coming from not building gas or wind?
+New load constraints:
 
-```@example gencap
-[value.(out[i][1]).data for i in 1:length(nse_penalties)]
-```
+$$\begin{aligned}
+y\_\text{gas, peak} + y\_\text{wind, peak} + y\_\text{solar, peak} + nse\_\text{peak}&= 3000 \\\\
+y\_\text{gas, off} + y\_\text{wind, off} + y\_\text{solar, off} + nse\_\text{off} &= 2000
+\end{aligned}$$
 
 ---
 class: middle
