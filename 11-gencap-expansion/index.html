@@ -664,7 +664,11 @@ results = DataFrame(
 
 <hr>
 
+<<<<<<< HEAD
 <div><div style = "float: left;"><span>3×3 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">Resource</th><th style = "text-align: left;">Installed (MW)</th><th style = "text-align: left;">Generated (GWh)</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "String" style = "text-align: left;">String</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: left;">gas</td><td style = "text-align: right;">2444.44</td><td style = "text-align: right;">8272.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: left;">wind</td><td style = "text-align: right;">4000.0</td><td style = "text-align: right;">13008.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: left;">solar</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">-0.0</td></tr></tbody></table></div>
+=======
+<div class="data-frame"><p>3 rows × 3 columns</p><table class="data-frame"><thead><tr><th></th><th>Resource</th><th>Installed (MW)</th><th>Generated (GWh)</th></tr><tr><th></th><th title="String">String</th><th title="Float64">Float64</th><th title="Float64">Float64</th></tr></thead><tbody><tr><th>1</th><td>gas</td><td>2444.44</td><td>8272.0</td></tr><tr><th>2</th><td>wind</td><td>4000.0</td><td>13008.0</td></tr><tr><th>3</th><td>solar</td><td>0.0</td><td>-0.0</td></tr></tbody></table></div>
+>>>>>>> 77ce347 (recompile html)
 
 ---
 
@@ -770,6 +774,31 @@ template: poll-answer
 
 
 
+# Emissions
+
+
+<hr>
+
+
+We could add in emissions as a constraint or try to minimize emissions (instead of cost).
+
+
+**How would we do this?**
+
+
+--
+
+
+  * Would need information on emissions per generated Wh.
+
+
+---
+
+
+
+
+
+
 # Non-Served Energy
 
 
@@ -794,24 +823,45 @@ It could be that it's cheaper to not serve energy during some periods than to bu
 
 
 
-
-
-# Emissions
+# Non-Served Energy
 
 
 <hr>
 
 
-We could add in emissions as a constraint or try to minimize emissions (instead of cost).
+New objective:
 
 
-**How would we do this?**
+$$
+\begin{aligned}
+\min\_{x\_g, y\_{g,t}, nse\_t} Z &= \text{investment cost} + \text{operating cost} + \text{NSE cost}\\\\
+&= 100000 x\_\text{gas} + 150000 x\_\text{wind} + 150000 x\_\text{solar} \\\\
+& \quad + (3760 \times 50) y\_\text{gas,peak} + (5000 \times 50) y\_\text{gas,off} \\\\
+& \quad + NSECost \times nse\_t
+\end{aligned}
+$$
 
 
---
+---
 
 
-  * Would need information on emissions per generated Wh.
+
+
+# Non-Served Energy
+
+
+<hr>
+
+
+New load constraints:
+
+
+$$
+\begin{aligned}
+y\_\text{gas, peak} + y\_\text{wind, peak} + y\_\text{solar, peak} + nse\_\text{peak}&= 3000 \\\\
+y\_\text{gas, off} + y\_\text{wind, off} + y\_\text{solar, off} + nse\_\text{off} &= 2000
+\end{aligned}
+$$
 
 
 ---
