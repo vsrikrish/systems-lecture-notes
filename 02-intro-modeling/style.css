@@ -107,7 +107,13 @@ img {
 
 table {
     border-collapse: collapse;
+    margin-right: 10px;
 }
+
+thead {
+    padding-top: 1px;
+}
+
 th, td {
     padding: 5px;
     border: 2px solid;
