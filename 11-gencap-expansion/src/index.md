@@ -99,6 +99,10 @@ class: left
 
 Let's look at a *very* simplified example first.
 
+---
+# Simple Capacity Expansion Example
+<hr>
+
 In general, we have many possible fuel options:
 - Gas (combined cycle or simple cycle)
 - Coal
@@ -106,6 +110,7 @@ In general, we have many possible fuel options:
 - Renewables (wind, solar, hydro)
 
 Each of these different types of plants has a different *capacity factor*, which reflects how much of the installed capacity can be relied upon at various times.
+
 
 ---
 class: left
