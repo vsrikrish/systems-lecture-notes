@@ -18,8 +18,12 @@ class: left
 # Outline
 <hr>
 
-1. Questions?
-2. LP Example: Economic Dispatch
+1. Homework 3 Released
+2. Regulatory Project Proposal Due Thursday
+3. Questions?
+4. Single-Period Economic Dispatch
+5. Multi-Period Economic Dispatch
+6. "Duck Curve"
 
 ---
 name: poll-answer
@@ -52,7 +56,7 @@ layout: false
 # Last Class
 <hr>
 
-- Generating Capacity Expansion
+- Generating Capacity Expansion Example
 
 ---
 class: left
@@ -73,7 +77,7 @@ class: left
 
 --
 
-**New Twist**: Power plants are generally subject to engineering constraints that we had previously neglected, including:
+**New Constraints**: Power plants are generally subject to engineering constraints that we had previously neglected, including:
 - Ramping limits
 - Minimum/Maximum power outputs
 - May include network constraints (we will ignore here)
