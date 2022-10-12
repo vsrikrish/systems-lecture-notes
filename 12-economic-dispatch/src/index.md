@@ -254,7 +254,6 @@ supply_curve = DataFrame( # hide
 
 sort!(supply_curve, [:varcost, order(:cap, rev=true)]) #hide
 
-Plots.scalefontsizes(1.25) #hide
 using Measures #hide
 
 function plot_supply_curve(supply_curve) # hide
