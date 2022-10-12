@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>12 Economic Dispatch</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+.title[Economic Dispatch] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 12, 2022]
+
+
+---
+
+
+name: toc
+
+
+class: left
+
+
+
+
+
+
+# Outline
+
+
+<hr>
+
+
+1. Questions?
+2. LP Example: Economic Dispatch
+
+
+---
+
+
+name: poll-answer
+
+
+layout: true
+
+
+class: left
+
+
+
+
+
+
+# Poll
+
+
+<hr>
+
+
+.left-column[{{content}}
+
+
+URL: [https://pollev.com/vsrikrish](https://pollev.com/vsrikrish)
+
+
+Text: **VSRIKRISH** to 22333, then message]
+
+
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+
+
+---
+
+
+name: questions
+
+
+template: poll-answer
+
+
+***Any questions?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Last Class
+
+
+<hr>
+
+
+  * Generating Capacity Expansion
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Power Systems Decision Problems
+
+
+<hr>
+
+
+.center[![Decision Problems for Power Systems](figures/elec-decision-problems.svg)] .center[.cite[Adapted from Perez-Arriaga, Ignacio J., Hugh Rudnick, and Michel Rivier (2009).]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Economic Dispatch
+
+
+<hr>
+
+
+**Decision Problem**: Given a fleet of (online) generators, how do we meet demand at lowest cost?
+
+
+--
+
+
+**New Twist**: Power plants are generally subject to engineering constraints that we had previously neglected, including:
+
+
+  * Ramping limits
+  * Minimum/Maximum power outputs
+  * May include network constraints (we will ignore here)
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Simple, Single-Period Economic Dispatch
+
+
+<hr>
+
+
+What does this look like for a single period?
+
+
+Let:
+
+
+|        Variable        |                                    Meaning | Units |
+|:----------------------:| ------------------------------------------:| -----:|
+|          $d$           |                                     demand |    MW |
+|         $y_g$          |                generation by generator $g$ |    MW |
+|      $VarCost_g$       | variable generation cost for generator $g$ |  $/MW |
+| $P^{\text{min/max}}_g$ |        generation limits for generator $g$ |    MW |
+
+
+---
+
+
+
+
+# Simple, Single-Period Economic Dispatch
+
+
+<hr>
+
+
+Then the economic dispatch problem becomes: 
+
+
+$$
+\begin{alignedat}{3}
+& \min\_{y_g} & \sum_g VarCost_g \times y_g \\\\
+& \text{subject to:} & \\\\
+& & \sum_g y_g = d \\\\
+& & y_g \leq P^{\text{max}}_g \\\\
+& & y_g \geq P^{\text{min}}_g
+\end{alignedat}
+$$
+
+
+---
+
+
+class: left
+
+
+
+
+# Simple, Single-Period Economic Dispatch
+
+
+<hr>
+
+
+Let's say we have an online fleet of the following generators:
+
+
+|        Type | $P^{\text{min}}$ (MW) | $P^{\text{max}}$ (MW) | $VarCost$ ($/MW) |
+| -----------:| ---------------------:| ---------------------:| ----------------:|
+|       Hydro |                     0 |                   150 |                0 |
+|        Wind |                     0 |                   200 |                0 |
+|     Nuclear |                   200 |                  1000 |                2 |
+|        Coal |                   160 |                   700 |            21.50 |
+| Natural Gas |                    40 |                   500 |               23 |
+
+
+Also, demand in this hour is 2600 MW.
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Single-Period Dispatch: `JuMP` Implementation
+
+
+<hr>
+
+
+Let's load the generation data and demand:
+
+
+```julia
+generators = ["hydro", "wind", "nuclear", "coal", "natgas"]
+p_min = [0, 0, 200, 160, 40]
+p_max = [150, 200, 1000, 700, 500]
+varom = [0, 0, 2, 21.50, 23]
+demand = 1800
+```
+
+
+---
+
+
+class: left
+
+
+
+
+# Single-Period Dispatch: `JuMP` Implementation
+
+
+<hr>
+
+
+Setting up the optimization problem:
+
+
+```julia
+using JuMP
+using HiGHS
+using DataFrames
+using Plots
+gr()
+using Measures
+```
+
+
+---
+
+
+class: left
+
+
+
+
+# Single-Period Dispatch: `JuMP` Implementation
+
+
+<hr>
+
+
+Setting up the optimization problem:
+
+
+```julia
+G = 1:length(generators)
+dispatch = Model(HiGHS.Optimizer)
+@variable(dispatch, p_min[g] <= y[g in G] <= p_max[g])
+@objective(dispatch, Min, sum(varom .* y))
+@constraint(dispatch, load, sum(y) == demand)
+```
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# 
+
+
+<hr>
+
+
+```julia
+print(dispatch)
+```
+
+
+```
+Min 2 y[3] + 21.5 y[4] + 23 y[5]
+Subject to
+ load : y[1] + y[2] + y[3] + y[4] + y[5] = 1800.0
+ y[1] ≥ 0.0
+ y[2] ≥ 0.0
+ y[3] ≥ 200.0
+ y[4] ≥ 160.0
+ y[5] ≥ 40.0
+ y[1] ≤ 150.0
+ y[2] ≤ 200.0
+ y[3] ≤ 1000.0
+ y[4] ≤ 700.0
+ y[5] ≤ 500.0
+```
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Single-Period Dispatch: Results
+
+
+<hr>
+
+
+.left-column[
+
+
+```julia
+set_silent(dispatch)
+optimize!(dispatch)
+
+gen = value.(y).data
+results = DataFrame(
+    "Name" => generators,
+    "Dispatched Power (MW)" => gen
+)
+```
+
+
+]
+
+
+.right-column[
+
+<div class="data-frame"><p>5 rows × 2 columns</p><table class="data-frame"><thead><tr><th></th><th>Name</th><th>Dispatched Power (MW)</th></tr><tr><th></th><th title="String">String</th><th title="Float64">Float64</th></tr></thead><tbody><tr><th>1</th><td>hydro</td><td>150.0</td></tr><tr><th>2</th><td>wind</td><td>200.0</td></tr><tr><th>3</th><td>nuclear</td><td>1000.0</td></tr><tr><th>4</th><td>coal</td><td>410.0</td></tr><tr><th>5</th><td>natgas</td><td>40.0</td></tr></tbody></table></div>
+
+]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Marginal Generators
+
+
+<hr>
+
+
+.left-column[ Once we hit the minimum for each generator, we then "fill up" capacity from lowest-cost generators first, then move on.
+
+
+For this problem, the coal generator is the *marginal generator*: extra capacity is added from coal, and so this unit sets the price of electricity. ]
+
+
+.right-column[
+
+<div class="data-frame"><p>5 rows × 2 columns</p><table class="data-frame"><thead><tr><th></th><th>Name</th><th>Dispatched Power (MW)</th></tr><tr><th></th><th title="String">String</th><th title="Float64">Float64</th></tr></thead><tbody><tr><th>1</th><td>hydro</td><td>150.0</td></tr><tr><th>2</th><td>wind</td><td>200.0</td></tr><tr><th>3</th><td>nuclear</td><td>1000.0</td></tr><tr><th>4</th><td>coal</td><td>410.0</td></tr><tr><th>5</th><td>natgas</td><td>40.0</td></tr></tbody></table></div>
+
+]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Merit Order and the Dispatch Stack
+
+
+<hr>
+
+
+This is the concept of *merit order*: plants are scheduled to supply additional electricity based (**mostly**) on their variable costs.
+
+
+.center[![Example Merit Order](figures/simple-merit-order.svg)]
+
+
+---
+
+
+template: poll-answer
+
+
+***What might complicate this simple merit ordering based on variable costs?***
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Multiple Time Period Example
+
+
+<hr>
+
+
+Now, let's consider multiple time periods. 
+
+
+Not only do we need to meet demand at every time period, but we have additional **ramping** constraints: plants can only increase and decrease their output by so much from time to time, by $R_g$.
+
+
+---
+
+
+class: left
+
+
+
+
+# Multiple Time Period Example
+
+
+<hr>
+
+
+$$
+\begin{alignedat}{3}
+& \min\_{y\_{g,t}} & \sum\_g VarCost\_g \times \sum\_t y\_{g,t} \\\\
+& \text{subject to:} & \\\\
+& & \sum\_g y\_{g,t} = d\_t \\\\
+& & y\_{g,t} \leq P^{\text{max}}\_g \\\\
+& & y\_{g,t} \geq P^{\text{min}}\_g \\\\
+& & \color{red}y\_{g,t+1} - y\_{g, t} \leq R\_g \\\\
+& & \color{red}y\_{g,t} - y\_{g, t+1} \leq R\_g
+\end{alignedat}
+$$
+
+
+---
+
+
+class: left
+
+
+
+
+# Multiple Time Period Example
+
+
+<hr>
+
+
+|        Type | $P^{\text{min}}$ (MW) | $P^{\text{max}}$ (MW) | $VarCost$ ($/MW) | $R$ (MW) |
+| -----------:| ---------------------:| ---------------------:| ----------------:| --------:|
+|       Hydro |                     0 |                   150 |                0 |      150 |
+|        Wind |                     0 |                   200 |                0 |      200 |
+|     Nuclear |                   500 |                  1000 |                2 |      100 |
+|        Coal |                   160 |                   700 |            21.50 |      250 |
+| Natural Gas |                    40 |                   500 |               23 |      300 |
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Multiple Time Period Example: `JuMP` Implmenetation
+
+
+<hr>
+
+
+```julia
+ramp = [150, 200, 100, 250, 300]
+demand = [1725, 1596, 1476, 1408, 1530, 1714, 1820, 1973, 2081, 2202, 2105, 2065,
+    2045, 2195, 2309, 2390, 2486, 2515, 2075, 2006, 1956, 1902, 1865, 1820]
+h = length(demand)
+T = 1:h
+
+dispatch2 = Model(HiGHS.Optimizer)
+@variable(dispatch2, p_min[g] <= y[g in G, t in T] <= p_max[g])
+@objective(dispatch2, Min, sum(varom .* sum([y[:, t] for t in T])))
+@constraint(dispatch2, load[t in T], sum(y[:, t]) == demand[t])
+@constraint(dispatch2, rampup[g in G, t in 1:h-1], y[g, t+1] - y[g, t] <= ramp[g])
+@constraint(dispatch2, rampdown[g in G, t in 1:h-1], y[g, t] - y[g, t+1] <= ramp[g])
+set_silent(dispatch2)
+optimize!(dispatch2)
+```
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Multiple Time Period Example: Visualization
+
+
+<hr>
+
+
+.left-column[
+
+
+```julia
+gen = value.(y).data
+p = plot(gen',
+    label=permutedims(generators),
+    xlabel = "Hour",
+    ylabel ="Generated Electricity (MW)",
+    color_palette=:tol_muted,
+    thickness_scaling=1.45, linewidth=5,
+    size=(700, 700), left_margin=5mm,
+    bottom_margin=5mm,
+)
+```
+
+
+]
+
+
+.right-column[ .center[![Multi-Period Dispatch Results](figures/multi-period-dispatch.svg)] ]
+
+
+---
+
+
+class: left
+
+
+
+
+# Multiple Time Period Example: Visualization
+
+
+<hr>
+
+
+.left-column[
+
+
+```julia
+areaplot(gen',
+    label=permutedims(generators),
+    xlabel = "Hour",
+    ylabel ="Generated Electricity (MW)",
+    color_palette=:tol_muted,
+    size=(700, 700),
+    left_margin=5mm,
+    bottom_margin=5mm,
+    thickness_scaling=1.45, grid=:false,
+    legend = :topleft, ylim=(0, 2800)
+)
+plot!(demand, color=:red,
+    label="demand", linestyle=:dash,
+    linewidth=5)
+```
+
+
+]
+
+
+.right-column[
+
+
+.center[![Multi-Period Dispatch Results](figures/multi-period-dispatch-stacked.svg)] ]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Duck Curve
+
+
+<hr>
+
+
+.left-column[Ramping and minimum generation play a major role in systems with high levels of renewable penetration.
+
+
+For example, a prominent feature of California's grid, which has a lot of solar generation, is the "duck curve" (right).]
+
+
+.right-column[ ![CAISO Duck Curve](figures/duck_curve.jpeg) .cite[Source: [Power Magazine](https://www.powermag.com/duck-hunting-california-independent-system-operator/)] ]
+
+    </textarea>
+
+    <script src="remark.min.js" type="text/javascript"></script>
+    <script src="katex.min.js"></script>
+    <script src="auto-render.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script type="text/javascript">
+        var options = {"highlightStyle":"ir-black","ratio":"16:9","highlightLanguage":"julia","highlightLines":"true"};
+        var renderMath = function() {
+        // renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+        }
+
+        var slideshow = remark.create(options, renderMath);
+
+        </script>
+  </body>
+</html>
