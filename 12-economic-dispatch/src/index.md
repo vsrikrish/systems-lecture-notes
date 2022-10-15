@@ -260,7 +260,7 @@ function plot_supply_curve(supply_curve) # hide
     rectangle(w, h, x, y) = Shape(x .+ [0,w,w,0], y .+ [0,0,h,h]) # hide
 
     
-    p = plot(grid=:false, color_palette=:tol_muted, legend=:left, size=(700, 400), left_margin=10mm, bottom_margin=10mm) # hide
+    p = plot(grid=:false, color_palette=:tol_muted, legend=:left, size=(700, 400), left_margin=10mm, bottom_margin=10mm, legendfontsize=16, ticksize=13, guidefontsize=14) # hide
     marg_gen = 0 # hide
     marg_price = 0 # hide
     x = 0 # hide
@@ -379,6 +379,8 @@ p = plot(gen',
     thickness_scaling=1.45, linewidth=5,
     size=(700, 700), left_margin=5mm, 
     bottom_margin=5mm,
+    legendfontsize=14, ticksize=13, 
+    guidefontsize=14
 )
 savefig("multi-period-dispatch.svg") # hide
 ```
@@ -406,7 +408,9 @@ areaplot(gen',
     left_margin=5mm, 
     bottom_margin=5mm,
     thickness_scaling=1.45, grid=:false,
-    legend = :topleft, ylim=(0, 2800)
+    legend = :topleft, ylim=(0, 2800),
+    legendfontsize=14, ticksize=13, 
+    guidefontsize=14
 )
 plot!(demand, color=:red, 
     label="demand", linestyle=:dash,

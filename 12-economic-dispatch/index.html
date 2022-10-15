@@ -594,6 +594,8 @@ p = plot(gen',
     thickness_scaling=1.45, linewidth=5,
     size=(700, 700), left_margin=5mm,
     bottom_margin=5mm,
+    legendfontsize=14, ticksize=13,
+    guidefontsize=14
 )
 ```
 
@@ -631,7 +633,9 @@ areaplot(gen',
     left_margin=5mm,
     bottom_margin=5mm,
     thickness_scaling=1.45, grid=:false,
-    legend = :topleft, ylim=(0, 2800)
+    legend = :topleft, ylim=(0, 2800),
+    legendfontsize=14, ticksize=13,
+    guidefontsize=14
 )
 plot!(demand, color=:red,
     label="demand", linestyle=:dash,
