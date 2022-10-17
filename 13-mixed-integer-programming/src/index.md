@@ -104,7 +104,7 @@ x = 1:1:10
 C(x) = 3 .+ 2 .* x
 
 plot(x, C(x), grid=:false, xlims=(-0.5, 10), ylims=(-0.5, 24), ylabel="Costs", xlabel="Units of Operation",
-label="Cost (\$\$)", thickness_scaling=1, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:bottomright, xticks=0:1:10)
+label="Cost (\$\$)", thickness_scaling=1.75, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:bottomright, xticks=0:1:10)
 plot!(x[x .> 0.], cumsum(C(x[x .> 0.])) ./ x[x .> 0.], color=:red, linestyle=:dot, label="Average Cost (\$\$/Unit)")
 scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)
 plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
@@ -531,7 +531,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 3 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1.75, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -540,7 +540,7 @@ plot!(gridlinewidth=0.75, gridalpha=0.3)
 vline!([5], linestyle=:dash, color=:orange, linewidth=2)
 hline!([2, 3], linestyle=:dash, color=:orange, linewidth=2)
 plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,ylims(p)[1]):round(Int,ylims(p)[2]))
-plot!(size=(500, 450))
+plot!(size=(600, 450))
 annotate!(2.75, 4.75, text("Relaxed Solution", :black, :center, 10))
 quiver!([4], [4.5], quiver=([0.4], [-0.9]), color=:black, linewidth=2)
 
@@ -582,7 +582,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 4 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1.75, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -591,7 +591,7 @@ plot!(gridlinewidth=0.75, gridalpha=0.3)
 vline!([4], linestyle=:dash, color=:orange, linewidth=2)
 hline!([3, 4], linestyle=:dash, color=:orange, linewidth=2)
 plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,ylims(p)[1]):round(Int,ylims(p)[2]))
-plot!(size=(500, 450))
+plot!(size=(600, 450))
 annotate!(2.75, 4.75, text("Relaxed Solution", :black, :center, 10))
 quiver!([4], [4.5], quiver=([0], [-0.9]), color=:black, linewidth=2)
 
