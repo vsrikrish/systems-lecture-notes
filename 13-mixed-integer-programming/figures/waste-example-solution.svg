@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="17.174698in"
+   height="10.535776in"
+   viewBox="0 0 436.23733 267.60872"
+   version="1.1"
+   id="svg478"
+   inkscape:version="1.2.1 (9c6d41e4, 2022-07-14)"
+   sodipodi:docname="waste-example-solution.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview480"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.36440298"
+     inkscape:cx="536.49397"
+     inkscape:cy="336.1663"
+     inkscape:window-width="1440"
+     inkscape:window-height="727"
+     inkscape:window-x="0"
+     inkscape:window-y="41"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs475">
+    <marker
+       style="overflow:visible"
+       id="TriangleStart"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="3.3239999"
+       markerHeight="3.8427744"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker12793-6"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="3.3239999"
+       markerHeight="3.8427744"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path12791-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker12793-68-4-9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="3.3239999"
+       markerHeight="3.8427744"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path12791-9-8-5" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker12793-68-4-9-8"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="3.3239999"
+       markerHeight="3.8427744"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path12791-9-8-5-9" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker12793-68-4-93-2"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="TriangleStart"
+       markerWidth="3.3239999"
+       markerHeight="3.8427744"
+       viewBox="0 0 5.3244081 6.1553851"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path12791-9-8-4-8" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(34.491599,-100.2598)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:3.39016;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect651-1"
+       width="70.305038"
+       height="33.275291"
+       x="276.67108"
+       y="212.99821" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:3.39016;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect651-1-8"
+       width="70.305038"
+       height="33.275291"
+       x="109.29842"
+       y="243.29378" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:3.39016;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect651-1-8-9"
+       width="70.305038"
+       height="33.275291"
+       x="-17.764429"
+       y="171.41248" />
+    <ellipse
+       style="fill:#cccccc;stroke:#000000;stroke-width:2.95756;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3527-2"
+       cx="287.69717"
+       cy="144.68527"
+       rx="28.834156"
+       ry="20.847347" />
+    <ellipse
+       style="fill:#cccccc;stroke:#000000;stroke-width:2.95756;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3527-2-7"
+       cx="243.39386"
+       cy="321.64764"
+       rx="28.834156"
+       ry="20.847347" />
+    <path
+       style="fill:#000000;stroke:none;stroke-width:25.4;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 14.051344,223.6526 35.107475,147.41489"
+       id="path8574" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3.95999;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#TriangleStart)"
+       d="M 12.817193,219.8689 C 18.638523,344.03563 121.85546,325.02521 209.68423,328.63626"
+       id="path12719-1-8"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#marker12793-6)"
+       d="m 300.76027,200.68119 -8.70844,-27.87205"
+       id="path12719-1-8-9"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#marker12793-68-4-9)"
+       d="m 267.36089,242.79347 c -13.09055,22.72156 -41.69936,17.76375 -74.05503,13.51413"
+       id="path12719-1-8-90"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="265.09314"
+       y="149.05278"
+       id="text21679-9"><tspan
+         sodipodi:role="line"
+         id="tspan38615"
+         x="265.09314"
+         y="149.05278">City 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="282.97818"
+       y="234.67104"
+       id="text21679-9-5"><tspan
+         sodipodi:role="line"
+         id="tspan38615-0"
+         x="282.97818"
+         y="234.67104">MRF (2)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="219.87968"
+       y="326.94073"
+       id="text21679-9-6"><tspan
+         sodipodi:role="line"
+         id="tspan38617"
+         x="219.87968"
+         y="326.94073">City 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="-4.4515038"
+       y="193.49565"
+       id="text21679-9-6-2-7"><tspan
+         sodipodi:role="line"
+         id="tspan41507"
+         x="-4.4515038"
+         y="193.49565">LF (3)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="276.09006"
+       y="289.15939"
+       id="text22749"><tspan
+         sodipodi:role="line"
+         id="tspan22747"
+         style="stroke-width:4.0132"
+         x="276.09006"
+         y="289.15939" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="113.9477"
+       y="264.0144"
+       id="text21679-9-5-4"><tspan
+         sodipodi:role="line"
+         id="tspan41383"
+         x="113.9477"
+         y="264.0144">WTE (1)</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#marker12793-68-4-9-8)"
+       d="M 100.50833,259.42024 C 82.85224,255.85117 54.136004,262.98251 46.783358,216.30065"
+       id="path12719-1-8-90-1"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#marker12793-68-4-93-2)"
+       d="M 287.02234,204.6617 C 236.00733,131.75793 142.72962,161.1062 67.026543,186.95467"
+       id="path12719-1-8-0-4"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="254.31441"
+       y="113.06138"
+       id="text43096-7-2"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26"
+         style="fill:#800080;stroke-width:4.0132"
+         x="254.31441"
+         y="113.06138">100 Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="205.0598"
+       y="363.80453"
+       id="text43096-7-2-4"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-0"
+         style="fill:#800080;stroke-width:4.0132"
+         x="205.0598"
+         y="363.80453">170 Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ff0000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="-35.270531"
+       y="140.90001"
+       id="text43096-7-2-8"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-2"
+         style="fill:#ff0000;stroke-width:4.0132"
+         x="-35.270531"
+         y="140.90001">200 </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#ff0000;stroke-width:4.0132"
+         x="-35.270531"
+         y="162.06664"
+         id="tspan62248">Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ff0000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="113.89627"
+       y="293.37543"
+       id="text43096-7-2-8-3"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-2-4"
+         style="fill:#ff0000;stroke-width:4.0132"
+         x="113.89627"
+         y="293.37543">150 </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#ff0000;stroke-width:4.0132"
+         x="113.89627"
+         y="314.54205"
+         id="tspan62244">Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ff0000;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="280.89319"
+       y="267.96286"
+       id="text43096-7-2-8-7"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-2-9"
+         style="fill:#ff0000;stroke-width:4.0132"
+         x="280.89319"
+         y="267.96286">130 </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#ff0000;stroke-width:4.0132"
+         x="280.89319"
+         y="289.12949"
+         id="tspan63083">Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="309.10376"
+       y="191.75742"
+       id="text43096-7-2-87"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-6"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="309.10376"
+         y="191.75742">100 Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="62.238762"
+       y="345.685"
+       id="text43096-7-2-87-7"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-6-6"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="62.238762"
+         y="345.685">170 Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="63.690918"
+       y="214.26572"
+       id="text43096-7-2-87-7-9"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-6-6-5"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="63.690918"
+         y="214.26572">7.5 </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="63.690918"
+         y="235.43234"
+         id="tspan84896">Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="118.14643"
+       y="130.04117"
+       id="text43096-7-2-87-7-0"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-6-6-8"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="118.14643"
+         y="130.04117">22.5</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="118.14643"
+         y="151.20779"
+         id="tspan86501"> Mg/day</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.9333px;font-family:Avenir;-inkscape-font-specification:'Avenir, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800080;stroke:none;stroke-width:4.0132;stroke-linejoin:round;stroke-dasharray:none"
+       x="197.60052"
+       y="222.3063"
+       id="text43096-7-2-87-7-0-3"><tspan
+         sodipodi:role="line"
+         id="tspan43094-9-26-6-6-8-5"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="197.60052"
+         y="222.3063">37.5</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#0000ff;stroke-width:4.0132"
+         x="197.60052"
+         y="243.47293"
+         id="tspan86501-1">Mg/day</tspan></text>
+  </g>
+</svg>
