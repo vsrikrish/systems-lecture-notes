@@ -106,7 +106,7 @@ C(x) = 3 .+ 2 .* x
 plot(x, C(x), grid=:false, xlims=(-0.5, 10), ylims=(-0.5, 24), ylabel="Costs", xlabel="Units of Operation",
 label="Cost (\$\$)", thickness_scaling=1, color=:black, framestyle=:origin, left_margin=-20mm, bottom_margin=-20mm, legend=:bottomright, xticks=0:1:10, linewidth=3)
 plot!(x[x .> 0.], cumsum(C(x[x .> 0.])) ./ x[x .> 0.], color=:red, linestyle=:dot, label="Average Cost (\$\$/Unit)", linewidth=2)
-scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)]
+scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)
 plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
 plot!(size=(600, 550))
 
