@@ -108,7 +108,8 @@ label="Cost (\$\$)", thickness_scaling=1, color=:black, framestyle=:origin, left
 plot!(x[x .> 0.], cumsum(C(x[x .> 0.])) ./ x[x .> 0.], color=:red, linestyle=:dot, label="Average Cost (\$\$/Unit)", linewidth=2)
 scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)]
 plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
-plot(size=(600, 550))
+plot!(size=(600, 550))
+
 savefig("cost-cartoon.svg")
 ```
 
