@@ -104,11 +104,11 @@ x = 1:1:10
 C(x) = 3 .+ 2 .* x
 
 plot(x, C(x), grid=:false, xlims=(-0.5, 10), ylims=(-0.5, 24), ylabel="Costs", xlabel="Units of Operation",
-label="Cost (\$\$)", thickness_scaling=1, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:bottomright, xticks=0:1:10, linewidth=2)
+label="Cost (\$\$)", thickness_scaling=1, color=:black, framestyle=:origin, left_margin=-20mm, bottom_margin=-20mm, legend=:bottomright, xticks=0:1:10, linewidth=3)
 plot!(x[x .> 0.], cumsum(C(x[x .> 0.])) ./ x[x .> 0.], color=:red, linestyle=:dot, label="Average Cost (\$\$/Unit)", linewidth=2)
 scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)]
 plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
-plot(size=(500, 450))
+plot(size=(600, 550))
 savefig("cost-cartoon.svg")
 ```
 
@@ -542,7 +542,7 @@ hline!([2, 3], linestyle=:dash, color=:orange, linewidth=2)
 plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,ylims(p)[1]):round(Int,ylims(p)[2]))
 plot!(size=(600, 450))
 annotate!(2.75, 4.75, text("Relaxed Solution", :black, :center, 14))
-quiver!([3.75], [4.5], quiver=([0.5], [-1.4]), color=:black, linewidth=2)
+quiver!([3.75], [4.5], quiver=([0.25], [-1.4]), color=:black, linewidth=2)
 
 
 scatter!([(4.5, 3)], markersize=6, markerstrokeecolor=:black, markercolor=:yellow)
@@ -593,7 +593,7 @@ hline!([3, 4], linestyle=:dash, color=:orange, linewidth=2)
 plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,ylims(p)[1]):round(Int,ylims(p)[2]))
 plot!(size=(600, 450))
 annotate!(2.75, 4.75, text("Relaxed Solution", :black, :center, 14))
-quiver!([3.75], [4.5], quiver=([0.5], [-1.4]), color=:black, linewidth=2)
+quiver!([3.75], [4.5], quiver=([0.25], [-1.4]), color=:black, linewidth=2)
 
 grid_pts = [(4, 3), (3, 3), (2, 3), (1, 3), (1,4), (0, 3), (0, 4)]
 scatter!(grid_pts, color=:brown, markersize=5)
