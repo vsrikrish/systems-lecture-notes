@@ -104,7 +104,7 @@ x = 1:1:10
 C(x) = 3 .+ 2 .* x
 
 plot(x, C(x), grid=:false, xlims=(-0.5, 10), ylims=(-0.5, 24), ylabel="Costs", xlabel="Units of Operation",
-label="Cost (\$\$)", thickness_scaling=2, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:outertopright, xticks=0:1:10)
+label="Cost (\$\$)", thickness_scaling=1, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:outertopright, xticks=0:1:10)
 plot!(x[x .> 0.], cumsum(C(x[x .> 0.])) ./ x[x .> 0.], color=:red, linestyle=:dot, label="Average Cost (\$\$/Unit)")
 scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)
 plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
@@ -350,7 +350,7 @@ f3(x) = -1.5 .* x .+ 12
 f4(x) = 0.5 .* x
 
 p = plot(x, max.(f3(x), f4(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x", ylabel=L"y", xlims=(0, 12), framestyle=:origin, ylims=(0, 15), minorticks=2, aspect_ratio=1,
-thickness_scaling=2, left_margin=-60mm, right_margin=-60mm, bottom_margin=-12mm)
+thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-12mm)
 plot!(-2:0.1:20, f1.(-2:0.1:20), color=:green, linewidth=3)
 plot!(-2:0.1:20, f2.(-2:0.1:20), color=:red, linewidth=3)
 plot!(-2:0.1:20, f3.(-2:0.1:20), color=:brown, linewidth=3)
@@ -386,7 +386,7 @@ f3(x) = -1.5 .* x .+ 12
 f4(x) = 0.5 .* x
 
 p = plot(x, max.(f3(x), f4(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x", ylabel=L"y", xlims=(0, 12), framestyle=:origin, ylims=(0, 15), minorticks=2, aspect_ratio=1,
-thickness_scaling=2, left_margin=-60mm, right_margin=-60mm, bottom_margin=-12mm)
+thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-12mm)
 plot!(-2:0.1:20, f1.(-2:0.1:20), color=:green, linewidth=3)
 plot!(-2:0.1:20, f2.(-2:0.1:20), color=:red, linewidth=3)
 plot!(-2:0.1:20, f3.(-2:0.1:20), color=:brown, linewidth=3)
@@ -430,7 +430,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 2 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=2, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -483,7 +483,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 2 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=2, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -531,7 +531,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 3 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=2, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -582,7 +582,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 4 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=2, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -644,18 +644,20 @@ class: left
 .left-column[.center[![Waste Management Example Network](figures/waste-example-network.svg)]]
 
 .right-column[
+
 Variable | Definition
 :-----: | :-----
-$W_{ij}$ | Waste transported from city $i$ to disposal $j$ (Mg/day)
-$R_{kj}$ | Residual waste transported from disposal $k$ to disposal $j$ (Mg/day)
-$Y_j$ | Operational status (on/off) of disposal $j$ (binary)
-]
+$W\_{ij}$ | Waste transported from city $i$ to disposal $j$ (Mg/day)
+$R\_{kj}$ | Residual waste transported from disposal $k$ to disposal $j$ (Mg/day)
+$Y\_j$ | Operational status (on/off) of disposal $j$ (binary)
+
 
 ```@example waste; continued=true
 @variable(waste, W[i in I, j in J] >= 0)
 @variable(waste, R[k in J, j in J] >= 0)
 @variable(waste, Y[j in J], Bin)
 ```
+]
 
 ---
 class: left
@@ -833,7 +835,7 @@ $$\begin{aligned}
 Y\_1 &= \begin{cases}0 &\quad \text{if } W\_{11} + W\_{21} + R\_{21} = 0 \\\\ 1 & \quad \text{else} \end{cases} \\\\
 Y\_2 &= \begin{cases}0 &\quad \text{if } W\_{21} + W\_{22} = 0 \\\\ 1 & \quad \text{else} \end{cases} \\\\
 Y\_3 &= 1 \\\\
-W\_{ij}, R\_{ij} \geq 0
+W\_{ij}, R\_{ij} &\geq 0
 \end{aligned}$$ 
 
 
@@ -856,6 +858,15 @@ city_out = [100; 170]
 @constraint(waste, resid3, sum(R[3,:]) == 0)
 @constraint(waste, noresiddiag, sum(R[i, i] for i in I) == 0)
 @constraint(waste, noresid, R[1,2] == 0)
+```
+
+---
+class: left
+
+# Waste Management Example: All Constraints
+<hr>
+
+```@example waste; continued=true
 # commitment
 @constraint(waste, commit1, !Y[1] => {W[1,1] + W[2,1] + R[2,1] == 0})
 @constraint(waste, commit2, !Y[2] => {W[1,2] + W[2,2] == 0})
