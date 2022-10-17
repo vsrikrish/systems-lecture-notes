@@ -138,7 +138,6 @@ For an example, let's consider **waste allocation** problems.
 
 ---
 class: left
-<hr>
 
 # Waste Load Allocation
 <hr>
