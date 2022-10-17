@@ -104,7 +104,7 @@ x = 1:1:10
 C(x) = 3 .+ 2 .* x
 
 plot(x, C(x), grid=:false, xlims=(-0.5, 10), ylims=(-0.5, 24), ylabel="Costs", xlabel="Units of Operation",
-label="Cost (\$\$)", thickness_scaling=1.75, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:bottomright, xticks=0:1:10)
+label="Cost (\$\$)", thickness_scaling=1.25, color=:black, framestyle=:origin, left_margin=-5mm, bottom_margin=-5mm, legend=:bottomright, xticks=0:1:10)
 plot!(x[x .> 0.], cumsum(C(x[x .> 0.])) ./ x[x .> 0.], color=:red, linestyle=:dot, label="Average Cost (\$\$/Unit)")
 scatter!([(0, 0), (1, 5)], color=:black, markersize=3, label=:false)
 plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
@@ -430,7 +430,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 2 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=1.75, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1.25, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -440,10 +440,10 @@ plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,yli
 annotate!(3.2, 4.5, text("LP Solution", :black, :center, 10))
 quiver!([4], [4.25], quiver=([1.3], [-1.4]), color=:black, linewidth=2)
 
-scatter!([(5.44, 2.69)], markersize=4, markerstrokeecolor=:black, markercolor=:yellow)
+scatter!([(5.44, 2.69)], markersize=5, markerstrokeecolor=:black, markercolor=:yellow)
 
 grid_pts = [(5, 2), (4, 2), (4, 3), (3, 2), (3, 3), (2, 2), (2, 3), (1, 2), (1, 3), (1,4), (0, 2), (0, 3), (0, 4)]
-scatter!(grid_pts, color=:brown, markersize=5)
+scatter!(grid_pts, color=:brown, markersize=4)
 plot!(size=(600, 450))
 
 savefig("milp-solution.svg")
@@ -483,7 +483,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 2 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=1.75, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1.25, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -497,8 +497,8 @@ quiver!([4], [4.25], quiver=([1.3], [-1.4]), color=:black, linewidth=2)
 scatter!([(5.44, 2.69)], markersize=5, markerstrokeecolor=:black, markercolor=:yellow)
 
 grid_pts = [(5, 2), (4, 2), (4, 3), (3, 2), (3, 3), (2, 2), (2, 3), (1, 2), (1, 3), (1,4), (0, 2), (0, 3), (0, 4)]
-scatter!(grid_pts, color=:brown, markersize=3)
-scatter!([(4, 3)], color=:red, markersize=3)
+scatter!(grid_pts, color=:brown, markersize=4)
+scatter!([(4, 3)], color=:red, markersize=4)
 
 savefig("milp-solution-2.svg")
 ```
@@ -531,7 +531,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 3 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=1.75, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1.25, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -548,8 +548,8 @@ quiver!([4], [4.5], quiver=([0.4], [-0.9]), color=:black, linewidth=2)
 scatter!([(4.5, 3)], markersize=5, markerstrokeecolor=:black, markercolor=:yellow)
 
 grid_pts = [(5, 2), (4, 2), (4, 3), (3, 2), (3, 3), (2, 2), (2, 3), (1, 2), (1, 3), (1,4), (0, 2), (0, 3), (0, 4)]
-scatter!(grid_pts, color=:brown, markersize=3)
-scatter!([(4, 3)], color=:red, markersize=3)
+scatter!(grid_pts, color=:brown, markersize=4)
+scatter!([(4, 3)], color=:red, markersize=4)
 
 savefig("milp-solution-3.svg")
 ```
@@ -582,7 +582,7 @@ f1(x) = (27 .- 2 .* x) ./ 6.
 f2(x) = 19 .- 3 .* x
 
 p = plot(x, 4 .+ zeros(length(x)), fillrange=min.(f1(x), f2(x)), color=:lightblue, grid=true, legend=false, xlabel=L"x_1", ylabel=L"x_2", xlims=(0, 6), framestyle=:origin, ylims=(0, 5), minorticks=2, aspect_ratio=1,
-thickness_scaling=1.75, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
+thickness_scaling=1.25, left_margin=-60mm, right_margin=-60mm, bottom_margin=-5mm)
 hline!([2], color=:red, linewidth=3)
 plot!(-2:0.1:6, f1.(-2:0.1:6), color=:purple, linewidth=3)
 vline!([0], color=:black, linewidth=3)
@@ -596,7 +596,7 @@ annotate!(2.75, 4.75, text("Relaxed Solution", :black, :center, 10))
 quiver!([4], [4.5], quiver=([0], [-0.9]), color=:black, linewidth=2)
 
 grid_pts = [(4, 3), (3, 3), (2, 3), (1, 3), (1,4), (0, 3), (0, 4)]
-scatter!(grid_pts, color=:brown, markersize=3)
+scatter!(grid_pts, color=:brown, markersize=4)
 scatter!([(4, 3)], color=:red, markersize=5)
 
 savefig("milp-solution-4.svg")
