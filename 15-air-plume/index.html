@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>15 Emissions Air</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+.title[Emissions and Air Quality] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 24, 2022]
+
+
+---
+
+
+name: toc
+
+
+class: left
+
+
+
+
+
+
+# Outline
+
+
+<hr>
+
+
+1. Homework 4 Release
+2. Questions?
+3. Emissions and Air Quality
+
+
+---
+
+
+name: poll-answer
+
+
+layout: true
+
+
+class: left
+
+
+
+
+
+
+# Poll
+
+
+<hr>
+
+
+.left-column[{{content}}
+
+
+URL: [https://pollev.com/vsrikrish](https://pollev.com/vsrikrish)
+
+
+Text: **VSRIKRISH** to 22333, then message]
+
+
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+
+
+---
+
+
+name: questions
+
+
+template: poll-answer
+
+
+***Any questions?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Last Class
+
+
+<hr>
+
+
+  * Unit Commitment
+  * Increased Complexity Switching from LP to MIP
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Air Pollution
+
+
+<hr>
+
+
+.center[![Clean Air Act Air Pollutants](https://deq.utah.gov/wp-content/uploads/AQversion2.jpg) .cite[Source: [Utah Department of Environmental Quality](https://deq.utah.gov/communication/news/ask-an-environmental-scientist-what-air-pollutants-does-deq-test-for)]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Greenhouse Gases
+
+
+<hr>
+
+
+.center[![Human-Emitted Greenhouse Gases](https://assets.nrdc.org/sites/default/files/styles/full_content--retina/public/media-uploads/greenhouseeffect_graphic2_2400x1800_0.png?itok=1SUXMPEl) .cite[Source: [NRDC](https://www.nrdc.org/stories/greenhouse-effect-101)]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Clean Air Act Impacts
+
+
+<hr>
+
+
+.center[![Clean Air Act Changes in GDP and Criteria Pollutants](https://media.rff.org/images/clean_air_PR.width-1480.png) .cite[Source: [Resources for the Future](https://www.rff.org/news/press-releases/clean-air-act-successes-and-challenges-1970/)]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Modeling Air Pollution
+
+
+<hr>
+
+
+There are many approaches to modeling concentrations of pollutants/chemicals, including:
+
+
+1. Point sources/receptors (plume/puff models)
+2. Analyzing an "airshed" (box models)
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Point Sources/Receptors
+
+
+<hr>
+
+
+In this case, we're concerned about the dispersal from a point source: .center[![Source-Receptor Geometry](figures/air-pollution.png)]
+
+
+---
+
+
+
+
+# Point Sources/Receptors
+
+
+<hr>
+
+
+At a given instant, the flow from source to receptor follows some path: .center[![Source-Receptor Geometry](figures/air-pollution-instant.png)]
+
+
+---
+
+
+
+
+# Point Sources/Receptors
+
+
+<hr>
+
+
+Averaging over time gives us a "plume": .center[![Source-Receptor Geometry](figures/air-pollution-plume-timeavg.png)]
+
+
+---
+
+
+
+
+
+
+# Point Source/Receptors
+
+
+<hr>
+
+
+What is the distribution of pollutant above the receptor? .center[![Source-Receptor Geometry](figures/air-pollution-plume-timeavg.png)]
+
+
+---
+
+
+
+
+
+
+# "Gaussian Plume"
+
+
+<hr>
+
+
+We can reason that the concentration follows a "bell curve": .center[![Source-Receptor Geometry](figures/air-pollution-plume-shape.png)]
+
+
+---
+
+
+
+
+# "Gaussian Plume"
+
+
+<hr>
+
+
+We can reason that the concentration follows a "bell curve": .center[![Source-Receptor Geometry](figures/air-pollution-plume-dist.png)]
+
+
+---
+
+
+
+
+# "Gaussian Plume"
+
+
+<hr>
+
+
+Not illustrated here, but this same reasoning applies cross-wind. .center[![Source-Receptor Geometry](figures/air-pollution-plume-dist.png)]
+
+
+---
+
+
+
+
+
+
+# Gaussian Plume Model
+
+
+<hr>
+
+
+For an elevated source **without reflection**:
+
+
+$$
+C(x,y,z) = \frac{Q}{2\pi u\sigma_y \sigma_z} \exp\left[-\frac{1}{2}\left(\frac{y^2}{\sigma_y^2} + \frac{(z - H)^2}{\sigma_z^2}\right)\right].
+$$
+
+
+| Variable  | Meaning                                     |
+|:---------:|:------------------------------------------- |
+|    $C$    | Concentration (g/m$^3$)                     |
+|    $Q$    | Emissions rate (g/s)                        |
+|    $u$    | Wind speed (m/s)                            |
+|    $H$    | Height of source (m)                        |
+| $x, y, z$ | Downwind, crosswind, vertical distances (m) |
+
+
+---
+
+
+
+
+
+
+# Gaussian Plume Model Derivation
+
+
+<hr>
+
+
+We use the **advective-diffusion equation** to describe the mass-balance:
+
+
+$$
+\frac{\partial C}{\partial t} = [D + K] \nabla^2 C - \vec{u} \cdot \vec{\nabla} C $$
+
+where $D$ is the diffusion coefficient, $K$ is the dispersion coefficient due to turbulent mixing.
+
+---
+# Diffusive Flux
+<hr>
+
+.left-column[.center[![Flux from Diffusion](figures/diffusion-flux.png)]]
+
+.right-column[.middle[Concentration gradient + diffusion $\Rightarrow$ Flux]]
+
+---
+# Turbulent Flux
+<hr>
+
+.left-column[.center[![Flux from Turbulence](figures/turbulent-flux.png)]]
+
+.right-column[.middle[Concentration gradient + turbulent mixing $\Rightarrow$ Flux]]
+
+---
+# Gaussian Plume Model Derivation
+<hr>
+
+$$\frac{\partial C}{\partial t} + \vec{u} \cdot \vec{\nabla} C  - [D + K] \nabla^2 C  = 0
+$$
+
+
+Assumptions:
+
+
+--
+
+
+  * Steady-state, e.g. $\frac{\partial C}{\partial t} = 0$
+
+
+---
+
+
+
+
+# Gaussian Plume Model Derivation
+
+
+<hr>
+
+
+$$
+\frac{\partial C}{\partial t} + \vec{u} \cdot \vec{\nabla} C  - [D + K] \nabla^2 C  = 0
+$$
+
+
+Assumptions:
+
+
+  * Wind only in the $x$-direction:
+
+
+$$
+\vec{u} \cdot \vec{\nabla} C = u_x \frac{\partial C}{\partial x} + \cancel{u_y \frac{\partial C}{\partial y}} + \cancel{u_z \frac{\partial C}{\partial z}}
+$$
+
+
+---
+
+
+
+
+# Gaussian Plume Model Derivation
+
+
+<hr>
+
+
+$$
+\frac{\partial C}{\partial t} + \vec{u} \cdot \vec{\nabla} C  - [D + K] \nabla^2 C  = 0
+$$
+
+
+Assumptions:
+
+
+  * Turbulence $>>$ diffusion, e.g. $K >> D$, and $K$ is unimportant along $x$-direction:
+
+
+$$
+-[\cancel{D} + K] \nabla^2 C = \cancel{K\_{xx}} \frac{\partial^2 C}{\partial x^2} + K\_{yy} \frac{\partial^2 C}{\partial y^2} + K\_{zz} \frac{\partial^2 C}{\partial z^2}
+$$
+
+
+---
+
+
+
+
+# Gaussian Plume Model Derivation
+
+
+<hr>
+
+
+With these assumptions, the equation simplifies to:
+
+
+$$
+u \frac{\partial C}{\partial x} = K\_{yy} \frac{\partial^2 C}{\partial y^2} + K\_{zz}\frac{\partial^2 C}{\partial z^2}
+$$
+
+
+--
+
+
+.left-column[ Assume mass flow through vertical plane downwind must equal emissions rate $Q$:
+
+
+$$
+Q = \iint u C dy dz
+$$
+
+
+]
+
+
+.right-column[ .center[![Boundary Condition for A-D Equation](figures/boundary-mass.png)] ]
+
+
+---
+
+
+
+
+# Gaussian Plume Model Derivation
+
+
+<hr>
+
+
+Solving this PDE:
+
+
+$$
+C(x,y,z) = \frac{Q}{4\pi x \sqrt{K\_{yy} + K\_{zz}}} \exp\left[-\frac{u}{4x}\left(\frac{y^2}{K\_{yy}} + \frac{(z-H)^2}{K\_zz}\right)\right]
+$$
+
+
+--
+
+
+To deal with $K$, substitute:
+
+
+$$
+\begin{aligned}
+\sigma\_y^2 &= 2 K\_{yy} t = 2 K\_{yy} \frac{x}{u} \\\\
+\sigma\_z^2 &= 2 K\_{zz} \frac{x}{u}
+\end{aligned}
+$$
+
+
+---
+
+
+
+
+# Gaussian Plume Model Derivation
+
+
+<hr>
+
+
+Solving this PDE:
+
+
+$$
+\begin{aligned}
+C(x,y,z) &= \frac{Q}{4\pi x \sqrt{K\_{yy} + K\_{zz}}} \exp\left[-\frac{u}{4x}\left(\frac{y^2}{K\_{yy}} + \frac{(z-H)^2}{K\_zz}\right)\right] \\\\
+\Rightarrow C(x,y,z) &= \frac{Q}{2\pi u \sigma\_y \sigma\_z} \exp\left[-\frac{1}{2}\left(\frac{y^2}{\sigma\_y^2} + \frac{(z-H)^2}{\sigma\_z^2}\right) \right],
+\end{aligned}
+$$
+
+
+which looks like a Gaussian distribution probability distribution if we restrict to $y$ or $z$.
+
+
+---
+
+
+
+
+
+
+# Gaussian Plume Model with Reflection
+
+
+<hr>
+
+
+Last piece: the ground dampens vertical dispersion.
+
+
+.left-column[.center[![Reflected Mass Off Ground](figures/reflection.png)]]
+
+
+.right-column[The mass that would be dispersed below the ground is reflected back, increasing the concentration.]
+
+
+---
+
+
+
+
+# Gaussian Plume Model with Reflection
+
+
+<hr>
+
+
+.left-column[We can account for this extra term using a flipped "image" of the source.]
+
+
+.right-column[.center[![Reflected Mass Off Ground](figures/reflection-image.png)]]
+
+
+---
+
+
+
+
+
+
+# Final Model: Elevated Source with Reflection
+
+
+<hr>
+
+
+$$
+\begin{aligned}
+C(x,y,z) = &\frac{Q}{2\pi u \sigma\_y \sigma\_z} \exp\left(\frac{-y^2}{2\sigma\_y^2} \right) \times \\\\
+& \quad \left[\exp\left(\frac{-(z-H)^2}{2\sigma\_z^2}\right) + \exp\left(\frac{-(z+H)^2}{2\sigma\_z^2}\right) \right]
+\end{aligned}
+$$
+
+
+---
+
+
+
+
+# Final Model: Elevated Source with Reflection
+
+
+<hr>
+
+
+Assumptions:
+
+
+1. Steady-State
+2. Constant wind velocity and direction
+3. Wind >> dispersion in $x$-direction
+4. No reactions
+5. Smooth ground (avoids turbulent eddies and other reflections)
+
+
+---
+
+
+
+
+
+
+# Gaussian Plume Example
+
+
+<hr>
+
+
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+
+
+$$
+\begin{aligned}
+C(x,y,z) = &\frac{Q}{2\pi u \sigma\_y \sigma\_z} \exp\left(\frac{-y^2}{2\sigma\_y^2} \right) \times \\\\
+& \quad \left[\exp\left(\frac{-(z-H)^2}{2\sigma\_z^2}\right) + \exp\left(\frac{-(z+H)^2}{2\sigma\_z^2}\right) \right]
+\end{aligned}
+$$
+
+
+---
+
+
+
+
+# Gaussian Plume Example
+
+
+<hr>
+
+
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+
+
+| Variable  | Value |
+|:---------:|:----- |
+|    $Q$    | ?     |
+|    $u$    | ?     |
+|    $H$    | ?     |
+| $x, y, z$ | ?     |
+
+
+---
+
+
+
+
+# Gaussian Plume Example
+
+
+<hr>
+
+
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+
+
+| Variable  | Value          |
+|:---------:|:-------------- |
+|    $Q$    | 40 (g/s)       |
+|    $u$    | 2 (m/s)        |
+|    $H$    | 110 (m)        |
+| $x, y, z$ | 3000, 0, 0 (m) |
+
+
+---
+
+
+
+
+# Gaussian Plume Example
+
+
+<hr>
+
+
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+
+
+$$
+\begin{aligned}
+C(3000,0,0) = &\frac{100 \text{g/s}}{2\pi (15 \text{m/s})(80 \text{m})(30 \text{m})} \exp(0) \times  \\\\
+& \quad \left[\exp\left(\frac{-(-110 \text{m})^2}{2(30 \text{m})^2}\right) + \exp\left(\frac{-(110 \text{m})^2}{2(30 \text{m})^2}\right) \right]
+\end{aligned}
+$$
+
+
+--
+
+
+$$
+\Rightarrow C(x,y,z) = 2.7 \times 10^{-4} \text{g/m}^3
+$$
+
+    </textarea>
+
+    <script src="remark.min.js" type="text/javascript"></script>
+    <script src="katex.min.js"></script>
+    <script src="auto-render.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script type="text/javascript">
+        var options = {"highlightStyle":"ir-black","ratio":"16:9","highlightLanguage":"julia","highlightLines":"true"};
+        var renderMath = function() {
+        // renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+        }
+
+        var slideshow = remark.create(options, renderMath);
+
+        </script>
+  </body>
+</html>
