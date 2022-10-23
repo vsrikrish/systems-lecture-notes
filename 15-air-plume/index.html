@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>15 Emissions Air</title>
+    <title>15 Air Plume</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
@@ -11,7 +11,7 @@
 class: center, middle
 
 
-.title[Emissions and Air Quality] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 24, 2022]
+.title[Emissions and Plume Models] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 24, 2022]
 
 
 ---
@@ -35,7 +35,8 @@ class: left
 
 1. Homework 4 Release
 2. Questions?
-3. Emissions and Air Quality
+3. Emissions of Pollutants
+4. Gaussian Plume Models of Point Source/Receptors
 
 
 ---
@@ -694,12 +695,66 @@ C(3000,0,0) = &\frac{100 \text{g/s}}{2\pi (15 \text{m/s})(80 \text{m})(30 \text{
 $$
 
 
---
+---
+
+
+
+
+# Gaussian Plume Example
+
+
+<hr>
+
+
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
 
 
 $$
-\Rightarrow C(x,y,z) = 2.7 \times 10^{-4} \text{g/m}^3
+C(x,y,z) = .27 \text{mg/m}^3,
 $$
+
+
+which is around 2% of the [NIOSH short-term exposure standard for SO$_2$](https://www.cdc.gov/niosh/npg/npgd0575.html).
+
+
+---
+
+
+
+
+
+
+# Key Takeaways
+
+
+<hr>
+
+
+  * Regulatory controls (or lack thereof) on air pollutants (Clean Air Act, etc) and greenhouse gas emissions (patchwork)
+  * Concentrations of contaminants can be modeled in several ways, depending on the goal and assumptions.
+  * Point source/receptor: Gaussian plume is common approach.
+
+
+---
+
+
+class: center, middle
+
+
+<hr>
+
+
+
+
+
+
+# Next Class
+
+
+<hr>
+
+
+  * Box models of airsheds
 
     </textarea>
 
