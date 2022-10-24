@@ -329,7 +329,7 @@ Assumptions:
 # Gaussian Plume Example
 <hr>
 
-SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $100 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $15 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
 
 $$\begin{aligned}
 C(x,y,z) = &\frac{Q}{2\pi u \sigma\_y \sigma\_z} \exp\left(\frac{-y^2}{2\sigma\_y^2} \right) \times \\\\
@@ -340,7 +340,7 @@ C(x,y,z) = &\frac{Q}{2\pi u \sigma\_y \sigma\_z} \exp\left(\frac{-y^2}{2\sigma\_
 # Gaussian Plume Example
 <hr>
 
-SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $100 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $15 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
 
 Variable | Value
 :----: | :------
@@ -354,7 +354,7 @@ $x, y, z$ | ?
 # Gaussian Plume Example
 <hr>
 
-SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $100 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $15 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
 
 Variable | Value
 :----: | :------
@@ -367,7 +367,7 @@ $x, y, z$ | 3000, 0, 0 (m)
 # Gaussian Plume Example
 <hr>
 
-SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $100 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $15 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
 
 $$\begin{aligned}
 C(3000,0,0) = &\frac{100 \text{g/s}}{2\pi (15 \text{m/s})(80 \text{m})(30 \text{m})} \exp(0) \times  \\\\
@@ -378,7 +378,7 @@ C(3000,0,0) = &\frac{100 \text{g/s}}{2\pi (15 \text{m/s})(80 \text{m})(30 \text{
 # Gaussian Plume Example
 <hr>
 
-SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $100 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $15 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
 
 
 $$C(x,y,z) = .27 \text{mg/m}^3,$$
