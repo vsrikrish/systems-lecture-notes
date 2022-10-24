@@ -262,7 +262,7 @@ $$Q = \iint u C dy dz$$
 
 Solving this PDE:
 
-$$C(x,y,z) = \frac{Q}{4\pi x \sqrt{K\_{yy} + K\_{zz}}} \exp\left[-\frac{u}{4x}\left(\frac{y^2}{K\_{yy}} + \frac{(z-H)^2}{K\_zz}\right)\right]$$
+$$C(x,y,z) = \frac{Q}{4\pi x \sqrt{K\_{yy} + K\_{zz}}} \exp\left[-\frac{u}{4x}\left(\frac{y^2}{K\_{yy}} + \frac{(z-H)^2}{K\_{zz}}\right)\right]$$
 
 --
 
@@ -280,7 +280,7 @@ $$\begin{aligned}
 Solving this PDE:
 
 $$\begin{aligned}
-C(x,y,z) &= \frac{Q}{4\pi x \sqrt{K\_{yy} + K\_{zz}}} \exp\left[-\frac{u}{4x}\left(\frac{y^2}{K\_{yy}} + \frac{(z-H)^2}{K\_zz}\right)\right] \\\\
+C(x,y,z) &= \frac{Q}{4\pi x \sqrt{K\_{yy} + K\_{zz}}} \exp\left[-\frac{u}{4x}\left(\frac{y^2}{K\_{yy}} + \frac{(z-H)^2}{K\_{zz}}\right)\right] \\\\
 \Rightarrow C(x,y,z) &= \frac{Q}{2\pi u \sigma\_y \sigma\_z} \exp\left[-\frac{1}{2}\left(\frac{y^2}{\sigma\_y^2} + \frac{(z-H)^2}{\sigma\_z^2}\right) \right],
 \end{aligned}$$
 
