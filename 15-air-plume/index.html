@@ -349,7 +349,12 @@ where $D$ is the diffusion coefficient, $K$ is the dispersion coefficient due to
 
 .left-column[.center[![Flux from Diffusion](figures/diffusion-flux.png)]]
 
-.right-column[.middle[Concentration gradient + diffusion $\Rightarrow$ Flux]]
+.right-column[.middle[
+Fick's law: mass transfer by diffusion
+
+$$F_x = D\frac{dC}{dx}
+
+Concentration gradient + diffusion $\Rightarrow$ Flux]]
 
 ---
 # Turbulent Flux
@@ -357,13 +362,31 @@ where $D$ is the diffusion coefficient, $K$ is the dispersion coefficient due to
 
 .left-column[.center[![Flux from Turbulence](figures/turbulent-flux.png)]]
 
-.right-column[.middle[Concentration gradient + turbulent mixing $\Rightarrow$ Flux]]
+.right-column[.middle[
+
+$$F\_x = K\_{xx} \frac{dC}{dx}
+$$
+
+
+The dispersion coefficient $K_{xx}$ depends on flow/eddy characteristics.
+
+
+Concentration gradient + turbulent mixing $\Rightarrow$ Flux]]
+
 
 ---
+
+
+
+
 # Gaussian Plume Model Derivation
+
+
 <hr>
 
-$$\frac{\partial C}{\partial t} + \vec{u} \cdot \vec{\nabla} C  - [D + K] \nabla^2 C  = 0
+
+$$
+\frac{\partial C}{\partial t} + \vec{u} \cdot \vec{\nabla} C  - [D + K] \nabla^2 C  = 0
 $$
 
 
@@ -707,6 +730,7 @@ $$
 
 
 SO$_2$ is emitted at a rate of $100 \text{g/s}$ from the top of a $30 \text{m}$-high chimney. The plume initially rises $10 \text{m}$ before being convected horizontally by a wind speed of $2 \text{m/s}$. What is the centerline ground-level concentration $3 \text{km}$ downwind if at this distance $\sigma_y = 80 \text{m}$ and $\sigma_z=30 \text{m}$ under current meteorological conditions?
+<<<<<<< HEAD
 
 
 $$
@@ -715,6 +739,130 @@ $$
 
 
 which is around 2% of the [NIOSH short-term exposure standard for SO$_2$](https://www.cdc.gov/niosh/npg/npgd0575.html).
+=======
+
+
+$$
+C(x,y,z) = .27 \text{mg/m}^3,
+$$
+
+
+which is around 2% of the [NIOSH short-term exposure standard for SO$_2$](https://www.cdc.gov/niosh/npg/npgd0575.html).
+
+
+---
+
+
+
+
+
+
+# Estimating Dispersion "Spread"
+
+
+<hr>
+
+
+Values of $\sigma_y$ and $\sigma_z$ matter substantially for modeling plume spread downwind. What influences them?
+
+
+---
+
+
+
+
+# Estimating Dispersion "Spread"
+
+
+<hr>
+
+
+**Main contribution**: atmospheric stability
+
+
+Pasquill (1961): Six stability classes, A -> F.
+
+
+---
+
+
+
+
+# Estimating Dispersion "Spread"
+
+
+<hr>
+
+
+Contributors to atmospheric stability:
+
+
+  * Temperature gradient
+  * Wind speed
+  * Solar radiation
+  * Cloud cover
+  * Richardson number (buoyancy / flow shear)
+
+
+---
+
+
+
+
+# Estimating Dispersion "Spread"
+
+
+<hr>
+
+
+Can estimate deviations based on stability class,
+
+
+$$
+\begin{aligned}
+\sigma_y &= ax^b \\\\
+\sigma_z &= cx^d + f
+\end{aligned}
+$$
+
+
+where the coefficients are linked to the stability class.
+
+
+---
+
+
+
+
+
+
+# Multiple Point Sources
+
+
+<hr>
+
+
+.left-column[ Suppose we have three sources of SO$_2$:
+
+
+| Source | Emissions (kg/day) | Effective Height (m) | Removal Cost ($/kg) |
+|:------:| ------------------:| --------------------:| -------------------:|
+|   1    |             34,560 |                   50 |                0.20 |
+|   2    |            172,800 |                  200 |                0.45 |
+|   3    |            103,680 |                   30 |                0.60 |
+
+
+and five receptors with $u = 1.5$ m/s and air quality standard 150 $ \mu$g/m$^3$. ]
+
+
+.left-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
+
+
+--
+
+
+Next class...
+>>>>>>> 5ed816e (add multi source slide)
 
 
 ---
@@ -754,6 +902,10 @@ class: center, middle
 <hr>
 
 
+<<<<<<< HEAD
+=======
+  * Multiple source example
+>>>>>>> 5ed816e (add multi source slide)
   * Box models of airsheds
 
     </textarea>

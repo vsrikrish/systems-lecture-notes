@@ -178,7 +178,12 @@ where $D$ is the diffusion coefficient, $K$ is the dispersion coefficient due to
 
 .left-column[.center[![Flux from Diffusion](figures/diffusion-flux.png)]]
 
-.right-column[.middle[Concentration gradient + diffusion $\Rightarrow$ Flux]]
+.right-column[.middle[
+Fick's law: mass transfer by diffusion
+
+$$F_x = D\frac{dC}{dx}
+
+Concentration gradient + diffusion $\Rightarrow$ Flux]]
 
 ---
 # Turbulent Flux
@@ -186,7 +191,13 @@ where $D$ is the diffusion coefficient, $K$ is the dispersion coefficient due to
 
 .left-column[.center[![Flux from Turbulence](figures/turbulent-flux.png)]]
 
-.right-column[.middle[Concentration gradient + turbulent mixing $\Rightarrow$ Flux]]
+.right-column[.middle[
+
+$$F\_x = K\_{xx} \frac{dC}{dx}$$
+
+The dispersion coefficient $K_{xx}$ depends on flow/eddy characteristics.
+
+Concentration gradient + turbulent mixing $\Rightarrow$ Flux]]
 
 ---
 # Gaussian Plume Model Derivation
@@ -375,6 +386,77 @@ $$C(x,y,z) = .27 \text{mg/m}^3,$$
 which is around 2% of the [NIOSH short-term exposure standard for SO$_2$](https://www.cdc.gov/niosh/npg/npgd0575.html).
 
 ---
+# Estimating Dispersion "Spread"
+<hr>
+
+Values of $\sigma_y$ and $\sigma_z$ matter substantially for modeling plume spread downwind. What influences them?
+
+---
+# Estimating Dispersion "Spread"
+<hr>
+
+**Main contribution**: atmospheric stability
+
+Pasquill (1961): Six stability classes, A -> F.
+
+---
+# Estimating Dispersion "Spread"
+<hr>
+
+Contributors to atmospheric stability:
+- Temperature gradient
+- Wind speed
+- Solar radiation
+- Cloud cover
+- Richardson number (buoyancy / flow shear)
+
+---
+# Estimating Dispersion "Spread"
+<hr>
+
+Can estimate deviations based on stability class,
+
+$$\begin{aligned}
+\sigma_y &= ax^b \\\\
+\sigma_z &= cx^d + f
+\end{aligned}$$
+
+where the coefficients are linked to the stability class.
+
+---
+# Multiple Point Sources
+<hr>
+
+.left-column[
+Suppose we have three sources of SO$_2$:
+
+| Source | Emissions (kg/day) | Effective Height (m) | Removal Cost (\$/kg)
+| :----: | ----: | -----: | -----:
+| 1 | 34,560 | 50 | 0.20
+| 2 | 172,800 | 200 | 0.45
+| 3 | 103,680 | 30 | 0.60
+
+and five receptors with $u = 1.5$ m/s and air quality standard 150 $
+\mu$g/m$^3$.
+]
+
+```@eval
+using Plots
+using LaTeXStrings
+gr()
+
+scatter([(0, 7), (2, 5), (3, 5)], label="Source", markersize=6, color=:red, xlabel=L"$x$ (km)", ylabel=L"$y$ (km)", guidefontsize=14, legendfontsize=12, tickfontsize=12, legend=:bottomright)
+scatter!([(1, 1.5), (3, 7), (5, 3), (7.5, 6), (10, 5)], label="Receptor", markersize=6, color=:black)
+plot!(size=(400, 450))
+
+savefig("multiple-sources.svg")
+```
+
+.left-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
+
+
+---
+
 # Key Takeaways
 <hr>
 
@@ -389,4 +471,5 @@ class: center, middle
 # Next Class
 <hr>
 
+- Multiple source example
 - Box models of airsheds
