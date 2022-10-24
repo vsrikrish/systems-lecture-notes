@@ -452,7 +452,7 @@ plot!(size=(400, 450))
 savefig("multiple-sources.svg")
 ```
 
-.left-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
+.right-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
 
 
 ---
