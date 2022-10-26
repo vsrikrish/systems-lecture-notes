@@ -11,7 +11,7 @@
 class: center, middle
 
 
-.title[Emissions and Plume Models] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 24, 2022]
+.title[Emissions: Multiple Point Sources and Box Models] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 26, 2022]
 
 
 ---
@@ -208,7 +208,7 @@ Dispersion factors $\sigma_y$ and $\sigma_z$ determined by atmospheric stability
 
 and five receptors at ground level with $u = 1.5$ m/s, air quality standard 150 $\mu\text{g/m}^3$. ]
 
-
+/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/jl_0rX8sZ/build/multiple-sources.svg
 .right-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
 
 
@@ -747,32 +747,7 @@ This plan involves eliminating all of source 2's emissions, but only 75% of sour
 <hr>
 
 
-.left-column[ **Box models** are all about mass-balance. 
-
-
-  * $$
-    C
-    $$
-
-    (g/m$^3$): concentration in box
-  * $$
-    E
-    $$
-
-    (g/s): emissions rate within the box;
-  * $$
-    u
-    $$
-
-    (m/s): wind speed
-  * $$
-    L, W, H
-    $$
-
-    : box dimensions (m)
-
-
-]
+.left-column[ **Box models** are all about mass-balance. Denote by $C$ (g/m$^3$) the concentration in box, $E$ (g/s) the emissions rate within the box;, $u$ (m/s) the wind speed, and by $L, W, H$ the box dimensions (m) ]
 
 
 .right-column[![Steady-State Box Model](figures/steady-box.png)]
@@ -848,13 +823,110 @@ $$
 
 
 
-# Non-Steady State Box
+# Emissions Credits and Trading
 
 
 <hr>
 
 
-What if we can include reactions?
+When using a "box" representation, all that matters is the total emissions not exceeding a certain level within the box.
+
+
+Opens the door for emissions credits/trading as a market-based mechanism vs. a pure regulation.
+
+
+--
+
+
+**What are some pros and cons of these approaches?**
+
+
+---
+
+
+
+
+
+
+# Sources and Sinks
+
+
+<hr>
+
+
+Of course, we could also have sinks (including reactions) which absorb or consume some of the contaminant.
+
+
+How would this change our simple box model?
+
+
+--
+
+
+Modify $E$ as net emissions, sources - sinks (might have to model these processes more explicitly, which adds complexity).
+
+
+---
+
+
+
+
+
+
+# Multi-Box Models
+
+
+<hr>
+
+
+Box models get more interesting when multiple boxes are combined (think your dissolved oxygen example from the simulation unit).
+
+
+This allows for 2d or 3d fate & transport modeling with potentially heterogeneous advection, mixing, and source/sink rates.
+
+
+But can be computationally expensive over large regions: need to loop and evaluate over many boxes.
+
+
+---
+
+
+
+
+
+
+# Key Takeaways
+
+
+<hr>
+
+
+  * Gaussian Plume: all upwind sources can affect downwind receptors.
+  * Assumptions may not generally hold –- how much does this matter?
+  * Box models allow for more flexibility when more detailed mass-balance is required, but are computationally more expensive to combine over large domains.
+
+
+---
+
+
+class: middle, center
+
+
+<hr>
+
+
+
+
+
+
+# Next Class
+
+
+<hr>
+
+
+  * Dissolved Oxygen revisited
+  * Simulation-Optimization methods
 
     </textarea>
 
