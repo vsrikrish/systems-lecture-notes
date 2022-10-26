@@ -364,11 +364,11 @@ R_i &\geq 0
 ```@example air
 set_silent(air_model)
 optimize!(air_model)
-value.(R)
+objective_value(air_model)
 ```
 
 ```@example air
-objective_value(air_model)
+value.(R)
 ```
 
 --
@@ -400,6 +400,22 @@ Basically (ignoring source 1, which is constrained by receptor 2):
 We *could* reduce emissions from source 2 by ~85% to comply at receptor 5, but then would also need to reduce source 3's emissions by 100%, at a cost of **~$128,304**.
 
 This plan involves eliminating all of source 2's emissions, but only 75% of source 3's, at a cost of **$124,416**.
+
+---
+# What If Removal Isn't 100% Effective?
+<hr>
+
+```@example air
+set_upper_bound.(R, [0.8, 0.8, 0.8])
+optimize!(air_model)
+objective_value(air_model)
+```
+
+```@example air
+value.(R)
+```
+
+
 
 ---
 # Gaussian Plume Upshot
