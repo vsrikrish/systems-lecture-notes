@@ -208,7 +208,7 @@ Dispersion factors $\sigma_y$ and $\sigma_z$ determined by atmospheric stability
 
 and five receptors at ground level with $u = 1.5$ m/s, air quality standard 150 $\mu\text{g/m}^3$. ]
 
-/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/jl_0rX8sZ/build/multiple-sources.svg
+/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/jl_1UdCcH/build/multiple-sources.svg
 .right-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
 
 
@@ -604,6 +604,16 @@ $$
 ```julia
 set_silent(air_model)
 optimize!(air_model)
+objective_value(air_model)
+```
+
+
+```
+130452.09910765485
+```
+
+
+```julia
 value.(R)
 ```
 
@@ -613,16 +623,6 @@ value.(R)
  0.8512536117422739
  1.0
  0.7524471795153719
-```
-
-
-```julia
-objective_value(air_model)
-```
-
-
-```
-130452.09910765485
 ```
 
 
@@ -704,6 +704,44 @@ We *could* reduce emissions from source 2 by ~85% to comply at receptor 5, but t
 
 
 This plan involves eliminating all of source 2's emissions, but only 75% of source 3's, at a cost of **124,416**.
+
+
+---
+
+
+
+
+
+
+# What If Removal Isn't 100% Effective?
+
+
+<hr>
+
+
+```julia
+set_upper_bound.(R, [0.8, 0.8, 0.8])
+optimize!(air_model)
+objective_value(air_model)
+```
+
+
+```
+345357.3816867006
+```
+
+
+```julia
+value.(R)
+```
+
+
+```
+3-element Vector{Float64}:
+ 0.8512536117422739
+ 1.0
+ 0.7524471795153719
+```
 
 
 ---
