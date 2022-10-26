@@ -103,18 +103,6 @@ F | Moderately unstable | Clear night
 # Multiple Point Sources
 <hr>
 
-.left-column[
-Suppose we have three sources of SO$_2$:
-
-| Source | Emissions (kg/day) | Effective Height (m) | Removal Cost (\$/kg)
-| :----: | ----: | -----: | -----:
-| 1 | 34,560 | 50 | 0.20
-| 2 | 172,800 | 200 | 0.45
-| 3 | 103,680 | 30 | 0.60
-
-and five receptors at ground level with $u = 1.5$ m/s, air quality standard 150 $\mu\text{g/m}^3$.
-]
-
 ```@eval
 using Plots
 using LaTeXStrings
@@ -139,6 +127,18 @@ annotate!(5, 8, text("Wind", :left, 12, :blue))
 
 savefig("multiple-sources.svg")
 ```
+
+.left-column[
+Suppose we have three sources of SO$_2$:
+
+| Source | Emissions (kg/day) | Effective Height (m) | Removal Cost (\$/kg)
+| :----: | ----: | -----: | -----:
+| 1 | 34,560 | 50 | 0.20
+| 2 | 172,800 | 200 | 0.45
+| 3 | 103,680 | 30 | 0.60
+
+and five receptors at ground level with $u = 1.5$ m/s, air quality standard 150 $\mu\text{g/m}^3$.
+]
 
 .right-column[.center[![Schematic for Multiple Sources](figures/multiple-sources.svg)]]
 
@@ -406,7 +406,7 @@ This plan involves eliminating all of source 2's emissions, but only 75% of sour
 <hr>
 
 ```@example air
-set_upper_bound.(R, [0.8, 0.8, 0.8])
+set_upper_bound.(R, [0.95, 0.95, 0.95])
 optimize!(air_model)
 objective_value(air_model)
 ```
