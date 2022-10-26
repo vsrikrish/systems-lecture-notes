@@ -126,6 +126,7 @@ plot!([(0, 7.75), (10, 7.75)], arrow=true, color=:blue, linewidth=2, label="")
 annotate!(5, 8, text("Wind", :left, 12, :blue))
 
 savefig("multiple-sources.svg")
+nothing #hide
 ```
 
 .left-column[
