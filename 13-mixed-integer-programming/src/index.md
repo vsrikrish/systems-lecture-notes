@@ -112,6 +112,7 @@ plot!(0:0.1:1, 3 .+ 2 .* (0:0.1:1), color=:black, linestyle=:dash, label=:false)
 plot!(size=(500, 450))
 
 savefig("cost-cartoon.svg")
+nothing # hide
 ```
 
 .center[![Illustrating Fixed and Average Costs](figures/cost-cartoon.svg)]
@@ -362,6 +363,7 @@ plot!(gridlinewidth=1, gridalpha=0.75)
 plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,ylims(p)[1]):round(Int,ylims(p)[2]))
 
 savefig("lp-polytope.svg")
+nothing # hide
 ```
 
 .right-column[.center[![Feasible Region for Example](figures/lp-polytope.svg)]]
@@ -400,6 +402,7 @@ plot!(xticks=round(Int,xlims(p)[1]):round(Int,xlims(p)[2]), yticks=round(Int,yli
 scatter!(collect(Iterators.product(2:10, 3:13))[:], color=:black, markersize=3)
 
 savefig("milp-polytope.svg")
+nothing # hide
 ```
 
 .right-column[.center[![Feasible Region for Example](figures/milp-polytope.svg)]]
@@ -449,6 +452,7 @@ scatter!(grid_pts, color=:brown, markersize=5)
 plot!(size=(600, 450))
 
 savefig("milp-solution.svg")
+nothing # hide
 ```
 
 .right-column[
@@ -503,6 +507,7 @@ scatter!(grid_pts, color=:brown, markersize=5)
 scatter!([(4, 3)], color=:red, markersize=5)
 
 savefig("milp-solution-2.svg")
+nothing # hide
 ```
 
 .right-column[
@@ -554,6 +559,7 @@ scatter!(grid_pts, color=:brown, markersize=5)
 scatter!([(4, 3)], color=:red, markersize=5)
 
 savefig("milp-solution-3.svg")
+nothing # hide
 ```
 
 .right-column[
@@ -602,6 +608,7 @@ scatter!(grid_pts, color=:brown, markersize=5)
 scatter!([(4, 3)], color=:red, markersize=6)
 
 savefig("milp-solution-4.svg")
+nothing # hide
 ```
 
 .right-column[
