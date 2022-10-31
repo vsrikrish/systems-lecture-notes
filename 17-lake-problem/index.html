@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>17 Lake Problem</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+.title[Simulation-Optimization and the Shallow Lake Problem] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 31, 2022]
+
+
+---
+
+
+name: toc
+
+
+class: left
+
+
+
+
+
+
+# Outline
+
+
+<hr>
+
+
+1. Project Due Dates
+2. HW 4 Due Thursday
+3. Questions?
+4. Shallow Lake Model
+5. Simulation-Optimization
+
+
+---
+
+
+name: poll-answer
+
+
+layout: true
+
+
+class: left
+
+
+
+
+
+
+# Poll
+
+
+<hr>
+
+
+.left-column[{{content}}
+
+
+URL: [https://pollev.com/vsrikrish](https://pollev.com/vsrikrish)
+
+
+Text: **VSRIKRISH** to 22333, then message]
+
+
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+
+
+---
+
+
+name: questions
+
+
+template: poll-answer
+
+
+***Any questions?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Last Class
+
+
+<hr>
+
+
+  * Multiple Point Sources/Receptors
+  * Box Modeling for Airsheds
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Mathematical Programming
+
+
+<hr>
+
+
+**Previous weeks**: "Mathematical Programming" with formal decision models: objectives and constraints as functions (linear or otherwise) of decision variables.
+
+
+Mathematically programming is nice when possible because you can guarantee that you can find optima for certain classes of problems.
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# What If We Can't Write Down a Mathematical Program?
+
+
+<hr>
+
+
+But what if our constraints and objectives cannot be written down as a mathematical program?
+
+
+This often occurs with systems models, due to complex, nonlinear dynamics. 
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Systems Dynamics: Feedback Loops
+
+
+<hr>
+
+
+.left-column[**Feedback loops** can be *reinforcing* or *dampening*.
+
+
+Dampening feedback loops are associated with *stable* equilibria, while reinforcing feedback loops are associated with *instability*.]
+
+
+.right-column[ .center[![Reinforcing Feedback Example](figures/reinforcing-feedback.png)] ]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Systems Dynamics: Bifurcations
+
+
+<hr>
+
+
+.left-column[**Bifurcations** occur at thresholds when the qualitative behavior of a system changes.
+
+
+These thresholds are sometimes referred to as "tipping points" and are often associated with a *stable* state equilibrium transitioning to an *unstable* one.]
+
+
+.right-column[.center[![Bifurcation Diagram](figures/bifurcation.png)]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Systems Dynamics: Emergence
+
+
+<hr>
+
+
+**Emergence** refers to when simple rules governing interactions result in macro-scale "ordered" patterns and possibly unexpected behaviors.
+
+
+.left-column[ *Examples*:
+
+
+  * Schelling segregation model (left)
+  * Macroeconomic systems
+  * Snowflake formation
+
+
+]
+
+
+.right-column[ .center[![Schelling Model Animation](https://upload.wikimedia.org/wikipedia/commons/e/e8/Schellings.gif)] .cite[Source: Blaqdolphin - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=91228415] ]
+
+
+---
+
+
+
+
+
+
+# Example: Shallow Lake Problem
+
+
+<hr>
+
+
+.left-column[ Suppose we have a town which emits phosphorous into a lake as a by-product of economic activity. 
+
+
+The lake also receives phosphorous from non-point source runoff. There is some nutrient cycling in the lake which naturally reduces phosphorous concentrations. ]
+
+
+.right-column[ .center[![Shallow Lake Problem Diagram](figures/eutrophication-system-all.png)] ]
+
+
+---
+
+
+
+
+
+
+# Shallow Lake Model
+
+
+<hr>
+
+
+Suppose the lake dynamics are given by:
+
+
+$$
+X_{t+1} = X_t + a_t + y_t + \frac{X_t^q}{1 + X_t^q} - bX_t, \quad y_t \sim LogNormal(\mu, \sigma^2)
+$$
+
+
+| Parameter | Definition               | Units         |
+|:---------:|:------------------------ |:------------- |
+|   $X_t$   | P concentration in lake  | dimensionless |
+|   $a_t$   | point source P input     | dimensionless |
+|   $y_t$   | non-point source P input | dimensionless |
+|    $q$    | P recycling rate         | dimensionless |
+|    $b$    | rate at which P is lost  | dimensionless |
+
+
+---
+
+
+
+
+
+
+# Impacts of Parameters on Equilibria
+
+
+<hr>
+
+
+.left-column[ $a + y = 0, q=2.5$:
+
+
+.center[![Impact On Flux](figures/lake-nox.svg)] .cite[Adapted from [Quinn et al (2017)](https://dx.doi.org/10.1016/j.envsoft.2017.02.017)] ]
+
+
+.right-column[ $a + y = 0.5, q=8$:
+
+
+.center[![Impact On Flux](figures/lake-x.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Can We Write Down a Mathematical Program For This Problem?
+
+
+<hr>
+
+
+Our objective might be to maximize $\sum_{t=1}^T a_t$ (as a proxy for economic activity), while keeping a low probability of eutrophication. 
+
+
+--
+
+
+Straightforward to compute probability of eutrophication for a given input sequence $a_t$ using Monte Carlo simulation for $y_t$, but highly nontrivial to write this out in analytic form.
+
+
+Even if we did, it'd be *very* nonlinear and definitely nonconvex, which rules out most forms of mathematical programming.
+
+
+---
+
+
+
+
+
+
+# Simulation-Optimization
+
+
+<hr>
+
+
+*So how do we make decisions?*
+
+
+--
+
+
+Recall our previous comment about Monte Carlo!
+
+
+We can use a search algorithm to explore the exceedance probabilities using our simulation model, and find the "optimum" sequence of releases that keeps the probability of eutrophification at some specified level.
+
+
+---
+
+
+
+
+
+
+# Why "Optimum" in Quotes?
+
+
+<hr>
+
+
+Unlike mathematical programming, **there is usually no guarantee that a solution found this way is truly optimal**.
+
+
+Simulation-optimization methods typically rely on *heuristics* to decide that a solution is good enough. These can include
+
+
+  * number of evaluations/iterations; or
+  * lack of improvement of solution.
+
+
+---
+
+
+
+
+
+
+# Challenges to Simulation-Optimization In General
+
+
+<hr>
+
+
+  * **Monte Carlo Error**: If constraints or objective is probabilistic, how many Monte Carlo runs are needed to ensure difference in function values is "real" and not stochastic noise.
+  * **Computational**: Can be expensive depending on the simulation model.
+  * **Local vs. Global Optima**: Depending on type of search algorithm, may not be able to guarantee more than a local optimum.
+
+
+But, like Monte Carlo, often other methods are impossible or worse.
+
+
+---
+
+
+
+
+
+
+# Gradient Estimation
+
+
+<hr>
+
+
+.left-column[Find estimate of gradient near current point and step in positive/negative direction (depending on max/min).
+
+
+But:
+
+
+  * May not find global optimum;
+  * Stepsize plays a big role in convergence.
+
+
+]
+
+
+:$
+
+
+x*{n+1} = x*n \pm \alpha*n \nabla f(x*n)
+
+
+.right-column[.center![Gradient Search Algorithm](figures/gradient-algorithm.svg)]
+
+
+---
+
+
+
+
+
+
+# Random Search
+
+
+<hr>
+
+
+.left-column[Use a sampling strategy to find a new proposal, then evaluate, keep if improvement.
+
+
+  * Evolutionary Algorithms fall into this category.
+  * No guarantees! Need to evaluate lots and convince yourself you've done enough.]
+
+
+:$
+
+
+x*{n+1} = x*n \pm \alpha*n \nabla f(x*n)
+
+
+.right-column[.center![Random Search Algorithm](figures/random-algorithm.svg)]
+
+
+---
+
+
+
+
+
+
+# Random Search In Julia
+
+
+<hr>
+
+
+Two main packages:
+
+
+  * [`Metaheuristics.jl`](https://docs.juliahub.com/Metaheuristics/aJ70z/3.2.12/)
+  * [`BlackBoxOptim.jl`](https://github.com/robertfeldt/BlackBoxOptim.jl)
+
+
+---
+
+
+
+
+
+
+# Quick Example (Adapted From `Metaheuristics.jl` Tutorial)
+
+
+<hr>
+
+
+```julia
+using Metaheuristics
+using Distributions
+using Random
+Random.seed!(1)
+# define function to optimize
+function f(x)
+    lnorm = LogNormal(0.25, 1)
+    y = rand(lnorm)
+    return sum(x .- y)^2
+end
+fobj(x) = mean([f(x) for i in 1:1000])
+```
+
+
+---
+
+
+
+
+# Quick Example (Adapted From `Metaheuristics.jl` Tutorial)
+
+
+<hr>
+
+
+```julia
+# set bounds
+bounds = [0.0 1000.0]'
+# optimize
+results = optimize(fobj, bounds, ECA())
+results.best_sol
+```
+
+
+```
+(f = 3.3030e+00, x = [1.6704228496204336])
+```
+
+
+---
+
+
+
+
+
+
+# `Metaheuristics.jl` Algorithms
+
+
+<hr>
+
+
+`Metaheuristics.jl` contains [a number of algorithms](https://docs.juliahub.com/Metaheuristics/aJ70z/3.2.12/algorithms/), covering a number of single-objective and multi-objective algorithms.
+
+
+We won't go into details here, and will just stick with `ECA()` in our examples.
+
+
+---
+
+
+class: middle
+
+
+<hr>
+
+
+
+
+
+
+# Next Class
+
+
+<hr>
+
+
+  * In-Class Coding Exercise with the Lake Problem
+
+    </textarea>
+
+    <script src="remark.min.js" type="text/javascript"></script>
+    <script src="katex.min.js"></script>
+    <script src="auto-render.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script type="text/javascript">
+        var options = {"highlightStyle":"ir-black","ratio":"16:9","highlightLanguage":"julia","highlightLines":"true"};
+        var renderMath = function() {
+        // renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+        }
+
+        var slideshow = remark.create(options, renderMath);
+
+        </script>
+  </body>
+</html>
