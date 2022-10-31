@@ -36,8 +36,9 @@ class: left
 1. Project Due Dates
 2. HW 4 Due Thursday
 3. Questions?
-4. Shallow Lake Model
-5. Simulation-Optimization
+4. Challenges to Mathematical Programming
+5. Shallow Lake Model
+6. Simulation-Optimization
 
 
 ---
@@ -420,20 +421,13 @@ But, like Monte Carlo, often other methods are impossible or worse.
 .left-column[Find estimate of gradient near current point and step in positive/negative direction (depending on max/min).
 
 
-But:
-
-
-  * May not find global optimum;
-  * Stepsize plays a big role in convergence.
-
-
-]
-
-
 :$
 
 
 x*{n+1} = x*n \pm \alpha*n \nabla f(x*n)
+
+
+But: may not find global optimum; stepsize plays a big role in convergence. ]
 
 
 .right-column[.center![Gradient Search Algorithm](figures/gradient-algorithm.svg)]
@@ -457,12 +451,6 @@ x*{n+1} = x*n \pm \alpha*n \nabla f(x*n)
 
   * Evolutionary Algorithms fall into this category.
   * No guarantees! Need to evaluate lots and convince yourself you've done enough.]
-
-
-:$
-
-
-x*{n+1} = x*n \pm \alpha*n \nabla f(x*n)
 
 
 .right-column[.center![Random Search Algorithm](figures/random-algorithm.svg)]
