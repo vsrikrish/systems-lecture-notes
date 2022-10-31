@@ -434,7 +434,7 @@ nsamples = 1000
 # get NPS inflows
 lnorm = LogNormal(log(0.03), 0.1)
 y = rand(lnorm, (T, nsamples))
-phist = histogram(rand(lnorm, 10000)) # hide
+phist = histogram(rand(lnorm, 10000), legend=:false, grid=:false) # hide
 savefig("nps-inflow-samps.svg") # hide
 # find critical value
 crit(x) = (x^q/(1+x^q)) - b*x
@@ -478,7 +478,7 @@ end
 bounds = [0.0ones(T) 0.1ones(T)]'
 # optimize
 obj(a) = lake_opt(a, y, q, b, T, Xcrit)
-options = Options(f_calls_limit=5000)
+options = Options(f_calls_limit=1000)
 results = optimize(obj, bounds, DE(options=options))
 ```
 
@@ -500,6 +500,7 @@ hline!([Xcrit], color=:red, linestyle=:dot,
     label="Critical Value")
 plot!(size=(400, 400))
 savefig("lake-series.svg") # hide
+nothing # hide
 ```
 ]
 
@@ -520,6 +521,7 @@ vline!([Xcrit], color=:red, linestyle=:dot,
     label="Critical Value")
 plot!(size=(400, 400))
 savefig("lake-dist.svg") # hide
+nothing # hide
 ```
 ]
 
