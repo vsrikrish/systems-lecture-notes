@@ -166,7 +166,7 @@ x = 0:0.05:2.5
 fin(x, q) = x.^q ./ (1 .+ x.^q)
 fout(x, b) = b .* x
 
-p1 = plot(x, fin(x, 2.5), color=:black, linewidth=5,legend=:topleft, label=:false, ylabel="P Flux", xlabel=L"$X_t$", tickfontsize=12, guidefontsize=14, legendfontsize=12, palette=:tol_muted)
+p1 = plot(x, fin(x, 2.5), color=:black, linewidth=5,legend=:topleft, label=:false, ylabel="P Flux", xlabel=L"$X_t$", tickfontsize=12, guidefontsize=14, legendfontsize=12, palette=:tol_muted, framestyle=:origin, grid=:false)
 plot!(x, fout(x, 0.6), linewidth=3, linestyle=:dash, label=L"$b=0.6$")
 plot!(x, fout(x, 0.4), linewidth=3, linestyle=:dash, label=L"$b=0.4$")
 plot!(x, fout(x, 0.2), linewidth=3, linestyle=:dash, label=L"$b=0.2$")
@@ -176,14 +176,11 @@ quiver!([0.4], [0.19], quiver=([-0.125], [-0.05]), color=:red, linewidth=2)
 quiver!([2.5], [0.97], quiver=([-0.125], [-0.05]), color=:red, linewidth=2)
 savefig("lake-nox.svg")
 
-p2 = plot(x, 0.5 .+ fin(x, 8), color=:black, linewidth=5,legend=:topleft, label=:false, ylabel="P Flux", xlabel=L"$X_t$", tickfontsize=12, guidefontsize=14, legendfontsize=12, palette=:tol_muted)
-plot!(x, fout(x, 1), linewidth=3, linestyle=:dash, label=L"$b=1.0$")
+p2 = plot(x, 0.05 .+ fin(x, 2.5), color=:black, linewidth=5,legend=:topleft, label=:false, ylabel="P Flux", xlabel=L"$X_t$", tickfontsize=12, guidefontsize=14, legendfontsize=12, palette=:tol_muted, framestyle=:origin, grid=:false)
 plot!(x, fout(x, 0.6), linewidth=3, linestyle=:dash, label=L"$b=0.6$")
-plot!(size=(400, 400), ylims=(0, 2))
-quiver!([2], [1.9], quiver=([-0.35], [-0.35]), color=:red, linewidth=2)
-quiver!([1.1], [1], quiver=([0.35], [0.35]), color=:red, linewidth=2)
-quiver!([0.8], [0.9], quiver=([-0.25], [-0.25]), color=:red, linewidth=2)
-quiver!([0.05], [0.15], quiver=([0.25], [0.25]), color=:red, linewidth=2)
+plot!(x, fout(x, 0.4), linewidth=3, linestyle=:dash, label=L"$b=0.4$")
+plot!(x, fout(x, 0.2), linewidth=3, linestyle=:dash, label=L"$b=0.2$")
+plot!(size=(400, 400), ylims=(0, 1))
 savefig("lake-x.svg")
 
 nothing # hide
@@ -197,7 +194,7 @@ $a + y = 0, q=2.5$:
 ]
 
 .right-column[
-$a + y = 0.5, q=8$:
+$a + y = 0.05, q=2.5$:
 
 .center[![Impact On Flux](figures/lake-x.svg)]
 ]
@@ -252,7 +249,7 @@ But, like Monte Carlo, often other methods are impossible or worse.
 
 .left-column[Find estimate of gradient near current point and step in positive/negative direction (depending on max/min).
 
-$$x_{n+1} = x_n \pm \alpha_n \nabla f(x_n)
+$$x_{n+1} = x_n \pm \alpha_n \nabla f(x_n)$$
 
 But: may not find global optimum; stepsize plays a big role in convergence.
 ]
@@ -320,7 +317,45 @@ savefig("random-algorithm.svg")
 nothing # hide
 ```
 
-.right-column[.center![Random Search Algorithm](figures/random-algorithm.svg)]
+.right-column[.center[![Random Search Algorithm](figures/random-algorithm.svg)]]
+
+---
+# Random Search with Constraints
+<hr>
+
+.left-column[With constraints, need a way to mark samples as infeasible.]
+
+```@eval
+using Plots
+using Measures
+using LaTeXStrings
+using Distributions
+using Random
+
+f(x) = 4 .* x.^4 - 10 .* (x.+2).^3 - 6 .* (x.-15).^2 + 2 .* (x.+4).^2
+x1 = -4:0.01:3.1
+x2 = 3.1:0.01:5
+plot(x1, f(x1), grid=false, linewidth=3, label=false, yticks=false, xticks=false, ylabel="Objective", xlabel="Decision Variable", left_margin=8mm, legendfontsize=12, guidefontsize=14)
+plot!(x2, f(x2), linestyle=:dash, color=:purple, linewidth=3, label=false)
+vline!([3.1], color=:orange, linewidth=5, label=false)
+scatter!([-2.36 3.1], f.([-2.36 3.1]), color=[:blue :red], markersize=[8 12], label=["Local Optimum" "Constrained Optimum"])
+ylims!((-1800, -1100))
+xlims!((-4, 5))
+Random.seed!(1)
+y = -4 .+ 9 .* rand(5)
+scatter!([y[1:4]], [f.(y[1:4])], color=:black, label=:false, markersize=6)
+scatter!([(y[5], f(y[5]))], color=:orange, label=:false, markersize=6)
+annotate!([y[1] + 0.5], [f.(y[1])], text(L"x_1", :black, 14))
+annotate!([y[2] + 0.5], [f.(y[2])], text(L"x_2", :black, 14))
+annotate!([y[3] + 0.5], [f.(y[3])], text(L"x_3", :black, 14))
+annotate!([y[4] + 0.5], [f.(y[4])], text(L"x_4", :black, 14))
+annotate!([y[5] + 0.5], [f.(y[5])], text(L"x_5", :orange, 14))
+
+savefig("random-algorithm-const.svg")
+nothing # hide
+```
+
+.right-column[.center[![Random Search Algorithm](figures/random-algorithm-const.svg)]]
 
 ---
 # Random Search In Julia
@@ -357,7 +392,7 @@ fobj(x) = mean([f(x) for i in 1:1000])
 # set bounds
 bounds = [0.0 1000.0]'
 # optimize
-results = optimize(fobj, bounds, ECA())
+results = optimize(fobj, bounds, DE())
 results.best_sol
 ```
 
@@ -367,7 +402,137 @@ results.best_sol
 
 `Metaheuristics.jl` contains [a number of algorithms](https://docs.juliahub.com/Metaheuristics/aJ70z/3.2.12/algorithms/), covering a number of single-objective and multi-objective algorithms.
 
-We won't go into details here, and will just stick with `ECA()` in our examples.
+We won't go into details here, and will just stick with `DE()` (differential evolution) in our examples.
+
+---
+# Lake Example (Including Constraints)
+<hr>
+
+Lake Problem: Let's try to keep the probability of exceeding the critical value (leading to eutrophication) less than 80%.
+
+```@example lake
+using Metaheuristics
+using Distributions
+using Plots
+using Random
+using Roots
+Random.seed!(1)
+
+# set parameters
+q = 2.5
+b = 0.4
+T = 100
+nsamples = 1000
+```
+
+---
+# Lake Example (Including Constraints)
+<hr>
+
+.left-column[
+```@example lake
+# get NPS inflows
+lnorm = LogNormal(log(0.03), 0.1)
+y = rand(lnorm, (T, nsamples))
+phist = histogram(rand(lnorm, 10000)) # hide
+savefig("nps-inflow-samps.svg") # hide
+# find critical value
+crit(x) = (x^q/(1+x^q)) - b*x
+Xcrit = find_zero(crit, (0.1, 1.5))
+```
+]
+
+.right-column[
+.center[![NPS Inflow Distribution](figures/nps-inflow-samps.svg)]
+]
+
+---
+# Lake Example (Including Constraints)
+<hr>
+
+```@example lake; continued=true
+# define lake model
+function lake(a, y, q, b, T)
+    X = zeros(T+1, size(y, 2))
+    # calculate states
+    for t = 1:T
+        X[t+1, :] = X[t, :] .+ a[t] .+ y[t, :] .+ (X[t, :].^q./(1 .+ X[t, :].^q)) .- b.*X[t, :]
+    end
+    return X
+end
+function lake_opt(a, y, q, b, T, Xcrit)
+    X = lake(a, y, q, b, T)
+    # calculate exceedance of critical value
+    Pexceed = sum(X[101, :] .> Xcrit) / size(X, 2)
+    failconst = [Pexceed - 0.2]
+    return mean(a), failconst, [0.0]
+end
+```
+
+---
+# Lake Example (Including Constraints)
+<hr>
+
+```@example lake
+# set bounds
+bounds = [0.0ones(T) 0.1ones(T)]'
+# optimize
+obj(a) = lake_opt(a, y, q, b, T, Xcrit)
+options = Options(f_calls_limit=5000)
+results = optimize(obj, bounds, DE(options=options))
+```
+
+---
+# Lake Example (Including Constraints)
+<hr>
+
+.left-column[
+```@example lake
+using Plots
+
+a = results.best_sol.x
+X = lake(a, y, q, b, T)
+plot(X, alpha=0.1, 
+    guidefontsize=14, tickfontsize=12, 
+    legendfontsize=12, label=:false)
+hline!([Xcrit], color=:red, linestyle=:dot, 
+    label="Critical Value")
+plot!(size=(400, 400))
+savefig("lake-series.svg") # hide
+```
+]
+
+.right-column[
+.center[![Lake Model Time Series](figures/lake-series.svg)]
+]
+
+---
+# Lake Example (Including Constraints)
+<hr>
+
+.left-column[
+```@example lake
+histogram(X[101, :], xlabel="End P Concentration", ylabel="Count",
+    guidefontsize=14, tickfontsize=12, 
+    legendfontsize=12, label=:false)
+vline!([Xcrit], color=:red, linestyle=:dot, 
+    label="Critical Value")
+plot!(size=(400, 400))
+savefig("lake-dist.svg") # hide
+```
+]
+
+.right-column[
+.center[![Lake Model Time Series](figures/lake-dist.svg)]
+]
+
+---
+# Key Takeaways
+<hr>
+
+- Many challenges to using mathematical programming for general systems analysis.
+- Can use simulation-optimization approaches.
+- But be careful of computational expense and convergence!
 
 ---
 class: middle
