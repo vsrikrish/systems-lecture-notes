@@ -494,7 +494,8 @@ a = results.best_sol.x
 X = lake(a, y, q, b, T)
 plot(X, alpha=0.1, 
     guidefontsize=14, tickfontsize=12, 
-    legendfontsize=12, label=:false)
+    legendfontsize=12, label=:false,
+    legend=:topleft)
 hline!([Xcrit], color=:red, linestyle=:dot, 
     label="Critical Value")
 plot!(size=(400, 400))
