@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>17 Lake Problem</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+.title[Simulation-Optimization and the Shallow Lake Problem] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[October 31, 2022]
+
+
+---
+
+
+name: toc
+
+
+class: left
+
+
+
+
+
+
+# Outline
+
+
+<hr>
+
+
+1. Project Due Dates
+2. HW 4 Due Thursday
+3. Questions?
+4. Challenges to Mathematical Programming
+5. Shallow Lake Model
+6. Simulation-Optimization
+
+
+---
+
+
+name: poll-answer
+
+
+layout: true
+
+
+class: left
+
+
+
+
+
+
+# Poll
+
+
+<hr>
+
+
+.left-column[{{content}}
+
+
+URL: [https://pollev.com/vsrikrish](https://pollev.com/vsrikrish)
+
+
+Text: **VSRIKRISH** to 22333, then message]
+
+
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+
+
+---
+
+
+name: questions
+
+
+template: poll-answer
+
+
+***Any questions?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Last Class
+
+
+<hr>
+
+
+  * Multiple Point Sources/Receptors
+  * Box Modeling for Airsheds
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Mathematical Programming
+
+
+<hr>
+
+
+**Previous weeks**: "Mathematical Programming" with formal decision models: objectives and constraints as functions (linear or otherwise) of decision variables.
+
+
+Mathematically programming is nice when possible because you can guarantee that you can find optima for certain classes of problems.
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# What If We Can't Write Down a Mathematical Program?
+
+
+<hr>
+
+
+But what if our constraints and objectives cannot be written down as a mathematical program?
+
+
+This often occurs with systems models, due to complex, nonlinear dynamics. 
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Systems Dynamics: Feedback Loops
+
+
+<hr>
+
+
+.left-column[**Feedback loops** can be *reinforcing* or *dampening*.
+
+
+Dampening feedback loops are associated with *stable* equilibria, while reinforcing feedback loops are associated with *instability*.]
+
+
+.right-column[ .center[![Reinforcing Feedback Example](figures/reinforcing-feedback.png)] ]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Systems Dynamics: Bifurcations
+
+
+<hr>
+
+
+.left-column[**Bifurcations** occur at thresholds when the qualitative behavior of a system changes.
+
+
+These thresholds are sometimes referred to as "tipping points" and are often associated with a *stable* state equilibrium transitioning to an *unstable* one.]
+
+
+.right-column[.center[![Bifurcation Diagram](figures/bifurcation.png)]]
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Systems Dynamics: Emergence
+
+
+<hr>
+
+
+**Emergence** refers to when simple rules governing interactions result in macro-scale "ordered" patterns and possibly unexpected behaviors.
+
+
+.left-column[ *Examples*:
+
+
+  * Schelling segregation model (left)
+  * Macroeconomic systems
+  * Snowflake formation
+
+
+]
+
+
+.right-column[ .center[![Schelling Model Animation](https://upload.wikimedia.org/wikipedia/commons/e/e8/Schellings.gif)] .cite[Source: Blaqdolphin - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=91228415] ]
+
+
+---
+
+
+
+
+
+
+# Example: Shallow Lake Problem
+
+
+<hr>
+
+
+.left-column[ Suppose we have a town which emits phosphorous into a lake as a by-product of economic activity. 
+
+
+The lake also receives phosphorous from non-point source runoff. There is some nutrient cycling in the lake which naturally reduces phosphorous concentrations. ]
+
+
+.right-column[ .center[![Shallow Lake Problem Diagram](figures/eutrophication-system-all.png)] ]
+
+
+---
+
+
+
+
+
+
+# Shallow Lake Model
+
+
+<hr>
+
+
+Suppose the lake dynamics are given by:
+
+
+$$
+X_{t+1} = X_t + a_t + y_t + \frac{X_t^q}{1 + X_t^q} - bX_t, \quad y_t \sim LogNormal(\mu, \sigma^2)
+$$
+
+
+| Parameter | Definition               | Units         |
+|:---------:|:------------------------ |:------------- |
+|   $X_t$   | P concentration in lake  | dimensionless |
+|   $a_t$   | point source P input     | dimensionless |
+|   $y_t$   | non-point source P input | dimensionless |
+|    $q$    | P recycling rate         | dimensionless |
+|    $b$    | rate at which P is lost  | dimensionless |
+
+
+---
+
+
+
+
+
+
+# Impacts of Parameters on Equilibria
+
+
+<hr>
+
+
+.left-column[ $a + y = 0, q=2.5$:
+
+
+.center[![Impact On Flux](figures/lake-nox.svg)] .cite[Adapted from [Quinn et al (2017)](https://dx.doi.org/10.1016/j.envsoft.2017.02.017)] ]
+
+
+.right-column[ $a + y = 0.05, q=2.5$:
+
+
+.center[![Impact On Flux](figures/lake-x.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Can We Write Down a Mathematical Program For This Problem?
+
+
+<hr>
+
+
+Our objective might be to maximize $\sum_{t=1}^T a_t$ (as a proxy for economic activity), while keeping a low probability of eutrophication. 
+
+
+--
+
+
+Straightforward to compute probability of eutrophication for a given input sequence $a_t$ using Monte Carlo simulation for $y_t$, but highly nontrivial to write this out in analytic form.
+
+
+Even if we did, it'd be *very* nonlinear and definitely nonconvex, which rules out most forms of mathematical programming.
+
+
+---
+
+
+
+
+
+
+# Simulation-Optimization
+
+
+<hr>
+
+
+*So how do we make decisions?*
+
+
+--
+
+
+Recall our previous comment about Monte Carlo!
+
+
+We can use a search algorithm to explore the exceedance probabilities using our simulation model, and find the "optimum" sequence of releases that keeps the probability of eutrophification at some specified level.
+
+
+---
+
+
+
+
+
+
+# Why "Optimum" in Quotes?
+
+
+<hr>
+
+
+Unlike mathematical programming, **there is usually no guarantee that a solution found this way is truly optimal**.
+
+
+Simulation-optimization methods typically rely on *heuristics* to decide that a solution is good enough. These can include
+
+
+  * number of evaluations/iterations; or
+  * lack of improvement of solution.
+
+
+---
+
+
+
+
+
+
+# Challenges to Simulation-Optimization In General
+
+
+<hr>
+
+
+  * **Monte Carlo Error**: If constraints or objective is probabilistic, how many Monte Carlo runs are needed to ensure difference in function values is "real" and not stochastic noise.
+  * **Computational**: Can be expensive depending on the simulation model.
+  * **Local vs. Global Optima**: Depending on type of search algorithm, may not be able to guarantee more than a local optimum.
+
+
+But, like Monte Carlo, often other methods are impossible or worse.
+
+
+---
+
+
+
+
+
+
+# Gradient Estimation
+
+
+<hr>
+
+
+.left-column[Find estimate of gradient near current point and step in positive/negative direction (depending on max/min).
+
+
+$$
+x_{n+1} = x_n \pm \alpha_n \nabla f(x_n)
+$$
+
+
+But: may not find global optimum; stepsize plays a big role in convergence. ]
+
+
+.right-column[.center![Gradient Search Algorithm](figures/gradient-algorithm.svg)]
+
+
+---
+
+
+
+
+
+
+# Random Search
+
+
+<hr>
+
+
+.left-column[Use a sampling strategy to find a new proposal, then evaluate, keep if improvement.
+
+
+  * Evolutionary Algorithms fall into this category.
+  * No guarantees! Need to evaluate lots and convince yourself you've done enough.]
+
+
+.right-column[.center[![Random Search Algorithm](figures/random-algorithm.svg)]]
+
+
+---
+
+
+
+
+
+
+# Random Search with Constraints
+
+
+<hr>
+
+
+.left-column[With constraints, need a way to mark samples as infeasible.]
+
+
+.right-column[.center[![Random Search Algorithm](figures/random-algorithm-const.svg)]]
+
+
+---
+
+
+
+
+
+
+# Random Search In Julia
+
+
+<hr>
+
+
+Two main packages:
+
+
+  * [`Metaheuristics.jl`](https://docs.juliahub.com/Metaheuristics/aJ70z/3.2.12/)
+  * [`BlackBoxOptim.jl`](https://github.com/robertfeldt/BlackBoxOptim.jl)
+
+
+---
+
+
+
+
+
+
+# Quick Example (Adapted From `Metaheuristics.jl` Tutorial)
+
+
+<hr>
+
+
+```julia
+using Metaheuristics
+using Distributions
+using Random
+Random.seed!(1)
+# define function to optimize
+function f(x)
+    lnorm = LogNormal(0.25, 1)
+    y = rand(lnorm)
+    return sum(x .- y)^2
+end
+fobj(x) = mean([f(x) for i in 1:1000])
+```
+
+
+---
+
+
+
+
+# Quick Example (Adapted From `Metaheuristics.jl` Tutorial)
+
+
+<hr>
+
+
+```julia
+# set bounds
+bounds = [0.0 1000.0]'
+# optimize
+results = optimize(fobj, bounds, DE())
+results.best_sol
+```
+
+
+```
+(f = 3.6109e+00, x = [2.368314566931006])
+```
+
+
+---
+
+
+
+
+
+
+# `Metaheuristics.jl` Algorithms
+
+
+<hr>
+
+
+`Metaheuristics.jl` contains [a number of algorithms](https://docs.juliahub.com/Metaheuristics/aJ70z/3.2.12/algorithms/), covering a number of single-objective and multi-objective algorithms.
+
+
+We won't go into details here, and will just stick with `DE()` (differential evolution) in our examples.
+
+
+---
+
+
+
+
+
+
+# Lake Example (Including Constraints)
+
+
+<hr>
+
+
+Lake Problem: Let's try to keep the probability of exceeding the critical value (leading to eutrophication) less than 80%.
+
+
+```julia
+using Metaheuristics
+using Distributions
+using Plots
+using Random
+using Roots
+Random.seed!(1)
+
+# set parameters
+q = 2.5
+b = 0.4
+T = 100
+nsamples = 1000
+```
+
+
+```
+1000
+```
+
+
+---
+
+
+
+
+# Lake Example (Including Constraints)
+
+
+<hr>
+
+
+.left-column[
+
+
+```julia
+# get NPS inflows
+lnorm = LogNormal(log(0.03), 0.1)
+y = rand(lnorm, (T, nsamples))
+# find critical value
+crit(x) = (x^q/(1+x^q)) - b*x
+Xcrit = find_zero(crit, (0.1, 1.5))
+```
+
+
+```
+0.6678778690448219
+```
+
+
+]
+
+
+.right-column[ .center[![NPS Inflow Distribution](figures/nps-inflow-samps.svg)] ]
+
+
+---
+
+
+
+
+# Lake Example (Including Constraints)
+
+
+<hr>
+
+
+```julia
+# define lake model
+function lake(a, y, q, b, T)
+    X = zeros(T+1, size(y, 2))
+    # calculate states
+    for t = 1:T
+        X[t+1, :] = X[t, :] .+ a[t] .+ y[t, :] .+ (X[t, :].^q./(1 .+ X[t, :].^q)) .- b.*X[t, :]
+    end
+    return X
+end
+function lake_opt(a, y, q, b, T, Xcrit)
+    X = lake(a, y, q, b, T)
+    # calculate exceedance of critical value
+    Pexceed = sum(X[101, :] .> Xcrit) / size(X, 2)
+    failconst = [Pexceed - 0.2]
+    return mean(a), failconst, [0.0]
+end
+```
+
+
+---
+
+
+
+
+# Lake Example (Including Constraints)
+
+
+<hr>
+
+
+```julia
+# set bounds
+bounds = [0.0ones(T) 0.1ones(T)]'
+# optimize
+obj(a) = lake_opt(a, y, q, b, T, Xcrit)
+options = Options(f_calls_limit=5000)
+results = optimize(obj, bounds, DE(options=options))
+```
+
+<pre>
++=========== RESULT ==========+
+<<<<<<< HEAD
+  iteration: 5
+    minimum: 0.0370322
+  minimizer: [0.022076472828343345, 0.09899916718214197, 0.08989050384961975, 0.0309376448378213, 0.0008824165646296129, 0.019962459948983942, 0.030876020629795456, 0.0008851740888620339, 0.05127567043053332, 0.020044724625745566, 0.0726371866186155, 0.09704990771259873, 0.09152451875073744, 0.010552655643791778, 0.0021013449021318777, 0.029282958312966893, 0.05783230379218778, 0.028006263065764717, 0.026793092413382943, 0.0164753118989962, 0.0016384234204462583, 0.06127238284437064, 0.04996760030922329, 0.07291186860379559, 0.0017983436521787077, 0.0022481859487700237, 0.07484278605036089, 0.05212034486592401, 0.003605647173537726, 0.006884147204569639, 0.06121470082800236, 0.008939880581101064, 0.009268403065660473, 0.00856558675253562, 0.0590575857474078, 0.04769631703347137, 0.02607202017005513, 0.001042912858796331, 0.09473318357231095, 0.02574681673589537, 0.01750597358001768, 0.024506242439494084, 0.04451443136588381, 0.08069106890927884, 0.020443719211152088, 0.09073486840129104, 0.035986727142412994, 0.09253523045633633, 0.03214715383400821, 0.013631896207434276, 0.04009690128476173, 0.023062119015269025, 0.08183149639371368, 0.04917516602443296, 0.009683211016004433, 0.08387037690448705, 0.08990995225559371, 0.03295466058631406, 0.006202574841115603, 0.05935907217624828, 0.004091044059389582, 0.0006566155086883048, 0.06528046883654762, 0.01775732012064904, 0.08142197334126787, 0.014539230240052214, 0.03172580393880621, 0.0585585626028578, 0.020583370638167953, 0.007187069463098484, 0.0025727892325036307, 0.06651157444108163, 0.03823369994469339, 0.012018892014951488, 0.019134304081297307, 0.05835518992390061, 0.012431527485126888, 0.0810582923437417, 0.08939943583631019, 0.029926108778632915, 0.051541442521966366, 0.026298659075321255, 0.020851510449052705, 0.014581032596758874, 0.06659495725578947, 0.05392290123064206, 0.005651056055924905, 0.0013402809778118021, 0.0328574810112852, 1.2961213089955459e-5, 0.017785624496714968, 0.04399664525397469, 0.004838928900269746, 0.047502342915429624, 0.04967209115304081, 0.03645370738144943, 0.06479669294818324, 0.002028511072663952, 0.003756552783982118, 0.050740505434923644]
+    f calls: 5000
+  feasibles: 82 / 1000 in final population
+ total time: 113.1351 s
+=======
+  iteration: 1
+    minimum: 0.0442926
+  minimizer: [0.039240054578424256, 0.09338124781042632, 0.08835418983139154, 0.011427041624799706, 0.048924893262125936, 0.037265780904226796, 0.09599174108992913, 0.016868255218518348, 0.06501532126834804, 0.012504347730588805, 0.000746213129172535, 0.08767941825273518, 0.06444447819690417, 0.054203305489866606, 0.04515010867664222, 0.03718958851984027, 0.025678307010852875, 0.002614556880381591, 0.031664324511728625, 0.07500180739034422, 0.043465369178345536, 0.02618137451907561, 0.012125732365595233, 0.0007835638382379329, 0.050504057095811676, 0.01973042349246107, 0.033136951386881955, 0.01677370068553733, 0.03257252223625352, 0.03630833605591843, 0.09431288747936745, 0.09808233362986095, 0.00500268791860089, 0.05647886662206815, 0.03155775927695148, 0.07254766454510762, 0.004762093575137772, 0.027549599629570133, 0.07984938749477144, 0.05387033975708925, 0.0830215466837763, 0.03715250339291026, 0.06260338936336694, 0.05665233610796105, 0.020867171309697265, 0.003031407257133101, 0.07038442196539017, 0.081973209766261, 0.049986184715054574, 0.0024662374832810086, 0.006323147080792702, 0.009657881913163725, 0.02315890085132412, 0.09193974477638128, 0.03760366519862346, 0.07564759057190282, 0.030848913630144338, 0.01669100231588613, 0.015936053575238196, 0.07402535946544608, 0.05861471118712115, 0.024710497229536024, 0.04584411954893829, 0.006433931745784916, 0.02525147898785858, 0.0927269006025585, 0.007840973215041902, 0.03206206338343415, 0.09203388652557211, 0.013111902500402828, 0.004544827274546015, 0.08026903850057003, 0.020570018234940746, 0.011876941026341604, 0.004183774888220338, 0.09852820698013408, 0.057271685561092404, 0.029796571502513525, 0.015045512458381129, 0.08260028598701494, 0.0036321355165284453, 0.059813074523417824, 0.0862832791944941, 0.075865373638978, 0.04496204337475345, 0.04088387618008386, 0.013879043219367927, 0.05961114061643075, 0.039901062880284735, 0.08933411431006494, 0.004006065449934948, 0.012758921045441619, 0.048643482508816366, 0.0924091515586886, 0.07363173417161059, 0.08219603133985784, 0.008796614369613464, 0.036447873444808855, 0.09373048347884377, 0.08024559983252538]
+    f calls: 1000
+  feasibles: 1 / 1000 in final population
+ total time: 19.4399 s
+>>>>>>> 37edf84 (update example)
+stop reason: Maximum objective function calls exceeded.
++============================+
+</pre>
+
+
+---
+
+
+
+
+# Lake Example (Including Constraints)
+
+
+<hr>
+
+
+.left-column[
+
+
+```julia
+using Plots
+
+a = results.best_sol.x
+X = lake(a, y, q, b, T)
+plot(X, alpha=0.1,
+    guidefontsize=14, tickfontsize=12,
+    legendfontsize=12, label=:false,
+    legend=:topleft)
+hline!([Xcrit], color=:red, linestyle=:dot,
+    label="Critical Value")
+plot!(size=(400, 400))
+```
+
+
+```
+"/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/jl_0RfNWL/build/lake-series.svg"
+```
+
+
+]
+
+
+.right-column[ .center[![Lake Model Time Series](figures/lake-series.svg)] ]
+
+
+---
+
+
+
+
+# Lake Example (Including Constraints)
+
+
+<hr>
+
+
+.left-column[
+
+
+```julia
+histogram(X[101, :], xlabel="End P Concentration", ylabel="Count",
+    guidefontsize=14, tickfontsize=12,
+    legendfontsize=12, label=:false)
+vline!([Xcrit], color=:red, linestyle=:dot,
+    label="Critical Value")
+plot!(size=(400, 400))
+```
+
+
+```
+"/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/jl_0RfNWL/build/lake-dist.svg"
+```
+
+
+]
+
+
+.right-column[ .center[![Lake Model Time Series](figures/lake-dist.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Key Takeaways
+
+
+<hr>
+
+
+  * Many challenges to using mathematical programming for general systems analysis.
+  * Can use simulation-optimization approaches.
+  * But be careful of computational expense and convergence!
+
+
+---
+
+
+class: middle
+
+
+<hr>
+
+
+
+
+
+
+# Next Class
+
+
+<hr>
+
+
+  * In-Class Coding Exercise with the Lake Problem
+
+    </textarea>
+
+    <script src="remark.min.js" type="text/javascript"></script>
+    <script src="katex.min.js"></script>
+    <script src="auto-render.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script type="text/javascript">
+        var options = {"highlightStyle":"ir-black","ratio":"16:9","highlightLanguage":"julia","highlightLines":"true"};
+        var renderMath = function() {
+        // renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+        }
+
+        var slideshow = remark.create(options, renderMath);
+
+        </script>
+  </body>
+</html>
