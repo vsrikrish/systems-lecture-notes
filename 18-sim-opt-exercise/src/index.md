@@ -1,6 +1,6 @@
 class: center, middle
 
-.title[Simulation-Optimization Exercise
+.title[Simulation-Optimization Exercise]
 <br>
 .subtitle[BEE 4750/5750]
 <br>
