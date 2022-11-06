@@ -24,6 +24,9 @@ for path in note_paths
     for f in filter(x -> occursin(".svg", x), readdir(string(path, "/build")))
         mv(string(path, "/build/", f), string(path, "/figures/", f); force=true)
     end
+    for f in filter(x -> occursin(".png", x), readdir(string(path, "/build")))
+        mv(string(path, "/build/", f), string(path, "/figures/", f); force=true)
+    end
     cp("fonts", string(path, "/fonts"); force=true)
     cp("katex.min.css", string(path, "/katex.min.css"); force=true)
     cp("katex.min.js", string(path, "/katex.min.js"); force=true)
