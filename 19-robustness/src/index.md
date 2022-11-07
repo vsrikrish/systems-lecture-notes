@@ -1,6 +1,6 @@
 class: center, middle
 
-.title[Robustness and Sensitivity Analysis]
+.title[Robustness]
 <br>
 .subtitle[BEE 4750/5750]
 <br>
@@ -22,7 +22,6 @@ class: left
 2. HW Plan
 3. Questions?
 4. Robustness
-5. Intro to Sensitivity Analysis
 
 ---
 name: poll-answer
