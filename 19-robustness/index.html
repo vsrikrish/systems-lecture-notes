@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>19 Robustness</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+
+.title[Robustness and Sensitivity Analysis] <br> .subtitle[BEE 4750/5750] <br> .subtitle[Environmental Systems Analysis, Fall 2022] <hr> .author[Vivek Srikrishnan] <br> .date[November 7, 2022]
+
+
+---
+
+
+name: toc
+
+
+class: left
+
+
+
+
+
+
+# Outline
+
+
+<hr>
+
+
+1. Project Due Dates
+2. HW Plan
+3. Questions?
+4. Robustness
+5. Intro to Sensitivity Analysis
+
+
+---
+
+
+name: poll-answer
+
+
+layout: true
+
+
+class: left
+
+
+
+
+
+
+# Poll
+
+
+<hr>
+
+
+.left-column[{{content}}
+
+
+URL: [https://pollev.com/vsrikrish](https://pollev.com/vsrikrish)
+
+
+Text: **VSRIKRISH** to 22333, then message]
+
+
+.right-column[.center[![Poll Everywhere QR Code](figures/vsrikrish-polleverywhere.png)]]
+
+
+---
+
+
+name: questions
+
+
+template: poll-answer
+
+
+***Any questions?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Last Class
+
+
+<hr>
+
+
+  * Simulation-Optimization Exercise
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Conceptual Assumptions of Optimization
+
+
+<hr>
+
+
+Optimization problems implicitly assume perfect specification of:
+
+
+  * Model Structure
+  * Parameters
+  * Decision Alternatives/Specifications
+
+
+--
+
+
+*Even with Monte Carlo simulation, need to make assumptions about distributional forms and parameters.*
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# What If These Are Wrong?
+
+
+<hr>
+
+
+Optimization problems implicitly assume perfect specification of:
+
+
+  * Model Structure
+  * Parameters
+  * Decision Alternatives/Specifications
+
+
+*If these components are mis-specified, what are the implications?*
+
+
+---
+
+
+class: left
+
+
+
+
+
+
+# Reminder: Bifurcations
+
+
+<hr>
+
+
+.left-column[**Bifurcations** occur at thresholds when the qualitative behavior of a system changes.
+
+
+These thresholds are sometimes referred to as "tipping points" and are often associated with a *stable* state equilibrium transitioning to an *unstable* one.]
+
+
+.right-column[.center[![Bifurcation Diagram](figures/bifurcation.png)]]
+
+
+---
+
+
+class: left
+
+
+#Impact of Bifurcations On Misspecification <hr>
+
+
+.left-column[ $q=2.5$:
+
+
+.center[![Impact On Flux](figures/lake-1.svg)] .cite[Adapted from [Quinn et al (2017)](https://dx.doi.org/10.1016/j.envsoft.2017.02.017)] ]
+
+
+.right-column[ $q=1$:
+
+
+.center[![Impact On Flux](figures/lake-2.svg)] ]
+
+
+---
+
+
+
+
+
+
+# A Few Relevant Quotes!
+
+
+<hr>
+
+
+> Reports that say that something hasn't happened are always interesting to me, because as we know, there are **known knowns**; there are things **we know we know**. We also know there are **known unknowns**; that is to say **we know there are some things we do not know**. But there are also **unknown unknowns** — the ones **we don't know we don't know**. And if one looks throughout the history of our country and other free countries, **it is the latter category that tends to be the difficult ones**.
+>
+> .footer[– Donald Rumsfeld, 2002 (emphasis mine)]
+
+
+
+---
+
+
+
+
+# A Few Relevant Quotes!
+
+
+<hr>
+
+
+> It ain’t what you don’t know that gets you into trouble. It’s what you know for sure that just ain’t so. 
+>
+> .footer[– Often attributed to Mark Twain (apocryphal)]
+
+
+
+---
+
+
+template: poll-answer
+
+
+***What can we do to reduce the risk of misspecification?***
+
+
+---
+
+
+layout: false
+
+
+
+
+
+
+# Robustness
+
+
+<hr>
+
+
+What we'd like to have is a sense of how well a decision performs under *plausible* alternative specifications.
+
+
+This is referred to as **robustness**.
+
+
+---
+
+
+template: poll-answer
+
+
+***What do you think of when you hear the word "robustness"?***
+
+
+---
+
+
+layout: false
+
+
+
+
+# Robustness
+
+
+<hr>
+
+
+**Note**: We are using "robustness" in a slightly different sense than some other related uses.
+
+
+---
+
+
+
+
+# Robustness
+
+
+<hr>
+
+
+The basic idea of robustness: summarizing how well a decision works across a range of different plausible futures.
+
+
+---
+
+
+
+
+
+
+# Lake Problem and Robustness
+
+
+<hr>
+
+
+.left-column[ Let's consider the lake problem. Suppose we estimate $q=2.5$, $b=0.4$, and runoffs $y_t\sim~LogNormal(\log(0.03), 0.1).$ 
+
+
+After testing against 1000 runoff samples, we decide to try a release of $a_t = 0.04$ units each year. ]
+
+
+
+
+--
+
+
+.right-column[ .center[![Lake Problem Simulations](figures/lake-series.png)] ]
+
+
+---
+
+
+
+
+
+
+# But If We're Wrong...
+
+
+<hr>
+
+
+.left-column[ But now suppose that actually $q=2.4$! ]
+
+
+
+
+.right-column[ .center[![Lake Problem Simulations](figures/lake-series-q.png)] ]
+
+
+---
+
+
+
+
+# But If We're Wrong...
+
+
+<hr>
+
+
+.left-column[ Or that $b=0.38$... ]
+
+
+
+
+.right-column[ .center[![Lake Problem Simulations](figures/lake-series-b.png)] ]
+
+
+---
+
+
+
+
+# But If We're Wrong...
+
+
+<hr>
+
+
+
+
+.left-column[ Or 
+
+
+$$
+y_t\sim LogNormal(\log(0.033), 0.2):
+$$
+
+
+.center[![Lake Runoff Samples](figures/lake-runoff-samples.svg)] ]
+
+
+.right-column[ .center[![Lake Problem Simulations](figures/lake-series-yvar.png)] ]
+
+
+---
+
+
+
+
+
+
+# Varying $q$ and $b$
+
+
+<hr>
+
+
+
+
+.left-column[ Let's explore whether this strategy meets our constraint over a variety of $q$ and $b$ values: ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Robustness Measures
+
+
+<hr>
+
+
+.left-column[ Given an assessment of performance over a variety of specifications (or **states of the world**), there are a number of metrics that can be used to capture robustness, and the choice can matter quite a bit.
+
+
+Two common ones are **satisfycing** and **regret**. ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Satisfycing
+
+
+<hr>
+
+
+.left-column[**Satisfycing** metrics try to express the degree to which performance criteria are satisfied across the considered states of the world. ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+# Satisfycing
+
+
+<hr>
+
+
+.left-column[A simple satisfycing metric: what is the fraction of states of the world (SOWs) in which the criterion is met, or
+
+
+$$
+S=\frac{1}{N}\sum_{n=1}^N I_n,
+$$
+
+
+where $I_n$ indicates if the performance criterion is met in SOW $n$. ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+# Satisfycing
+
+
+<hr>
+
+
+.left-column[In this case, $S=0.58$.
+
+
+Other satisfycing criteria might measure the "distance" from the baseline case before the system fails. ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Regret
+
+
+<hr>
+
+
+.left-column[**Regret** metrics capture how much we "regret" (or lose in value) worse performances across SOWs. ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+# Regret
+
+
+<hr>
+
+
+.left-column[A simple regret metric: what is the average worsening of performance across SOWs?
+
+
+$$
+R = \frac{1}{N} \sum\_{n=1}^N \frac{\min(P\_\text{crit} - P\_n, 0)}{P\_\text{crit}},
+$$
+
+
+where $P_\text{crit}$ is the performance criterion and $P_n$ is the performance in SOW $n$.  ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+# Regret
+
+
+<hr>
+
+
+.left-column[In this case, $R = 0.41$.
+
+
+Note: Commonly we care about *maximum* regret over the considered SOWs. There are lots of possible metrics!  ]
+
+
+.right-column[ .center[![Evaluation of Lake Management Strategy](figures/lake-robust-grid.svg)] ]
+
+
+---
+
+
+
+
+
+
+# Robustness Metrics
+
+
+<hr>
+
+
+We could use these metrics during our optimization procedure by:
+
+
+  * minimizing regret or maximizing satisfycing as an objective;
+  * using either as a constraint.
+
+
+A key point is that these different metrics, and even different metrics within the satisfying and regret categories, might rank decisions differently.
+
+
+---
+
+
+
+
+
+
+# Key Takeaways
+
+
+<hr>
+
+
+  * Optimization methods make assumptions about model and parameter specification.
+  * This assumption can lead to very bad outcomes in the presence of nonlinear system dynamics such as bifurcations.
+  * Robustness is an approach to measuring how well a decision performs under mis-specification.
+  * Many different robustness metrics, make sure you choose one appropriate for the context.
+
+
+---
+
+
+class: middle
+
+
+<hr>
+
+
+
+
+
+
+# Next Class
+
+
+<hr>
+
+
+  * Introduction to Sensitivity Analysis
+
+    </textarea>
+
+    <script src="remark.min.js" type="text/javascript"></script>
+    <script src="katex.min.js"></script>
+    <script src="auto-render.min.js"></script>
+    <link rel="stylesheet" href="katex.min.css">
+    <script type="text/javascript">
+        var options = {"highlightStyle":"ir-black","ratio":"16:9","highlightLanguage":"julia","highlightLines":"true"};
+        var renderMath = function() {
+        // renderMathInElement(document.body);
+        // or if you want to use $...$ for math,
+        renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "\\(", right: "\\)", display: false},
+        ]});
+        }
+
+        var slideshow = remark.create(options, renderMath);
+
+        </script>
+  </body>
+</html>
