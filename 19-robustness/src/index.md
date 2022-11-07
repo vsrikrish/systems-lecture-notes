@@ -101,7 +101,7 @@ These thresholds are sometimes referred to as "tipping points" and are often ass
 ---
 class: left
 
-#Impact of Bifurcations On Misspecification
+# Impact of Bifurcations On Misspecification
 <hr>
 
 ```@eval
@@ -167,10 +167,32 @@ $q=1$:
 > .footer[-- Often attributed to Mark Twain (apocryphal)]
 
 ---
-
 template: poll-answer
 
 ***What can we do to reduce the risk of misspecification?***
+
+---
+# "Deep" Uncertainty
+<hr>
+
+This issue of mis-specification becomes particularly acute in the presence of *deep* uncertainties, which are uncertainties for which we cannot write down a consensus probability distribution.
+
+---
+template: poll-answer
+
+***What are some examples of deep uncertainty?***
+
+
+---
+# "Deep" Uncertainty
+<hr>
+
+We won't talk much more about deep uncertainties, but they make this issue of misspecification more acute.
+
+--
+
+We might be able to discuss "expected" performance (more on this next week) in the presence of well-characterized uncertainties, but can you compute an expected value or quantile without a probability distribution?
+
 
 ---
 layout: false
@@ -452,7 +474,7 @@ Other satisfycing criteria might measure the "distance" from the baseline case b
 
 .left-column[A simple regret metric: what is the average worsening of performance across SOWs?
 
-$$R = \frac{1}{N} \sum\_{n=1}^N \frac{\min(P\_\text{crit} - P\_n, 0)}{P\_\text{crit}},$$
+$$R = \frac{1}{N} \sum\_{n=1}^N \frac{\min(P\_n - P\_\text{crit}, 0)}{P\_\text{crit}},$$
 
 where $P_\text{crit}$ is the performance criterion and $P_n$ is the performance in SOW $n$.
 ]
@@ -483,6 +505,14 @@ We could use these metrics during our optimization procedure by:
 - using either as a constraint.
 
 A key point is that these different metrics, and even different metrics within the satisfying and regret categories, might rank decisions differently.
+
+---
+# Other Considerations
+<hr>
+
+Some other considerations when conducting robustness assessments:
+- How are different SOWs generated?
+- 
 
 ---
 # Key Takeaways
