@@ -303,7 +303,7 @@ end
 function lake_sens(params)
     Random.seed!(1)
     T = 100
-    nsamp = 10000
+    nsamp = 1000
 
     q = params[1]
     b = params[2]
@@ -402,11 +402,11 @@ s.S1_Conf_Int'
 .right-column[
 
 ```@example lakesa
-s.S2`
+s.S2
 ```
 
 ```@example lakesa
-s.S2_Conf_Int'
+s.S2_Conf_Int
 ```
 ]
 ---
