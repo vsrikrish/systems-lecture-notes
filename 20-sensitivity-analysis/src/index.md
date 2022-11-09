@@ -345,8 +345,8 @@ s.variances
 using Plots
 using LaTeXStrings
 
-p1 = bar([L"$q$", L"$b$", "ymean", "ystd"], abs.(s.means)', legend=false, title="Sensitivity Index Means", guidefontsize=14)
-p2 = bar([L"$q$", L"$b$", "ymean", "ystd"], s.variances', legend=false, yaxis=:log, title="Sensitivity Index Variances", guidefontsize=14)
+p1 = bar([L"$q$", L"$b$", "ymean", "ystd"], (abs.(s.means) .+ 0.01)', legend=false, title="Sensitivity Index Means", guidefontsize=14)
+p2 = bar([L"$q$", L"$b$", "ymean", "ystd"], (s.variances .+ 0.01)', legend=false, yaxis=:log, title="Sensitivity Index Variances", guidefontsize=14)
 plot(p1, p2, layout=(2,1))
 savefig("morris-lake.svg")
 ```
