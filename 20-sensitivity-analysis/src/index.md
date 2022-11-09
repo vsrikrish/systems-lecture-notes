@@ -409,6 +409,7 @@ s.S2
 s.S2_Conf_Int
 ```
 ]
+
 ---
 # Example: Cumulative CO<sub>2</sub> Emissions
 <hr>
