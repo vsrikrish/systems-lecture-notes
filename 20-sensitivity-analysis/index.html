@@ -319,7 +319,7 @@ The shadow price expresses the objective's sensitivity to a unit relaxation of t
 <hr>
 
 
-  * One-at-a-Time vs. Joint Sampling
+  * One-at-a-Time vs. All-At-A-Time Sampling
   * Local vs. Global
 
 
@@ -352,7 +352,7 @@ The shadow price expresses the objective's sensitivity to a unit relaxation of t
 
 
 
-# Joint Sampling
+# All-At-A-Time Sampling
 
 
 <hr>
@@ -467,9 +467,6 @@ For our subsequent examples, we will look at *global* analyses with *variance de
 ---
 
 
-class: split-40
-
-
 
 
 
@@ -480,19 +477,104 @@ class: split-40
 <hr>
 
 
-.column[
-
-
 For a fixed release strategy, look at how different parameters influence reliability.
+
+
+Take $a_t=0.03$, and look at the following parameters within ranges:
+
+
+| Parameter |            Range            |
+|:---------:|:---------------------------:|
+|    $q$    |          $(2, 3)$           |
+|    $b$    |        $(0.3, 0.5)$         |
+|  $ymean$  | $(\log(0.01), \log)(0.07))$ |
+|  $ystd$   |       $(0.01, 0.25)$        |
+
+
+---
+
+
+
+
+
+
+# Method of Morris
+
+
+<hr>
+
+
+The Method of Morris is an *elementary effects* method.
+
+
+This is a global, one-at-a-time method which averages effects of perturbations at different values $\bar{x}_i$:
+
+
+$$
+S\_i = \frac{1}{r} \sum\_{j=1}^r \frac{f(\bar{x}^j\_1, \ldots, \bar{x}^j\_i + \Delta\_i, \bar{x}^j\_n) - f(\bar{x}^j\_1, \ldots, \bar{x}^j\_i, \ldots, \bar{x}^j\_n)}{\Delta\_i}
+$$
+
+
+where $\Delta\_i$ is the step size.
+
+
+---
+
+
+class: split-50
+
+
+
+
+
+
+# Method of Morris for the Lake Problem
+
+
+<hr>
+
+
+
+
+.left-column[
+
+
+```julia
+using GlobalSensitivity
+
+s = gsa(lake_sens, Morris(),
+    [(2, 3), (0.3, 0.5), (log(0.01), log(0.07)),
+    (0.01, 0.25)])
+abs.(s.means)
+```
+
+
+```
+1×4 Matrix{Float64}:
+ 0.000942857  15.2487  0.591673  0.447857
+```
+
+
+```julia
+s.variances
+```
+
+
+```
+1×4 Matrix{Float64}:
+ 1.86686e-5  4174.26  12.7016  3.01356
+```
 
 
 ]
 
 
-.column[
+.right-column[
 
 
-.center[![Lake Problem Sensitivity](figures/lake-sa.png)]
+
+
+.center[![Method of Morris Results](figures/morris-lake.svg)]
 
 
 ]
@@ -501,6 +583,117 @@ For a fixed release strategy, look at how different parameters influence reliabi
 ---
 
 
+
+
+
+
+# Sobol Method
+
+
+<hr>
+
+
+The Sobol method is a variance decomposition method, which attributes the variance of the output into contributions from individual parameters or interactions between parameters.
+
+
+$$
+S\_i^1 = \frac{Var\_{x\_i}\left[E\_{x\_{\sim i}}(x\_i)\right]}{Var(y)}
+$$
+
+
+$$
+S\_{i,j}^2 = \frac{Var\_{x\_{i,j}}\left[E\_{x\_{\sim i,j}}(x\_i, x\_j)\right]}{Var(y)}
+$$
+
+
+---
+
+
+
+
+
+
+# Sobol for Lake Problem
+
+
+<hr>
+
+
+```julia
+using GlobalSensitivity
+
+s = gsa(lake_sens, Sobol(order=[0, 1, 2]),
+    [(2, 3), (0.3, 0.5), (log(0.01), log(0.07)), (0.01, 0.25)];
+    samples = 10)
+s.ST
+```
+
+
+```
+4-element Vector{Float64}:
+ 0.0
+ 0.8351648351648354
+ 0.4175824175824177
+ 0.0
+```
+
+
+---
+
+
+
+
+# Sobol for Lake Problem
+
+
+<hr>
+
+
+```julia
+s.S1
+```
+
+
+```
+4-element Vector{Float64}:
+ 0.8351648351648354
+ 0.8351648351648354
+ 0.8351648351648354
+ 0.0
+```
+
+
+```julia
+s.S2
+```
+
+
+```
+4×4 Matrix{Float64}:
+ 0.0  -0.417582  -0.417582  -0.417582
+ 0.0   0.0       -0.835165   0.0
+ 0.0   0.0        0.0        0.0
+ 0.0   0.0        0.0        0.0
+```
+
+
+---
+
+
+
+
+
+
+# Example: Cumulative CO<sub>2</sub> Emissions
+
+
+<hr>
+
+
+.center[![Model for CO2 Emissions](figures/co2-model.png)]
+
+
+---
 
 
 
