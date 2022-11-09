@@ -99,6 +99,18 @@
     width:auto;
 }
 
+.column:first-of-type {float:left}
+.column:last-of-type {float:right}
+
+.split-40 .column:first-of-type {width: 40%}
+.split-40 .column:last-of-type {width: 60%}
+
+.split-60 .column:first-of-type {width: 60%}
+.split-60 .column:last-of-type {width: 40%}
+
+.split-50 .column:first-of-type {width: 50%}
+.split-50 .column:last-of-type {width: 50%}
+
 img {
     max-width: 90%;
     max-height: 475px;
