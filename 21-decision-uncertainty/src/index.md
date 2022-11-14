@@ -337,8 +337,8 @@ For example: suppose the probability of a good harvest is 1/8, an average harves
 
 Crop | Area (acre)
 :--- | ----:
-Corn | 100
 Wheat | 100
+Corn | 100
 Beets | 300
 
 ]
@@ -366,8 +366,8 @@ Now suppose the probability of a good harvest is 3/4, an average harvest is 1/8,
 
 Crop | Area (acre)
 :--- | ----:
-Corn | 183
-Wheat | 67
+Wheat | 183
+Corn | 67
 Beets | 250
 
 ]
@@ -376,14 +376,14 @@ Beets | 250
 
 Year | Deterministic Profit | Stochastic Profit
 :--- | ---: | ---:
-Good | \$137,800 | **\$167,667**
+Good | \$148,000 | **\$167,667**
 Average | \$118,600 | **\$107,683**
-Bad | \$56,800 | **\$47,670**
+Bad | \$55,120 | **\$47,670**
 
 ]
 
 <br>
-The VSS is then *\$12,458.
+The VSS is then **\$12,458**.
 
 ---
 # Value of the Stochastic Solution
@@ -401,7 +401,7 @@ The VSS is then *\$12,458.
 
 Another relevant quantity, the **expected value of perfect information (EVPI)**, concerns the value associated with better forecasts.
 
-If the farmer had perfect foresight and could allocate acreage $x$ accordingly and sell/purchase $z$ and $y$ optimally,
+If the farmer had perfect foresight and could allocate acreage $x$ accordingly and sell/purchase $z$ and $y$ optimally (versus taking the 1/3-probability stochastic solution),
 
 $$\mathbb{E}[\text{Profits} | \text{perfect information}] = \sum_j p_j \times \text{Profits}_j = \$115,405.$$
 
