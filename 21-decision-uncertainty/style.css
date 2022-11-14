@@ -1,0 +1,249 @@
+/* Two-column layout */  
+.left-column {
+    width: 48%;
+    float: left;
+}
+        
+.right-column {
+    width: 48%;
+    float: right;
+    padding-top: 0em;
+    margin-top: 0em;
+    text-align: left;
+}
+
+    /* Overall styling for slide */
+.remark-slide-content {
+    padding:0em 4em 0em 4em;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: 0.025em;
+}
+
+/* Styling for level one header, #Text */
+.remark-slide-content h1 {
+    font-size: 2.4em;
+    color: #b31b1b;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Styling for level two header, ##Text */
+.remark-slide-content h2 {
+    font-size: 2em;
+    color: #222222;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Styling for level three header, ###Text */
+.remark-slide-content h3 {
+    font-size: 1.4em;
+    color: #222222;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+/* Styling for paragraphs and lists */
+.remark-slide-content ol,ul {
+    font-size: 1.6em;
+    line-height: 1.5;
+}
+
+.remark-slide-content p {
+    line-height: 1.5;
+    font-size: 1.6em;
+    margin-top: 0;
+}
+
+.remark-slide-content li {
+    line-height: 2;
+    margin-left: 1em;
+}
+
+.remark-slide-content b, strong {
+    color: #b31b1b;
+}
+
+/* Styling for code blocks */
+.remark-code {
+    font-family: 'Fira Mono';
+    font-size: 1.4em;
+}
+
+.remark-inline-code {
+    font-family: 'Fira Mono';
+    font-size: 1em;
+    background-color: #eeeeee;
+    color: #4B7B2B;
+}
+
+.right-column img {
+    max-width:100%;
+    max-height:100%;
+    height: auto;
+    width:auto;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.left-column img {
+    max-width: 100%;
+    max-height:100%;
+    height: auto;
+    width:auto;
+}
+
+.column:first-of-type {float:left}
+.column:last-of-type {float:right}
+
+.split-40 .column:first-of-type {width: 40%}
+.split-40 .column:last-of-type {width: 60%}
+
+.split-60 .column:first-of-type {width: 60%}
+.split-60 .column:last-of-type {width: 40%}
+
+.split-50 .column:first-of-type {width: 50%}
+.split-50 .column:last-of-type {width: 50%}
+
+img {
+    max-width: 90%;
+    max-height: 475px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+thead {
+    padding-top: 1px;
+}
+
+th, td {
+    padding: 5px;
+    border: 2px solid;
+    font-size: 1.4em;
+}
+
+tr:nth-child(even){
+    background-color: #f7f7f7;
+}
+
+pre {
+    margin-top: 0;
+}
+
+/* Styling for links */
+a {text-decoration: none;color: #006699;}
+/* Setting link properties is particular, do not change order below*/
+a:visited {color: #006699;}        
+a:hover {color: #33AA99}
+a:active,a#active {color: #FF9700;}
+
+/* Some special classes for the title slide */        
+.title {
+    font-size: 2.4em;
+    color: #b31b1b;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.author {
+    font-size: 1.4em;
+    color: #222222;
+    letter-spacing: 0.02em;
+    font-family: 'Nunito', sans-serif;
+}
+
+.coauthor {
+    font-size: 2em;
+    color: #222222;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    font-family: 'Nunito', sans-serif;
+}
+
+.subtitle {
+    font-size: 1.6em;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.02em;
+    color: #b31b1b;
+}
+
+.institution {
+    font-size: 1.4em;
+    color: #222222;
+}
+
+.date {
+    font-size: 1.4em;
+    font-style: italic;
+    font-family: 'Mulish', sans-serif;
+    letter-spacing: 0.02em;
+    color: #222222;
+}
+
+.note {
+    font-size: 0.8em;
+}
+
+/* Other special classes */
+.cite {
+    font-size: 0.7em;
+    color: #222222;
+    font-style: italic;
+    font-family: 'Mulish', sans-serif;
+    padding-top: 1px;
+    display: block;
+}
+
+.footnote {
+    position: absolute;
+    bottom: 2em;
+    left: 6em;
+    font-size: 0.7em;
+    font-family: 'Nunito', sans-serif;
+}
+
+.caption {
+    font-size: 0.5em;
+    line-height: 10%;
+    font-family: 'Nunito', sans-serif;
+}
+
+hr {
+    border: 1px solid #b31b1b;
+    margin-bottom: 1em;
+}
+
+@page {
+    size: 1210px 681px;
+    margin: 0;
+  }
+  
+@media print {
+    .remark-slide-scaler {
+        width: 100% !important;
+        height: 100% !important;
+        transform: scale(.9) !important;
+        top: 1em !important;
+        left: 0 !important;
+}
+}
+
+blockquote {
+    background: #f7f7f7;
+    border-left: 10px solid #222;
+    margin: 2px 1em;
+    padding: 0px 1em;
+}
