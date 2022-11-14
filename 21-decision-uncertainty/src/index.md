@@ -317,7 +317,7 @@ Bad | \$55,120 | \$48,820
 # Value of the Stochastic Solution
 <hr>
 
-We can now compare the difference in expected profits *under uncertainty*, which is the fair comparison. This is called the **value of the stochastic solution (VSS)***, or sometimes the **expected value of including uncertainty (EVIU)**.
+We can now compare the difference in expected profits *under uncertainty*, which is the fair comparison. This is called the **value of the stochastic solution (VSS)**, or sometimes the **expected value of including uncertainty (EVIU)**.
 
 $$\begin{aligned}
 VSS &= \mathbb{E}[\text{Stochastic Profit}] - \mathbb{E}[\text{Deterministic Profit}] \\\\
