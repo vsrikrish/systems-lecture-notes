@@ -330,7 +330,7 @@ $$
 | Variable      | Wheat | Corn | Beets |
 |:------------- |:-----:|:----:|:-----:|
 | Area (acres)  |  120  |  80  |  300  |
-| Yield (T)     |  300  | 288  | 6000  |
+| Yield (T)     |  300  | 240  | 6000  |
 | Sales (T)     |  100  |  –   | 6000  |
 | Purchased (T) |   –   |  –   |   –   |
 
@@ -574,15 +574,15 @@ Note that the deterministic solution only gives us the expected payoff in the av
 
 | Year    | Deterministic Profit | Stochastic Profit |
 |:------- |:--------------------:|:-----------------:|
-| Good    |       $148,000       |     $167,000      |
+| Good    |       $137,800       |     $167,000      |
 | Average |       $118,600       |     $109,350      |
-| Bad     |       $55,120        |      $48,820      |
+| Bad     |       $56,800        |      $48,820      |
 
 
 <br>
 
 
-**Expected Profit from Deterministic *under uncertainty***: $107,240
+**Expected Profit from Deterministic *under uncertainty***: $104,400
 
 
 ---
@@ -604,10 +604,101 @@ We can now compare the difference in expected profits *under uncertainty*, which
 $$
 \begin{aligned}
 VSS &= \mathbb{E}[\text{Stochastic Profit}] - \mathbb{E}[\text{Deterministic Profit}] \\\\
-&= \$108,390 - \$107,240 \\\\
-&= \$1,150.
+&= \$108,390 - \$104,400 \\\\
+&= \$3,990.
 \end{aligned}
 $$
+
+
+---
+
+
+
+
+
+
+# Sensitivity of the VSS
+
+
+<hr>
+
+
+**Note**: The obtained stochastic solution (and its value) can be highly sensitive to scenario probabilities!
+
+
+For example: suppose the probability of a good harvest is 1/8, an average harvest is 1/8, and a bad harvest is 3/4.
+
+
+.column[
+
+
+| Crop  | Area (acre) |
+|:----- | -----------:|
+| Corn  |         100 |
+| Wheat |         100 |
+| Beets |         300 |
+
+
+]
+
+
+.column[
+
+
+| Year    | Stochastic Profit |
+|:------- | -----------------:|
+| Good    |          $147,000 |
+| Average |          $117,500 |
+| Bad     |           $56,800 |
+
+
+]
+
+
+<br> The VSS is then $1,013.
+
+
+---
+
+
+
+
+# Sensitivity of the VSS
+
+
+<hr>
+
+
+Now suppose the probability of a good harvest is 3/4, an average harvest is 1/8, and a bad harvest is 1/8.
+
+
+.column[
+
+
+| Crop  | Area (acre) |
+|:----- | -----------:|
+| Corn  |         183 |
+| Wheat |          67 |
+| Beets |         250 |
+
+
+]
+
+
+.column[
+
+
+| Year    | Deterministic Profit | Stochastic Profit |
+|:------- | --------------------:| -----------------:|
+| Good    |             $137,800 |          $167,667 |
+| Average |             $118,600 |          $107,683 |
+| Bad     |              $56,800 |           $47,670 |
+
+
+]
+
+
+<br> The VSS is then $19,898.
 
 
 ---

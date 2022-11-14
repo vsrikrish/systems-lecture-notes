@@ -166,7 +166,7 @@ $$\begin{alignedat}{3}
 Variable | Wheat | Corn | Beets
 :----- | :-----: | :----: | :-----:
 Area (acres) | 120 | 80 | 300
-Yield (T) | 300 | 288 | 6000 
+Yield (T) | 300 | 240 | 6000 
 Sales (T) | 100 | -- | 6000 
 Purchased (T) | -- | -- | --
 
@@ -307,7 +307,7 @@ Year | Deterministic Profit | Stochastic Profit
 :--- | :----: | :----:
 Good | \$148,000 | \$167,000
 Average | \$118,600 | \$109,350
-Bad | \$55,120 | \$48,820
+Bad | \$56,800 | \$48,820
 
 <br>
 
@@ -326,14 +326,74 @@ VSS &= \mathbb{E}[\text{Stochastic Profit}] - \mathbb{E}[\text{Deterministic Pro
 \end{aligned}$$
 
 ---
+# Sensitivity of the VSS
+<hr>
+
+**Note**: The obtained stochastic solution (and its value) can be highly sensitive to scenario probabilities!
+
+For example: suppose the probability of a good harvest is 1/8, an average harvest is 1/8, and a bad harvest is 3/4.
+
+.column[
+
+Crop | Area (acre)
+:--- | ----:
+Corn | 100
+Wheat | 100
+Beets | 300
+
+]
+
+.column[
+
+Year | Deterministic Profit | Stochastic Profit
+:--- | ---: | ---:
+Good | \$148,000 | **\$147,000**
+Average | \$118,600 | **\$117,500**
+Bad | \$55,120 | **\$56,800**
+
+]
+
+<br>
+The VSS is then **\$998**.
+
+---
+# Sensitivity of the VSS
+<hr>
+
+Now suppose the probability of a good harvest is 3/4, an average harvest is 1/8, and a bad harvest is 1/8.
+
+.column[
+
+Crop | Area (acre)
+:--- | ----:
+Corn | 183
+Wheat | 67
+Beets | 250
+
+]
+
+.column[
+
+Year | Deterministic Profit | Stochastic Profit
+:--- | ---: | ---:
+Good | \$137,800 | **\$167,667**
+Average | \$118,600 | **\$107,683**
+Bad | \$56,800 | **\$47,670**
+
+]
+
+<br>
+The VSS is then *\$12,458.
+
+---
 # Value of the Stochastic Solution
 <hr>
 
 **To summarize**:
 
 - A solution obtained assuming deterministic outcomes might "on paper" yield better anticipated outcomes.
-- But for many problems, downside outcomes can carry a higher penalty than the upside reward.
 - Solutions to stochastic problems can produce a better expected outcome than the deterministic solution, but will perform better/worse in any given scenario.
+- Stochastic solutions can be highly sensitive to scenario probabilities; be careful about deep uncertainty.
 
 ---
 # Expected Value of Perfect Information
