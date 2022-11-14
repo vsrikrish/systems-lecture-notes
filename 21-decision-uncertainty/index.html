@@ -574,7 +574,7 @@ Note that the deterministic solution only gives us the expected payoff in the av
 
 | Year    | Deterministic Profit | Stochastic Profit |
 |:------- |:--------------------:|:-----------------:|
-| Good    |       $137,800       |     $167,000      |
+| Good    |       $148,000       |     $167,000      |
 | Average |       $118,600       |     $109,350      |
 | Bad     |       $56,800        |      $48,820      |
 
@@ -582,7 +582,7 @@ Note that the deterministic solution only gives us the expected payoff in the av
 <br>
 
 
-**Expected Profit from Deterministic *under uncertainty***: $104,400
+**Expected Profit from Deterministic *under uncertainty***: $107,240
 
 
 ---
@@ -604,8 +604,8 @@ We can now compare the difference in expected profits *under uncertainty*, which
 $$
 \begin{aligned}
 VSS &= \mathbb{E}[\text{Stochastic Profit}] - \mathbb{E}[\text{Deterministic Profit}] \\\\
-&= \$108,390 - \$104,400 \\\\
-&= \$3,990.
+&= \$108,390 - \$107,240 \\\\
+&= \$1,150.
 \end{aligned}
 $$
 
@@ -645,17 +645,17 @@ For example: suppose the probability of a good harvest is 1/8, an average harves
 .column[
 
 
-| Year    | Stochastic Profit |
-|:------- | -----------------:|
-| Good    |          $147,000 |
-| Average |          $117,500 |
-| Bad     |           $56,800 |
+| Year    | Deterministic Profit | Stochastic Profit |
+|:------- | --------------------:| -----------------:|
+| Good    |             $148,000 |      **$147,000** |
+| Average |             $118,600 |      **$117,500** |
+| Bad     |              $55,120 |       **$56,800** |
 
 
 ]
 
 
-<br> The VSS is then $1,013.
+<br> The VSS is then **$998**.
 
 
 ---
@@ -690,15 +690,15 @@ Now suppose the probability of a good harvest is 3/4, an average harvest is 1/8,
 
 | Year    | Deterministic Profit | Stochastic Profit |
 |:------- | --------------------:| -----------------:|
-| Good    |             $137,800 |          $167,667 |
-| Average |             $118,600 |          $107,683 |
-| Bad     |              $56,800 |           $47,670 |
+| Good    |             $137,800 |      **$167,667** |
+| Average |             $118,600 |      **$107,683** |
+| Bad     |              $56,800 |       **$47,670** |
 
 
 ]
 
 
-<br> The VSS is then $19,898.
+<br> The VSS is then *$12,458.
 
 
 ---
@@ -716,8 +716,8 @@ Now suppose the probability of a good harvest is 3/4, an average harvest is 1/8,
 
 
   * A solution obtained assuming deterministic outcomes might "on paper" yield better anticipated outcomes.
-  * But for many problems, downside outcomes can carry a higher penalty than the upside reward.
   * Solutions to stochastic problems can produce a better expected outcome than the deterministic solution, but will perform better/worse in any given scenario.
+  * Stochastic solutions can be highly sensitive to scenario probabilities; be careful about deep uncertainty.
 
 
 ---
