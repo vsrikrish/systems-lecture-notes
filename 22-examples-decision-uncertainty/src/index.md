@@ -386,6 +386,14 @@ class: left
 - Always try to choose the right tool for the job, and be aware of what limitations accompany models, methods, and assumptions.
 
 ---
+name: questions
+
+template: poll-answer
+
+***Any remaining questions?***
+
+
+---
 class: center, middle
 
 <hr>
